@@ -1,0 +1,29 @@
+<head>
+  <title>Azimuth CMS</title>
+</head>
+
+<body>
+  {{> header}}
+  {{> page_content}}
+  {{> footer}}
+</body>
+
+<template name="page_content">
+  <div class="container">
+    <div class="row">
+      <div class="span10">
+        {{#with page}}
+          <h1>{{title}}</h1>
+          {{{contents}}}
+        {{/with}}
+        &nbsp;
+      </div>
+      <div class="span2">
+        <ul class="nav nav-tabs nav-stacked">
+          <li><a href="#">Edit Title <i class="icon-pencil"></i></a></li>
+          <li><a href="#">Edit Content <i class="icon-pencil"></i></a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</template>

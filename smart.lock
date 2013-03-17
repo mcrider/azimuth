@@ -1,0 +1,25 @@
+{
+  "meteor": {
+    "git": "https://github.com/meteor/meteor.git",
+    "branch": "master",
+    "commit": "f07715dc70de16a7aab84e56ab0c6cbd9c1f9dc6"
+  },
+  "dependencies": {
+    "basePackages": {
+      "foundation-custom": {},
+      "underscore-string": {}
+    },
+    "packages": {
+      "foundation-custom": {
+        "git": "https://github.com/digioak/meteor-foundation-custom.git",
+        "tag": "v0.0.7",
+        "commit": "78a2f2def62709836c58dcca894ea6f3702d940c"
+      },
+      "underscore-string": {
+        "git": "https://github.com/possibilities/meteor-underscore-string.git",
+        "tag": "v2.2.0rc.1",
+        "commit": "dec21fac23310daf76dc19f246749e7beb48af03"
+      }
+    }
+  }
+}

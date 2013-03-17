@@ -1,0 +1,20 @@
+<template name="header">
+  <header class="row">
+    <div class="three columns">
+      Logo
+    </div>
+    <div class="six columns">
+      {{#each pages}}
+        <li>{{> nav_item}}</li>
+      {{/each}}
+    </div>
+
+    <div class="three columns">
+      {{loginButtons align="right"}}
+    </div>
+  </header>
+</template>
+
+<template name="nav_item">
+  <a href="/{{slug}}">{{title}}</a>
+</template>
