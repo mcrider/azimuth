@@ -1,15 +1,8 @@
-
-// Template.hello.greeting = function () {
-//   return "Welcome to Azimuth CMS.";
-// };
-
-// Template.hello.events({
-//   'click input' : function () {
-//     // template data, if any, is available in 'this'
-//     if (typeof console !== 'undefined')
-//       console.log("You pressed the button");
-//   }
-// });
+/* init.js
+ *
+ * Startup code for the front-end.
+ *
+ */
 
 Pages = new Meteor.Collection("pages");
 
@@ -50,27 +43,3 @@ Template.header.events = {
   }
 };
 
-Template.page_content.page = function () {
-  var page_slug = Session.get('page_slug');
-  if (!page_slug)
-    return {title: 'Error, no page found'};
-  return Pages.findOne({slug: page_slug});
-};
-
-var PageRouter = Backbone.Router.extend({
-  routes: {
-    ":page_slug": "main"
-  },
-  main: function (page_slug) {
-    Session.set("page_slug", page_slug);
-  },
-  setPage: function (page_slug) {
-    this.navigate(page_slug, true);
-  }
-});
-
-Router = new PageRouter;
-
-Meteor.startup(function () {
-  Backbone.history.start({pushState: true});
-});

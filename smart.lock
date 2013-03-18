@@ -7,7 +7,8 @@
   "dependencies": {
     "basePackages": {
       "foundation-custom": {},
-      "underscore-string": {}
+      "underscore-string": {},
+      "aloha-editor": {}
     },
     "packages": {
       "foundation-custom": {
@@ -19,6 +20,11 @@
         "git": "https://github.com/possibilities/meteor-underscore-string.git",
         "tag": "v2.2.0rc.1",
         "commit": "dec21fac23310daf76dc19f246749e7beb48af03"
+      },
+      "aloha-editor": {
+        "git": "https://github.com/evo42/meteor-aloha-editor.git",
+        "tag": "v0.1.2",
+        "commit": "0f903efa86abc6aabb112f772468ef5e7aaa3577"
       }
     }
   }

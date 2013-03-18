@@ -5,6 +5,7 @@
   },
   "packages": {
     "foundation-custom": {},
-    "underscore-string": {}
+    "underscore-string": {},
+    "aloha-editor": {}
   }
 }
