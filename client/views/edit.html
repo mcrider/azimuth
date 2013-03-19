@@ -1,0 +1,14 @@
+<template name="edit">
+  <div class="container">
+    <div class="row">
+      <div class="span10">
+        <h1>Editing</h1>
+        {{#with page}}
+            <input type="text" id="title" value="{{title}}" />
+            <textarea id="contents">{{{contents}}}</textarea>
+        {{/with}}
+        &nbsp;
+      </div>
+    </div>
+  </div>
+</template>

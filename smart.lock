@@ -8,7 +8,8 @@
     "basePackages": {
       "foundation-custom": {},
       "underscore-string": {},
-      "aloha-editor": {}
+      "aloha-editor": {},
+      "jquery-ui": {}
     },
     "packages": {
       "foundation-custom": {
@@ -25,6 +26,11 @@
         "git": "https://github.com/evo42/meteor-aloha-editor.git",
         "tag": "v0.1.2",
         "commit": "0f903efa86abc6aabb112f772468ef5e7aaa3577"
+      },
+      "jquery-ui": {
+        "git": "https://github.com/TimHeckel/meteor-jquery-ui.git",
+        "tag": "v1.9.2",
+        "commit": "c437d45edcf1367df8d5ffa8bad2867758030bd2"
       }
     }
   }
