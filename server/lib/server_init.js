@@ -1,6 +1,22 @@
 Meteor.startup(function () {
   Pages = new Meteor.Collection("pages");
 
+  Pages.allow({
+  insert: function (userId, doc) {
+    // the user must be logged in, and the document must be owned by the user
+
+    // FIXME: For this and all other methods, return true only if admin role
+    // return (userId && doc.owner === userId);
+    return userId;
+  },
+  update: function (userId, doc, fields, modifier) {
+    return userId;
+  },
+  remove: function (userId, doc) {
+    return userId;
+  }
+});
+
   if (Pages.find().count() === 0) {
     var data = [
       {

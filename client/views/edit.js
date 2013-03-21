@@ -2,24 +2,15 @@
 // Describes the page's metadata and actions.
 
 Template.edit.events = {
-  'click .add-page': function () {
-    $('#addNewPageModal').modal('show');
-  },
-  'click .submit-new-page': function () {
-    var raw_title = $('.page-title-textfield').val();
-    var raw_slug = $('.page-slug-textfield').val();
-    $('#addNewPageModal').modal('hide');
-    // TODO: put in validation
-    Pages.insert({
-      title: raw_title,
-      slug: raw_slug,
-      contents: "<p>This page is empty.</p>"
+  'submit #pageEditForm': function (e) {
+    e.preventDefault();
+    var page = Template.edit.page();
+    var pageData = {};
+    $("#pageEditForm input[type='text'], #pageEditForm textarea").each(function() {
+      pageData[$(this).attr('id')] = $(this).val();
     });
-  },
-  'keyup .page-title-textfield': function () {
-    var raw_title = $('.page-title-textfield').val();
-    raw_title = _.slugify(raw_title);
-    $('.page-slug-textfield').val(raw_title);
+    Pages.update({_id: Pages.findOne({slug: "home"})._id}, {$set: pageData});
+    return false;
   }
 };
 

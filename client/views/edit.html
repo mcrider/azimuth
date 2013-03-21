@@ -2,10 +2,13 @@
   <div class="container">
     <div class="row">
       <div class="span10">
-        <h1>Editing</h1>
         {{#with page}}
-            <input type="text" id="title" value="{{title}}" />
-            <textarea id="contents">{{{contents}}}</textarea>
+            <h2>Editing "{{title}}"</h2>
+            <form id="pageEditForm">
+              <input type="text" id="title" value="{{title}}" />
+              <textarea id="contents">{{{contents}}}</textarea>
+              <input type="submit" value="Save">
+            </form>
         {{/with}}
         &nbsp;
       </div>
