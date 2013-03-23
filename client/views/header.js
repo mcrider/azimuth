@@ -17,7 +17,8 @@ Template.header.events = {
     Pages.insert({
       title: raw_title,
       slug: raw_slug,
-      contents: "<p>This page is empty.</p>"
+      contents: "<p>This page is empty.</p>",
+      template: "page_default"
     });
   },
   'keyup .page-title-textfield': function () {

@@ -30,7 +30,8 @@ var PageRouter = Backbone.Router.extend({
     if (!page) return {title: 'Sorry, we couldn\'t find the requested page'};
 
     var fragment = Meteor.render(function () {
-      return Template[ 'edit' ](); // this calls the template and returns the HTML.
+      template = page.template ? page.template : 'page_default';
+      return Template[ template + "_edit" ](); // this calls the template and returns the HTML.
     });
 
     $("#page").html( fragment );
@@ -42,7 +43,7 @@ var PageRouter = Backbone.Router.extend({
   }
 });
 
-Router = new PageRouter;
+Router = new PageRouter();
 
 Meteor.startup(function () {
   Backbone.history.start({pushState: true});

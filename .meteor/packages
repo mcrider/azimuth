@@ -5,7 +5,6 @@
 
 preserve-inputs
 accounts-base
-foundation-custom
 accounts-ui
 accounts-password
 backbone
