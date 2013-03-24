@@ -16,14 +16,39 @@
 
         <ul class="right">
           <li class="has-dropdown">
-            <a href="#">Admin</a>
+            <a class="menuHeader" href="#"><i class="icon-cogs"></i></a>
             <ul class="dropdown">
               <li><label>Admin</label></li>
               <li><a href="#">Site Settings</a></li>
             </ul>
           </li>
           <li class="divider"></li>
-          <li class="loginButtons">{{loginButtons align="right"}}</li>
+          <li id="accountForm" class="has-dropdown">
+            <a class="menuHeader" href="#"><i class="icon-user"></i></a>
+            {{#if currentUser}}
+              {{#unless loggingIn}}
+                <ul class='dropdown'>
+                  <li><label>{{displayName}}</label></li>
+                  <li><a class='profile' href='#'>Profile</a></li>
+                  <li><a class='logout' href='#'>Logout...</a></li>
+                </ul>
+              {{/unless}}
+            {{else}}
+            {{#unless loggingIn}}
+              <ul class="dropdown">
+                <li class="has-form">
+                  {{> loginForm}}
+                </li>
+              </ul>
+            {{/unless}}
+          {{/if}}
+
+
+
+
+
+
+          </li>
         </ul>
       </section>
     </nav>

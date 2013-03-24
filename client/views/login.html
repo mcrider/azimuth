@@ -1,0 +1,80 @@
+<template name='createAccountForm'>
+  <header>
+    <h5>Create Account</h5>
+    <button class='close'>×</button>
+  </header>
+  <div class='panel-body'>
+    <div class='form-wrapper'>
+      <div class='intro-form-wrapper'>
+        <form id='register-form' class='intro-form'>
+          <input type='email' id='account-email' class='large wide' placeholder='Email'/>
+          <input type='password' id='account-password' class='large wide' placeholder='Password' />
+          <input type='submit' id='create-account' class='btn btn-pink large wide' value='Create an Account' />
+        </form>
+      </div>
+    </div>
+  </div>
+</template>
+
+<template name='passwordRecoveryForm'>
+  <header>
+
+    {{#if resetToken}}
+    <h5>Enter New Password</h5>
+    {{else}}
+    <h5>Reset Password</h5>
+    {{/if}}
+
+    <button class='close'>×</button>
+  </header>
+  <div class='panel-body'>
+    <div class='form-wrapper'>
+      <div class='intro-form-wrapper'>
+        <div class='intro-form'>
+
+          {{#if resetToken}}
+            <form id='new-password'>
+              <input type='text' id='new-password-password' class='large wide' placeholder='New Password' />
+              <input type='submit' class='btn btn-pink large wide' value='Change Password'/>
+            </form>
+          {{else}}
+            <form id='recovery-form'>
+              <input type='text' id='recovery-email' class='large wide' placeholder='Your Email Address'/>
+              <input type='submit' class='btn btn-pink large wide' value='Send Reset Instructions' />
+            </form>
+          {{/if}}
+
+        </div>
+      </div>
+    </div>
+  </div>
+</template>
+
+<template name='loginForm'>
+  {{#if loginForm}}
+    <form id='login-form'>
+      <fieldset>
+        <div class="row">
+          <input type='email' id='login-email' style='margin-top: 0;' placeholder='Email'/>
+        </div>
+        <div class="row">
+          <input type='password' id='login-password' placeholder='Password'/>
+        </div>
+        <div class="row">
+          <input type='submit' class='button'  id='login-button' value='Sign in'/>
+        </div>
+      </fieldset>
+    </form>
+    <a href='#forgotPassword' data-toggle='modal' id='forgot-password'>Forgot password?</a>
+    <a href='#' id='create-account'>Create account</a>
+  {{/if}}
+
+  {{#if passwordRecovery}}
+    {{> passwordRecoveryForm}}
+  {{/if}}
+
+  {{#if createAccount}}
+    {{> createAccountForm}}
+  {{/if}}
+
+</template>

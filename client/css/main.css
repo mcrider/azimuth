@@ -17,6 +17,26 @@ footer {
   background: #111;
 }
 
+.menuHeader i {
+  font-size: 1.3em;
+}
+#accountForm {
+
+}
+  #accountForm fieldset {
+    border: none;
+  }
+  #accountForm .has-form {
+    height: inherit;
+    padding-bottom: 12px;
+  }
+  #accountForm a {
+    background: #111;
+  }
+  #accountForm .row {
+    margin-bottom: 7px;
+  }
+
 /*************************************************
               Foundation Overrides
 ************************************************/

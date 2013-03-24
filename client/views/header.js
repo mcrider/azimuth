@@ -5,9 +5,24 @@ Template.header.pages = function () {
   return Pages.find({});
 };
 
+Template.header.helpers({
+  displayName: function(){
+    var user = Meteor.user();
+    return (user.profile && user.profile.name) || user.username || (user.emails && user.emails[0] && user.emails[0].address)
+  },
+  loading : function() {
+    return Session.get('loading');
+  }
+});
+
 Template.header.events = {
   'click .add-page': function () {
     $('#addNewPageModal').modal('show');
+  },
+  'click .logout' : function() {
+    Meteor.logout();
+    Router.navigate('');
+    return false;
   },
   'click .submit-new-page': function () {
     var raw_title = $('.page-title-textfield').val();
