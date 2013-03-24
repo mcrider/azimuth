@@ -5,10 +5,10 @@
 
 preserve-inputs
 accounts-base
-accounts-ui
 accounts-password
 backbone
 underscore
 jquery
 autopublish
 underscore-string
+accounts-ui-unstyled

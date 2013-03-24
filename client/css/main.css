@@ -1,13 +1,35 @@
-/* CSS declarations go here */
-
+/*************************************************
+            Basic CSS for Azimuth
+************************************************/
 header {
-  border-bottom: 1px solid #666;
-  padding-bottom: 12px;
+
 }
 
 footer {
   border-top: 1px solid #666;
+  margin-top: 30px;
   padding-top: 12px;
   font-size: 10px;
   color: #bbb;
 }
+
+.loginButtons {
+  background: #111;
+}
+
+/*************************************************
+              Foundation Overrides
+************************************************/
+.top-bar {
+  margin-bottom: 0;
+}
+
+/*************************************************
+          Meteor accounts-ui overrides
+************************************************/
+a.login-link-text {
+  color: white;
+  font-size: 0.8125em;
+  font-weight: bold;
+}
+

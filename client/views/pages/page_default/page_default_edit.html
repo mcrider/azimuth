@@ -5,6 +5,12 @@
         {{#with page}}
             <h2>Editing "{{title}}"</h2>
             <form id="pageEditForm">
+              <input type="checkbox" value="Show in header" />
+              <input type="checkbox" value="Show in header" />
+              <input type="select">
+                <option>Parent</option>
+              </input>
+              <p>position spinner goes here</p>
               <input type="text" id="title" value="{{title}}" />
               <textarea id="contents">{{{contents}}}</textarea>
               <input type="submit" value="Save">

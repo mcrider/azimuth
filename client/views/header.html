@@ -1,19 +1,32 @@
 <template name="header">
   <header class="row">
-    <div class="three columns">
-      Logo
-    </div>
-    <div class="six columns">
-      <ul>
-        {{#each pages}}
-          <li>{{> nav_item}}</li>
-        {{/each}}
-      <ul>
-    </div>
+    <nav class="top-bar">
+      <ul class="title-area">
+        <li class="name"><h1><a href="#">Logo</a><h1></li>
+      </ul>
+      <section class="top-bar-section">
+        <ul class="left">
+          <li class="divider"></li>
+          {{#each pages}}
+            <li>{{> nav_item}}</li>
+            <li class="divider"></li>
+          {{/each}}
+        </ul>
 
-    <div class="three columns">
-      {{loginButtons align="right"}}
-    </div>
+
+        <ul class="right">
+          <li class="has-dropdown">
+            <a href="#">Admin</a>
+            <ul class="dropdown">
+              <li><label>Admin</label></li>
+              <li><a href="#">Site Settings</a></li>
+            </ul>
+          </li>
+          <li class="divider"></li>
+          <li class="loginButtons">{{loginButtons align="right"}}</li>
+        </ul>
+      </section>
+    </nav>
   </header>
 </template>
 
