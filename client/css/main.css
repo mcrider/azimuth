@@ -13,35 +13,28 @@ footer {
   color: #bbb;
 }
 
-.loginButtons {
-  background: #111;
+.links a {
+  font-size: 1.2em;
+  margin-right: 15px;
 }
-
-.menuHeader i {
-  font-size: 1.3em;
-}
-#accountForm {
-
-}
-  #accountForm fieldset {
-    border: none;
-  }
-  #accountForm .has-form {
-    height: inherit;
-    padding-bottom: 12px;
-  }
-  #accountForm a {
-    background: #111;
-  }
-  #accountForm .row {
-    margin-bottom: 7px;
-  }
 
 /*************************************************
-              Foundation Overrides
+              Bootstrap Overrides
 ************************************************/
-.top-bar {
-  margin-bottom: 0;
+.dropdown-toggle i {
+  font-size: 1.3em;
+}
+
+#login-form {
+  padding: 8px 0 0 17px;
+  margin-bottom: 0px;
+}
+#login-form input {
+  margin-bottom: 7px;
+}
+
+#login-form button {
+  margin-top: 0;
 }
 
 /*************************************************

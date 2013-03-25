@@ -1,58 +1,48 @@
 <template name="header">
-  <header class="row">
-    <nav class="top-bar">
-      <ul class="title-area">
-        <li class="name"><h1><a href="#">Logo</a><h1></li>
+  <div class="navbar">
+    <div class="navbar-inner">
+      <a class="brand" href="#">Logo</a>
+      <ul class="nav">
+        {{#each pages}}
+          <li>{{> nav_item}}</li>
+          <li class="divider-vertical"></li>
+        {{/each}}
       </ul>
-      <section class="top-bar-section">
-        <ul class="left">
-          <li class="divider"></li>
-          {{#each pages}}
-            <li>{{> nav_item}}</li>
-            <li class="divider"></li>
-          {{/each}}
-        </ul>
 
 
-        <ul class="right">
-          <li class="has-dropdown">
-            <a class="menuHeader" href="#"><i class="icon-cogs"></i></a>
-            <ul class="dropdown">
-              <li><label>Admin</label></li>
-              <li><a href="#">Site Settings</a></li>
-            </ul>
-          </li>
-          <li class="divider"></li>
-          <li id="accountForm" class="has-dropdown">
-            <a class="menuHeader" href="#"><i class="icon-user"></i></a>
-            {{#if currentUser}}
-              {{#unless loggingIn}}
-                <ul class='dropdown'>
-                  <li><label>{{displayName}}</label></li>
-                  <li><a class='profile' href='#'>Profile</a></li>
-                  <li><a class='logout' href='#'>Logout...</a></li>
-                </ul>
-              {{/unless}}
-            {{else}}
+
+
+      <ul class="nav pull-right">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-cogs"></i> <b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            <li class="nav-header">Admin</li>
+            <li><a href="#">Site Settings</a></li>
+          </ul>
+        </li>
+        <li class="divider-vertical"></li>
+        <li id="accountForm" class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="icon-user"></i> <b class="caret"></b></a>
+          {{#if currentUser}}
             {{#unless loggingIn}}
-              <ul class="dropdown">
-                <li class="has-form">
-                  {{> loginForm}}
-                </li>
+              <ul class='dropdown-menu'>
+                <li class="nav-header">{{displayName}}</li>
+                <li><a class='profile' href='#'>Profile</a></li>
+                <li><a class='logout' href='#'>Logout...</a></li>
               </ul>
             {{/unless}}
-          {{/if}}
+          {{else}}
+          {{#unless loggingIn}}
+            <ul class="dropdown-menu">
+              {{> loginForm}}
+            </ul>
+          {{/unless}}
+        {{/if}}
+        </li>
+      </ul>
 
-
-
-
-
-
-          </li>
-        </ul>
-      </section>
-    </nav>
-  </header>
+    </div>
+  </div>
 </template>
 
 <template name="nav_item">

@@ -52,21 +52,18 @@
 
 <template name='loginForm'>
   {{#if loginForm}}
-    <form id='login-form'>
-      <fieldset>
-        <div class="row">
-          <input type='email' id='login-email' style='margin-top: 0;' placeholder='Email'/>
-        </div>
-        <div class="row">
-          <input type='password' id='login-password' placeholder='Password'/>
-        </div>
-        <div class="row">
-          <input type='submit' class='button'  id='login-button' value='Sign in'/>
-        </div>
-      </fieldset>
-    </form>
-    <a href='#forgotPassword' data-toggle='modal' id='forgot-password'>Forgot password?</a>
-    <a href='#' id='create-account'>Create account</a>
+    <li>
+      <form id='login-form'>
+        <fieldset>
+          <input type='email' class="input-small" id='login-email' style='margin-top: 0;' placeholder='Email'/>
+          <input type='password' class="input-small" id='login-password' placeholder='Password'/>
+          <button type='submit' class='btn' id='login-button'>Sign in</button>
+        </fieldset>
+      </form>
+    </li>
+    <li class="divider"></li>
+    <li><a href='#forgotPassword' data-toggle='modal' id='forgot-password'>Forgot password?</a></li>
+    <li><a href='#' id='create-account'>Create account</a></li>
   {{/if}}
 
   {{#if passwordRecovery}}

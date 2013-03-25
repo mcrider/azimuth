@@ -4,9 +4,7 @@
     "branch": "master"
   },
   "packages": {
-    "foundation-custom": {},
     "underscore-string": {},
-    "aloha-editor": {},
-    "jquery-ui": {}
+    "font-awesome": {}
   }
 }
