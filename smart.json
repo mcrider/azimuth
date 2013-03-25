@@ -5,6 +5,7 @@
   },
   "packages": {
     "underscore-string": {},
-    "font-awesome": {}
+    "font-awesome": {},
+    "pnotify": {}
   }
 }

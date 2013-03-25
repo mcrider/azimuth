@@ -2,27 +2,31 @@ Meteor.startup(function () {
   Pages = new Meteor.Collection("pages");
 
   Pages.allow({
-  insert: function (userId, doc) {
-    // the user must be logged in, and the document must be owned by the user
+    insert: function (userId, doc) {
+      // the user must be logged in, and the document must be owned by the user
 
-    // FIXME: For this and all other methods, return true only if admin role
-    // return (userId && doc.owner === userId);
-    return userId;
-  },
-  update: function (userId, doc, fields, modifier) {
-    return userId;
-  },
-  remove: function (userId, doc) {
-    return userId;
-  }
-});
+      // FIXME: For this and all other methods, return true only if admin role
+      // return (userId && doc.owner === userId);
+      return userId;
+    },
+    update: function (userId, doc, fields, modifier) {
+      return userId;
+    },
+    remove: function (userId, doc) {
+      return userId;
+    }
+  });
+
+
+  // TODO: If user count is 0, create admin user
+
 
   if (Pages.find().count() === 0) {
     var data = [
       {
         title: "Home",
         slug: "home",
-        contents: "<p>Welcome to this Meteor CMS website.</p><p>You can add pages from the menu above.</p>",
+        contents: "<p>Welcome to Azimuth.</p><p>You can add pages from the <i class='icon-cogs'></i> menu above.</p>",
         template: "page_default"
       },
       {

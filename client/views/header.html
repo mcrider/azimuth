@@ -1,7 +1,7 @@
 <template name="header">
   <div class="navbar">
     <div class="navbar-inner">
-      <a class="brand" href="#">Logo</a>
+      <a class="brand" href="/">Logo</a>
       <ul class="nav">
         {{#each pages}}
           <li>{{> nav_item}}</li>
@@ -14,8 +14,8 @@
           <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="icon-cogs"></i> <b class="caret"></b></a>
           <ul class="dropdown-menu">
             <li class="nav-header">Admin</li>
-            <li><a href="#">Site Settings</a></li>
-            <li><a href="#">New Page</a></li>
+            <li><a href="/settings">Site Settings</a></li>
+            <li><a id="newPage" href="#">New Page</a></li>
             <li class="dropdown-submenu">
               <a tabindex="-1" href="#">Edit Page</a>
               <ul class="dropdown-menu">
@@ -49,6 +49,26 @@
         </li>
       </ul>
 
+    </div>
+  </div>
+
+  <div class="modal hide" id="addNewPageModal">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal">×</button>
+      <h3>New Page</h3>
+    </div>
+    <div class="modal-body">
+      <form>
+        <label>Title</label>
+        <input type="text" class="span3 page-title-textfield" placeholder="Type something…">
+
+        <label>Slug</label>
+        <input type="text" class="span3 page-slug-textfield">
+      </form>
+    </div>
+    <div class="modal-footer">
+      <a href="#" class="btn" data-dismiss="modal">Cancel</a>
+      <a href="#" class="btn btn-primary submit-new-page">Create Page</a>
     </div>
   </div>
 </template>

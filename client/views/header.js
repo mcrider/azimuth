@@ -8,7 +8,7 @@ Template.header.pages = function () {
 Template.header.helpers({
   displayName: function(){
     var user = Meteor.user();
-    return (user.profile && user.profile.name) || user.username || (user.emails && user.emails[0] && user.emails[0].address)
+    return (user.profile && user.profile.name) || user.username || (user.emails && user.emails[0] && user.emails[0].address);
   },
   loading : function() {
     return Session.get('loading');
@@ -16,7 +16,7 @@ Template.header.helpers({
 });
 
 Template.header.events = {
-  'click .add-page': function () {
+  'click #newPage': function () {
     $('#addNewPageModal').modal('show');
   },
   'click .logout' : function() {
@@ -27,14 +27,24 @@ Template.header.events = {
   'click .submit-new-page': function () {
     var raw_title = $('.page-title-textfield').val();
     var raw_slug = $('.page-slug-textfield').val();
+
     $('#addNewPageModal').modal('hide');
-    // TODO: put in validation
+
+    // Validate input
+    if (raw_title == '' || raw_slug == '') {
+      // TODO display this purty-like
+      alert('Please enter values for all fields');
+      return false;
+    }
+
     Pages.insert({
       title: raw_title,
       slug: raw_slug,
       contents: "<p>This page is empty.</p>",
       template: "page_default"
     });
+
+    Router.navigate(raw_slug + '/edit', {trigger: true});
   },
   'keyup .page-title-textfield': function () {
     var raw_title = $('.page-title-textfield').val();

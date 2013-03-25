@@ -38,11 +38,10 @@ footer {
 }
 
 /*************************************************
-          Meteor accounts-ui overrides
+              Other Overrides
 ************************************************/
-a.login-link-text {
-  color: white;
-  font-size: 0.8125em;
-  font-weight: bold;
+.ui-pnotify-history-container {
+  /* Hide the Pines Notify history menu */
+  display: none;
 }
 

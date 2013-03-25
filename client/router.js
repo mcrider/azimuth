@@ -8,7 +8,8 @@ var PageRouter = Backbone.Router.extend({
 
   routes: {
     ":page_slug": "showPage",
-    ":page_slug/edit": "editPage"
+    ":page_slug/edit": "editPage",
+    "/settings": "settingsPage"
   },
 
   showPage: function (page_slug) {
@@ -40,6 +41,10 @@ var PageRouter = Backbone.Router.extend({
 
   setPage: function (page_slug) {
     this.navigate(page_slug, true);
+  },
+
+  settingsPage: function() {
+    // Inject settings page into body
   }
 });
 

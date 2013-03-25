@@ -9,7 +9,30 @@ Template.page_default_edit.events = {
     }
     e.preventDefault();
     Pages.update({_id: this._id}, {$set: page});
+    $.pnotify({
+      text: 'Your page changes were saved.',
+      type: 'success',
+      icon: false
+    });
+  },
+  'click #deletePage': function () {
+    $('#deletePageModal').modal('show');
     return false;
+  },
+  'click .delete-page': function () {
+    var page = Pages.findOne({slug: Session.get('page_slug')});
+    var title = page.title;
+    $('#deletePageModal').modal('hide');
+
+    Router.setPage(Pages.findOne().slug);
+
+    Pages.remove(page._id);
+
+    $.pnotify({
+      text: '"' + title + '" was successfully deleted.',
+      type: 'success',
+      icon: false
+    });
   }
 };
 
