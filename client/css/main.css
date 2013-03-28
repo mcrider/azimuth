@@ -18,6 +18,17 @@ footer {
   margin-right: 15px;
 }
 
+.pageEdit textarea {
+  width: 550px;
+}
+
+.editBlock {
+  margin-right: 8px;
+  height: 125px;
+  width: 110px;
+  border: 2px solid black;
+}
+
 /*************************************************
               Bootstrap Overrides
 ************************************************/

@@ -5,6 +5,7 @@
  */
 
 Pages = new Meteor.Collection("pages");
+Blocks = new Meteor.Collection("blocks");
 
 // ID of currently selected page
 Session.set('page_slug', null);

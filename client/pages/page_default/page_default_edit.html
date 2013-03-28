@@ -1,5 +1,5 @@
 <template name="page_default_edit">
-  <div class="container">
+  <div class="container pageEdit">
     <div class="row">
       <div class="span10">
         {{#with page}}
@@ -17,6 +17,27 @@
                 <label class="control-label" for="contents">Contents</label>
                 <div class="controls">
                   <textarea id="contents" rows="5" placeholder="Contents">{{{contents}}}</textarea>
+                </div>
+              </div>
+              <div class="control-group">
+                <label class="control-label" for="blockZoneOne">
+                <div class="controls">
+                  <button class="addBlock btn">Add Block</button>
+                  <ul class="inline blockZone">
+                    {{! iterate over page block elements; display different things depending on what type we have }}
+                    {{#each blocks}}
+                      {{! This logic should be better; Why are there no elseifs in handlebars?!\ }}
+                      {{#if id}}
+                        <li class="inline editBlock idBlock"><p>By Id</p></li>
+                      {{/if}}
+                      {{#if type}}
+                        <li class="inline editBlock typeBlock">By Type</li>
+                      {{/if}}
+                      {{#if tag}}
+                        <li class="inline editBlock tagBlock">By tag</li>
+                      {{/if}}
+                    {{/each}}
+                  </ul>
                 </div>
               </div>
               {{! End page-specific fields }}

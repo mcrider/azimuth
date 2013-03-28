@@ -1,8 +1,9 @@
-<template name="page_default">
+<template name="blog_post">
   <div class="container">
     <div class="row">
       <div class="span10">
-        {{#with page}}
+        <h3>This is a blog post</h3>
+        {{#with block}}
           <h1>{{title}}</h1>
           <p>{{{contents}}}</p>
         {{/with}}

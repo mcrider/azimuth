@@ -1,0 +1,23 @@
+<template name="page_default">
+  <div class="container">
+    <div class="row">
+      <div class="span10">
+        {{#with page}}
+          <h1>{{title}}</h1>
+          <p>{{{contents}}}</p>
+          <div id="blocks">
+          {{#each blocks}}
+<div id='foobar'></div>
+            {{! This logic should be better; Why are there no elseifs in handlebars?!\ }}
+            <hr />
+            {{#if id}}
+              {{{renderBlocksForDisplay id}}}
+
+            {{/if}}
+
+          {{/each}}
+        {{/with}}
+      </div>
+    </div>
+  </div>
+</template>
