@@ -54,7 +54,7 @@
                         {{! This logic should be better; Why are there no elseifs in handlebars?!\ }}
                         {{#if id}}
                           <li data-type="id" data-id="{{id}}" class="well editBlock idBlock">
-                            <p>By Id</p>
+                            <p>{{label}}</p>
                             <div class="ops">
                               <i class="icon-edit"></i>
                               <i class="icon-trash"></i>
@@ -67,6 +67,8 @@
                         {{#if tag}}
                           <li class="inline editBlock tagBlock">By tag</li>
                         {{/if}}
+                      {{else}}
+                        <p class="noBlocks">This block zone currently contains no blocks.  Add one from the menu above!</p>
                       {{/each}}
                     </ul>
                   </div>

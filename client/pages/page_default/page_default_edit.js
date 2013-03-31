@@ -45,14 +45,15 @@ Template.page_default_edit.events = {
   },
   'click .save-block': function () {
     $('#blockModal').modal('hide');
-
+debugger;
     // Create the block
-    var title = $('#blockEdit #title').val();
-    var contents = $('#blockEdit #contents').val();
+    var title = $('#blockModal #title').val();
+    var contents = $('#blockModal #contents').val();
     var block_id = Blocks.insert({
       title: title,
       contents: contents,
-      template: "block_default"
+      created: Date.now(),
+      template: "blog_post" // FIXME: Get this from a dropdown in the modal (and custom data)
     });
 
     // Attach the block to the page
@@ -60,7 +61,7 @@ Template.page_default_edit.events = {
     // TODO: Deny if user isn't  > author
     var page = Pages.findOne({slug: page_slug});
     if (page) {
-      Pages.update({_id: page._id}, {$addToSet: {blocks: {id: block_id}}});
+      Pages.update({_id: page._id}, {$addToSet: {blocks: {id: block_id, label: 'Blog Post'}}});
     }
 
     return true;

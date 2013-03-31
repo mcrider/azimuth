@@ -1,6 +1,6 @@
 // Helpers (additional public functions) for Handlebars templates
 
-Handlebars.registerHelper('renderBlocksForDisplay',function(id, options) {
+Handlebars.registerHelper('renderBlockForDisplay', function(id) {
   block = Blocks.findOne({ _id: id });
   if (!block) return 'Sorry, we couldn\'t find the requested block';
   Session.set('curent_block', id);
@@ -10,3 +10,4 @@ Handlebars.registerHelper('renderBlocksForDisplay',function(id, options) {
 
   return fragment;
 });
+
