@@ -20,7 +20,7 @@ Template.page_default_edit.events = {
     return false;
   },
   'click .delete-page': function () {
-    var page = Pages.findOne({slug: Session.get('page_slug')});
+    var page = utils.getCurrentPage();
     var title = page.title;
     $('#deletePageModal').modal('hide');
 
@@ -71,8 +71,5 @@ debugger;
 
 /// FIXME:  MAKE THIS A HANDLEBARS HELPER
 Template.page_default_edit.page = function () {
-  var page_slug = Session.get('page_slug');
-  if (!page_slug)
-    return {title: 'Sorry, we couldn\'t find the requested page'};
-  return Pages.findOne({slug: page_slug});
+  return utils.getCurrentPage();
 };
