@@ -2,6 +2,7 @@
 
 Azimuth is a simple, elegant, and fast CMS built using meteor.js.
 
+***Note: Azimuth is currently in early alpha; I'm still working out code design and many features are not yet implemented.***
 
 ## Prerequisites
 
