@@ -3,17 +3,25 @@
     <div class="row">
       <div class="span10">
         {{#with block}}
-          <form class="form-horizontal" id="pageEditForm">
+          <form class="form-horizontal" id="blockEditForm">
+            <div class="control-group">
+              <label class="control-label" for="template">Block Type</label>
+              <div class="controls">
+                <select name="template" id="template" value="{{template}}">
+                  <option value="blog_post">Blog Post</option>
+                </select>
+              </div>
+            </div>
             <div class="control-group">
               <label class="control-label" for="title">Title</label>
               <div class="controls">
-                <input type="text" id="title" value="{{title}}" placeholder="Title">
+                <input type="text" name="title" id="title" value="{{title}}" placeholder="Title">
               </div>
             </div>
             <div class="control-group">
               <label class="control-label" for="contents">Contents</label>
               <div class="controls">
-                <textarea id="contents" rows="5" placeholder="Contents">{{{contents}}}</textarea>
+                <textarea id="contents" name="contents" rows="5" placeholder="Contents">{{{contents}}}</textarea>
               </div>
             </div>
           </form>

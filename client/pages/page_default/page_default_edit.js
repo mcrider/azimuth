@@ -3,12 +3,9 @@
 
 Template.page_default_edit.events = {
   'submit #pageEditForm': function (e) {
-    page = {};
-    for (var attrname in this) {
-      if(attrname != '_id') page[attrname] = $('#'+attrname).val();
-    }
+    var pageData = utils.getFormValues("#pageEditForm");
     e.preventDefault();
-    Pages.update({_id: this._id}, {$set: page});
+    Pages.update({_id: this._id}, {$set: pageData});
     $.pnotify({
       text: 'Your page changes were saved.',
       type: 'success',
@@ -44,25 +41,20 @@ Template.page_default_edit.events = {
     return false;
   },
   'click .save-block': function () {
-    $('#blockModal').modal('hide');
-debugger;
     // Create the block
-    var title = $('#blockModal #title').val();
-    var contents = $('#blockModal #contents').val();
-    var block_id = Blocks.insert({
-      title: title,
-      contents: contents,
-      created: Date.now(),
-      template: "blog_post" // FIXME: Get this from a dropdown in the modal (and custom data)
-    });
+    var blockData = utils.getFormValues("#blockEditForm");
+    blockData.created = Date.now();
 
+    var block_id = Blocks.insert(blockData);
+
+    var label = Template[blockData.template].label || 'Single Block';
     // Attach the block to the page
-    var page_slug = Session.get("page_slug");
-    // TODO: Deny if user isn't  > author
-    var page = Pages.findOne({slug: page_slug});
-    if (page) {
-      Pages.update({_id: page._id}, {$addToSet: {blocks: {id: block_id, label: 'Blog Post'}}});
+    // FIXME: Deny if user isn't  > author
+    var page = utils.getCurrentPage();
+    if (!page.notFound) {
+      Pages.update({_id: page._id}, {$addToSet: {blocks: {id: block_id, label: label}}});
     }
+    $('#blockModal').modal('hide');
 
     return true;
   }
