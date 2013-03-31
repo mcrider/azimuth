@@ -20,37 +20,70 @@
                 </div>
               </div>
               <div class="control-group">
-                <label class="control-label" for="blockZoneOne">
+                <label class="control-label" for="blockZoneOne">Block Zone 1</label>
                 <div class="controls">
-                  <button class="addBlock btn">Add Block</button>
-                  <ul class="inline blockZone">
-                    {{! iterate over page block elements; display different things depending on what type we have }}
-                    {{#each blocks}}
-                      {{! This logic should be better; Why are there no elseifs in handlebars?!\ }}
-                      {{#if id}}
-                        <li class="inline editBlock idBlock"><p>By Id</p></li>
-                      {{/if}}
-                      {{#if type}}
-                        <li class="inline editBlock typeBlock">By Type</li>
-                      {{/if}}
-                      {{#if tag}}
-                        <li class="inline editBlock tagBlock">By tag</li>
-                      {{/if}}
-                    {{/each}}
-                  </ul>
+                  <div class="blockZoneContainer well">
+                    <div class="navbar">
+                      <div class="navbar-inner">
+                        <ul class="nav">
+                          <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Add Block<b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                              <li class="newBlock"><a href="#">New Block&hellip;</a></li>
+                              <li class="newBlock"><a href="#">Existing Block&hellip;</a></li>
+                              <li class="newBlock"><a href="#">By Tag&hellip;</a></li>
+                              <li class="newBlock"><a href="#">By Type&hellip;</a></li>
+                            </ul>
+                          </li>
+                          <li class="divider-vertical"></li>
+                          <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sort Blocks<b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                              <li class="newBlock"><a href="#">By Title <i class="icon-angle-up"></i></a></li>
+                              <li class="newBlock"><a href="#">By Title <i class="icon-angle-down"></i></a></li>
+                              <li class="newBlock"><a href="#">By Date Created <i class="icon-angle-up"></i></a></li>
+                              <li class="newBlock"><a href="#">By Date Created <i class="icon-angle-down"></i></a></li>
+                            </ul>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+                    <ul class="blockZone clearfix">
+                      {{! iterate over page block elements; display different things depending on what type we have }}
+                      {{#each blocks}}
+                        {{! This logic should be better; Why are there no elseifs in handlebars?!\ }}
+                        {{#if id}}
+                          <li data-type="id" data-id="{{id}}" class="well editBlock idBlock">
+                            <p>By Id</p>
+                            <div class="ops">
+                              <i class="icon-edit"></i>
+                              <i class="icon-trash"></i>
+                            </div>
+                          </li>
+                        {{/if}}
+                        {{#if type}}
+                          <li class="inline editBlock typeBlock">By Type</li>
+                        {{/if}}
+                        {{#if tag}}
+                          <li class="inline editBlock tagBlock">By tag</li>
+                        {{/if}}
+                      {{/each}}
+                    </ul>
+                  </div>
                 </div>
               </div>
               {{! End page-specific fields }}
 
-              <div class="control-group">
+              <!-- <div class="control-group">
                 <label class="control-label" for="parent">Parent</label>
                 <div class="controls">
                   <select id="parent">
                     <option val="0">None</option>
                   </select>
                 </div>
-              </div>
+              </div> -->
               <div class="control-group">
+                <label class="control-label" for="contents">Page Settings</label>
                 <div class="controls">
                   <label class="checkbox">
                     <input id="showInHeader" type="checkbox"> Show In Header
@@ -85,4 +118,18 @@
       <a href="#" class="btn btn-danger delete-page">Confirm Delete</a>
     </div>
   </div>
+  <div class="modal hide" id="blockModal">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal">×</button>
+      <h3>Add Block</h3>
+    </div>
+    <div class="modal-body">
+      <!-- Block edit form goes here -->
+    </div>
+    <div class="modal-footer">
+      <a href="#" class="btn" data-dismiss="modal">Cancel</a>
+      <a href="#" class="btn btn-danger save-block">Save Block</a>
+    </div>
+  </div>
 </template>
+

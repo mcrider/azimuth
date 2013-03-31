@@ -33,9 +33,42 @@ Template.page_default_edit.events = {
       type: 'success',
       icon: false
     });
+  },
+  'click .newBlock': function () {
+    var fragment = Meteor.render(function () {
+      // template = page.template ? page.template : 'page_default';
+      return Template[ "blog_post_edit" ](); // this calls the template and returns the HTML.
+    });
+    $('#blockModal .modal-body').html(fragment);
+    $('#blockModal').modal('show');
+    return false;
+  },
+  'click .save-block': function () {
+    $('#blockModal').modal('hide');
+
+    // Create the block
+    var title = $('#blockEdit #title').val();
+    var contents = $('#blockEdit #contents').val();
+    var block_id = Blocks.insert({
+      title: title,
+      contents: contents,
+      template: "block_default"
+    });
+
+    // Attach the block to the page
+    var page_slug = Session.get("page_slug");
+    // TODO: Deny if user isn't  > author
+    var page = Pages.findOne({slug: page_slug});
+    if (page) {
+      Pages.update({_id: page._id}, {$addToSet: {blocks: {id: block_id}}});
+    }
+
+    return true;
   }
 };
 
+
+/// FIXME:  MAKE THIS A HANDLEBARS HELPER
 Template.page_default_edit.page = function () {
   var page_slug = Session.get('page_slug');
   if (!page_slug)

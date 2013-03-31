@@ -35,7 +35,7 @@ var PageRouter = Backbone.Router.extend({
       return Template[ template + "_edit" ](); // this calls the template and returns the HTML.
     });
 
-    $("#page").html( fragment );
+    $("#page").html(fragment);
     return page;
   },
 
