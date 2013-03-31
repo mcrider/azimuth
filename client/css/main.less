@@ -22,12 +22,42 @@ footer {
   width: 550px;
 }
 
-.editBlock {
-  margin-right: 8px;
-  height: 125px;
-  width: 110px;
-  border: 2px solid black;
+.blockZoneContainer {
+  padding: 0;
+
+  .blockZone {
+    list-style: none;
+    margin-left: 0;
+  }
+
+  .editBlock {
+    float: left;
+    padding: 0;
+    font-size: .9em;
+    margin-right: 11px;
+    width: 110px;
+
+    &:first-child {
+      margin-left: 20px;
+    }
+
+    p {
+      margin-bottom: 0;
+      text-align: left;
+      padding: 5px;
+      height: 56px;
+    }
+
+    .ops {
+      padding-top: 4px;
+      height: 24px;
+      text-align: center;
+      background: #E7E7E7;
+    }
+  }
 }
+
+
 
 /*************************************************
               Bootstrap Overrides
