@@ -7,14 +7,10 @@
           <p>{{{contents}}}</p>
           <div id="blocks">
           {{#each blocks}}
-
-            {{! This logic should be better; Why are there no elseifs in handlebars?!\ }}
             <hr />
             {{#if id}}
               {{{renderBlockForDisplay id}}}
-
             {{/if}}
-
           {{/each}}
         {{/with}}
       </div>

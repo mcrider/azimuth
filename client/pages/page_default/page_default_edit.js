@@ -3,6 +3,7 @@
 
 Template.page_default_edit.events = {
   'submit #pageEditForm': function (e) {
+    debugger;
     var pageData = utils.getFormValues("#pageEditForm");
     e.preventDefault();
     Pages.update({_id: this._id}, {$set: pageData});
@@ -55,6 +56,12 @@ Template.page_default_edit.events = {
       Pages.update({_id: page._id}, {$addToSet: {blocks: {id: block_id, label: label}}});
     }
     $('#blockModal').modal('hide');
+
+    $.pnotify({
+      text: label + ' added to page.',
+      type: 'success',
+      icon: false
+    });
 
     return true;
   }

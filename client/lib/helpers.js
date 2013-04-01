@@ -11,3 +11,12 @@ Handlebars.registerHelper('renderBlockForDisplay', function(id) {
   return fragment;
 });
 
+Handlebars.registerHelper("formHelper", function (options) {
+  // FIXME: Return error if type not valid template
+  return new Handlebars.SafeString(Template[options.hash.type](options.hash));
+});
+
+Handlebars.registerHelper("blockZoneEditor", function (options) {
+  // FIXME: Return error if type not valid template
+  return new Handlebars.SafeString(Template['block_zone_editor'](options.hash));
+});
