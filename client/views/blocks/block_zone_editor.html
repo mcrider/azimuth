@@ -34,7 +34,10 @@
             {{! This logic should be better; Why are there no elseifs in handlebars?!\ }}
             {{#if id}}
               <li data-type="id" data-id="{{id}}" class="well editBlock idBlock">
-                <p>{{label}}</p>
+                <p>
+                  <span class="blockLabel">{{label}}</span>
+                  <span class="dateTime">{{added}}</span>
+                </p>
                 <div class="ops">
                   <i class="icon-edit"></i>
                   <i class="icon-trash"></i>

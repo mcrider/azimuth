@@ -3,7 +3,6 @@
 
 Template.page_default_edit.events = {
   'submit #pageEditForm': function (e) {
-    debugger;
     var pageData = utils.getFormValues("#pageEditForm");
     e.preventDefault();
     Pages.update({_id: this._id}, {$set: pageData});
@@ -53,7 +52,7 @@ Template.page_default_edit.events = {
     // FIXME: Deny if user isn't  > author
     var page = utils.getCurrentPage();
     if (!page.notFound) {
-      Pages.update({_id: page._id}, {$addToSet: {blocks: {id: block_id, label: label}}});
+      Pages.update({_id: page._id}, {$addToSet: {blocks: {id: block_id, label: label, added: Date.now()}}});
     }
     $('#blockModal').modal('hide');
 
