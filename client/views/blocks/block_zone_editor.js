@@ -4,9 +4,13 @@ Template.block_zone_editor.added = function() {
 };
 
 Template.block_zone_editor.events = {
-  'click .deleteBlockButton': function() {
+  'click .delete-block-button': function() {
+    $('#delete-block-modal').modal('show');
+    return false;
+  },
+  'click .delete-block-confirm': function() {
+    $('#delete-block-modal').modal('hide');
     page = utils.getCurrentPage();
-    // 'this' is the pageBlock, delete from current page
     Pages.update({ _id : page._id }, {$pull : {  "blocks" : { id: this.id }}});
     return false;
   },
