@@ -2,7 +2,7 @@
   <div class="control-group">
     <label class="control-label" for="blockZoneOne">Body Blocks</label>
     <div class="controls">
-      <div class="blockZoneContainer well">
+      <div class="block-zone-container well">
         <div class="navbar">
           <div class="navbar-inner">
             <ul class="nav">
@@ -28,36 +28,36 @@
             </ul>
           </div>
         </div>
-        <ul class="blockZone clearfix">
+        <ul class="block-zone clearfix">
           {{! iterate over page block elements; display different things depending on what type we have }}
           {{#each blocks}}
             {{! This logic should be better; Why are there no elseifs in handlebars?!\ }}
             {{#if id}}
-              <li data-type="id" data-id="{{id}}" class="well editBlock idBlock">
+              <li data-type="id" data-id="{{id}}" class="well edit-block idBlock">
                 <p>
                   <span class="blockLabel">{{label}}</span>
                   <span class="dateTime">{{added}}</span>
                 </p>
                 <div class="ops">
-                  <a href="#" class="editBlockButton"><i class="icon-edit"></i></a>
+                  <a href="#" class="edit-block-button"><i class="icon-edit"></i></a>
                   <a href="#" class="delete-block-button"><i class="icon-trash"></i></a>
                 </div>
               </li>
             {{/if}}
             {{#if type}}
-              <li class="inline editBlock typeBlock">By Type</li>
+              <li class="inline edit-block typeBlock">By Type</li>
             {{/if}}
             {{#if tag}}
-              <li class="inline editBlock tagBlock">By tag</li>
+              <li class="inline edit-block tagBlock">By tag</li>
             {{/if}}
           {{else}}
-            <p class="noBlocks">This block zone currently contains no blocks.  Add one from the menu above!</p>
+            <p class="no-blocks">This block zone currently contains no blocks.  Add one from the menu above!</p>
           {{/each}}
         </ul>
       </div>
     </div>
   </div>
-  <div class="modal hide" id="delete-block-modal">
+  <div class="modal hide" id="deleteBlockModal">
     <div class="modal-header">
       <button type="button" class="close" data-dismiss="modal">×</button>
       <h3>Delete Block</h3>
@@ -68,6 +68,19 @@
     <div class="modal-footer">
       <a href="#" class="btn" data-dismiss="modal">Cancel</a>
       <a href="#" class="btn btn-danger delete-block-confirm">Confirm Delete</a>
+    </div>
+  </div>
+  <div class="modal hide" id="editBlockModal">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal">×</button>
+      <h3>Add Block</h3>
+    </div>
+    <div class="modal-body">
+      <!-- Block edit form goes here -->
+    </div>
+    <div class="modal-footer">
+      <a href="#" class="btn" data-dismiss="modal">Cancel</a>
+      <a href="#" class="btn btn-danger edit-block-confirm">Save Block</a>
     </div>
   </div>
 </template>
