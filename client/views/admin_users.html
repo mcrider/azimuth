@@ -1,0 +1,44 @@
+<template name="admin_users">
+  <div class="btn-toolbar">
+    <button class="btn btn-primary">New User</button>
+  </div>
+  <div class="well">
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Username</th>
+          <th>Email</th>
+          <th style="width: 36px;"></th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each users}}
+          <tr>
+            <td>{{profile.name}}</td>
+            <td>{{username}}</td>
+            <td>{{emails.address}}</td>
+            <td>
+                <a href="user.html"><i class="icon-pencil"></i></a>
+                <a href="#myModal" role="button" data-toggle="modal"><i class="icon-remove"></i></a>
+            </td>
+          </tr>
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+
+  <div class="modal small hide fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+          <h3 id="myModalLabel">Delete Confirmation</h3>
+      </div>
+      <div class="modal-body">
+          <p class="error-text">Are you sure you want to delete the user?</p>
+      </div>
+      <div class="modal-footer">
+          <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
+          <button class="btn btn-danger" data-dismiss="modal">Delete</button>
+      </div>
+  </div>
+</template>

@@ -9,19 +9,30 @@ var PageRouter = Backbone.Router.extend({
   routes: {
     ":page_slug": "showPage",
     ":page_slug/edit": "editPage",
-    "/settings": "settingsPage"
+    "/settings": "settingsPage",
+    "/users": "adminUsers"
   },
 
   showPage: function (page_slug) {
-    Session.set("page_slug", page_slug);
-    var page = Pages.find({slug: page_slug});
-    if (!page) return {title: 'Sorry, we couldn\'t find the requested page'};
+    // FIXME: Backbone router won't let me go to 'special' pages; Fix or better yet use a simpler router (so we don't need all of backbone)
+    switch(page_slug) {
+      case 'users':
+        this.adminUsers();
+        break;
+      case 'settings':
+        this.settingsPage();
+        break;
+      default:
+        Session.set("page_slug", page_slug);
+        var page = Pages.find({slug: page_slug});
+        if (!page) return {title: 'Sorry, we couldn\'t find the requested page'};
 
-    var fragment = Meteor.render(function () {
-      return Template[ 'page_default' ](); // this calls the template and returns the HTML.
-    });
-    $("#page").html( fragment );
-    return page;
+        var fragment = Meteor.render(function () {
+          return Template[ 'page_default' ](); // this calls the template and returns the HTML.
+        });
+        $("#page").html( fragment );
+        return page;
+    }
   },
 
   editPage: function (page_slug) {
