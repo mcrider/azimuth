@@ -25,5 +25,10 @@ utils = {
     var sec = a.getSeconds();
     var time = date+'/'+month+'/'+year.toString().slice(2)+' @ '+hour+':'+min+':'+sec ;
     return time;
+  },
+  loadTemplate: function(template) {
+    return Meteor.render(function () {
+      return Template[ template ](); // this calls the template and returns the HTML.
+    });
   }
 };

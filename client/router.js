@@ -44,7 +44,13 @@ var PageRouter = Backbone.Router.extend({
   },
 
   settingsPage: function() {
-    // Inject settings page into body
+    $("#page").html( utils.loadTemplate('site_settings') );
+    return page;
+  },
+
+  adminUsers: function() {
+    $("#page").html( utils.loadTemplate('admin_users') );
+    return page;
   }
 });
 
