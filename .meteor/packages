@@ -11,8 +11,8 @@ underscore
 jquery
 autopublish
 underscore-string
-accounts-ui-unstyled
 bootstrap
 font-awesome
 pnotify
 less
+accounts-ui-bootstrap-dropdown

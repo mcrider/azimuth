@@ -6,6 +6,7 @@
   "packages": {
     "underscore-string": {},
     "font-awesome": {},
-    "pnotify": {}
+    "pnotify": {},
+    "accounts-ui-bootstrap-dropdown": {}
   }
 }

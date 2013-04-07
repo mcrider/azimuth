@@ -2,13 +2,14 @@
   "meteor": {
     "git": "https://github.com/meteor/meteor.git",
     "branch": "master",
-    "commit": "f07715dc70de16a7aab84e56ab0c6cbd9c1f9dc6"
+    "commit": "cab491f3650fffc85661bca6b3cecf583410e05d"
   },
   "dependencies": {
     "basePackages": {
       "underscore-string": {},
       "font-awesome": {},
-      "pnotify": {}
+      "pnotify": {},
+      "accounts-ui-bootstrap-dropdown": {}
     },
     "packages": {
       "underscore-string": {
@@ -25,6 +26,11 @@
         "git": "https://github.com/kidovate/meteor-pnotify.git",
         "tag": "v0.1.0",
         "commit": "1799e7a19759f8f5e8f2debd240024ee36f42fbc"
+      },
+      "accounts-ui-bootstrap-dropdown": {
+        "git": "https://github.com/erobit/meteor-accounts-ui-bootstrap-dropdown.git",
+        "tag": "v0.1.0",
+        "commit": "e66558aaa4dc0d85c6ddb63bd2289b38c2b793f6"
       }
     }
   }
