@@ -8,6 +8,7 @@ Pages = new Meteor.Collection("pages");
 Blocks = new Meteor.Collection("blocks");
 User_list = new Meteor.Collection("user_list");
 
+
 // ID of currently selected page
 Session.set('page_slug', null);
 
@@ -21,3 +22,4 @@ Meteor.subscribe('pages', function () {
 
 Meteor.subscribe('blocks');
 Meteor.subscribe('user_list');
+Meteor.subscribe('roles');

@@ -92,5 +92,24 @@ Meteor.startup(function () {
     }
   });
 
+  Meteor.roles.allow({
+     insert: function (userId, doc) {
+      return true;
+      // the user must be logged in, and the document must be owned by the user
+
+      // FIXME: For this and all other methods, return true only if admin role
+      // return (userId && doc.owner === userId);
+      return userId;
+    },
+    update: function (userId, doc, fields, modifier) {
+      return true;
+      return userId;
+    },
+    remove: function (userId, doc) {
+      return true;
+      return userId;
+    }
+  });
+
 
 });

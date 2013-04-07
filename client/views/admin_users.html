@@ -18,9 +18,8 @@
             {{#each users}}
               <tr>
                 <td class="roles">
-                  {{#if isInRole 'admin'}} asdfasdf{{/if}}
                   <a href="#" class="admin" title="Admin"><i class="icon-key{{#if isInRole 'admin'}} enabled{{/if}}"></i></a>
-                  <a href="#" class="author" title="Author"><i class="icon-pencil{{#if isInRole 'author'}} enabled{{/if}}"></i></a>
+                  <a href="#" class="author" title="Author"><i class="icon-book{{#if isInRole 'author'}} enabled{{/if}}"></i></a>
                 </td>
                 <td>{{profile.name}}</td>
                 <td>{{emails.0.address}}</td>
