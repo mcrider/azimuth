@@ -9,10 +9,10 @@ accounts-password
 backbone
 underscore
 jquery
-autopublish
 underscore-string
 bootstrap
 font-awesome
 pnotify
 less
 accounts-ui-bootstrap-dropdown
+roles

@@ -1,31 +1,39 @@
 <template name="admin_users">
-  <div class="btn-toolbar">
-    <button class="btn btn-primary">New User</button>
-  </div>
-  <div class="well">
-    <table class="table">
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Username</th>
-          <th>Email</th>
-          <th style="width: 36px;"></th>
-        </tr>
-      </thead>
-      <tbody>
-        {{#each users}}
-          <tr>
-            <td>{{profile.name}}</td>
-            <td>{{username}}</td>
-            <td>{{emails.address}}</td>
-            <td>
-                <a href="user.html"><i class="icon-pencil"></i></a>
-                <a href="#myModal" role="button" data-toggle="modal"><i class="icon-remove"></i></a>
-            </td>
-          </tr>
-        {{/each}}
-      </tbody>
-    </table>
+  <div class="container user-list">
+    <div class="row">
+      <div class="btn-toolbar">
+        <button class="btn btn-primary">New User</button>
+      </div>
+      <div class="well">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>Roles</th>
+              <th>Name</th>
+              <th>Email</th>
+              <th style="width: 36px;"></th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each users}}
+              <tr>
+                <td class="roles">
+                  {{#if isInRole 'admin'}} asdfasdf{{/if}}
+                  <a href="#" class="admin" title="Admin"><i class="icon-key{{#if isInRole 'admin'}} enabled{{/if}}"></i></a>
+                  <a href="#" class="author" title="Author"><i class="icon-pencil{{#if isInRole 'author'}} enabled{{/if}}"></i></a>
+                </td>
+                <td>{{profile.name}}</td>
+                <td>{{emails.0.address}}</td>
+                <td>
+                    <a href="user.html"><i class="icon-pencil"></i></a>
+                    <a href="#myModal" role="button" data-toggle="modal"><i class="icon-remove"></i></a>
+                </td>
+              </tr>
+            {{/each}}
+          </tbody>
+        </table>
+      </div>
+    </div>
   </div>
 
   <div class="modal small hide fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

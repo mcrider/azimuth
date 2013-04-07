@@ -7,6 +7,7 @@
     "underscore-string": {},
     "font-awesome": {},
     "pnotify": {},
-    "accounts-ui-bootstrap-dropdown": {}
+    "accounts-ui-bootstrap-dropdown": {},
+    "roles": {}
   }
 }

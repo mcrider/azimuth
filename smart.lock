@@ -9,7 +9,8 @@
       "underscore-string": {},
       "font-awesome": {},
       "pnotify": {},
-      "accounts-ui-bootstrap-dropdown": {}
+      "accounts-ui-bootstrap-dropdown": {},
+      "roles": {}
     },
     "packages": {
       "underscore-string": {
@@ -31,6 +32,11 @@
         "git": "https://github.com/erobit/meteor-accounts-ui-bootstrap-dropdown.git",
         "tag": "v0.1.0",
         "commit": "e66558aaa4dc0d85c6ddb63bd2289b38c2b793f6"
+      },
+      "roles": {
+        "git": "https://github.com/alanning/meteor-roles.git",
+        "tag": "v1.0.4",
+        "commit": "22deeecc57d68fc8c0a3342a6dfebc93d1548f39"
       }
     }
   }

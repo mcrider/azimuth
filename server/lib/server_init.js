@@ -72,25 +72,25 @@ Meteor.startup(function () {
     }
   });
 
-  if (Blocks.find().count() === 0) {
-    var blockData = [{
-        title: "Home",
-        contents: "<p>Blog post one</p>",
-        template: "blog_post"
-      },
-      {
-        title: "Home",
-        contents: "<p>Blog post dos</p>",
-        template: "blog_post"
-      }
-    ];
 
-    for (var j = 0; j < blockData.length; j++) {
-      Blocks.insert({
-        title: blockData[j].title,
-        contents: blockData[j].contents,
-        template: blockData[j].template
-      });
+  Meteor.users.allow({
+     insert: function (userId, doc) {
+      return true;
+      // the user must be logged in, and the document must be owned by the user
+
+      // FIXME: For this and all other methods, return true only if admin role
+      // return (userId && doc.owner === userId);
+      return userId;
+    },
+    update: function (userId, doc, fields, modifier) {
+      return true;
+      return userId;
+    },
+    remove: function (userId, doc) {
+      return true;
+      return userId;
     }
-  }
+  });
+
+
 });
