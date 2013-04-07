@@ -9,20 +9,20 @@
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Add Block<b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                  <li class="newBlock"><a href="#">New Block&hellip;</a></li>
-                  <li class="existingBlock"><a href="#">Existing Block&hellip;</a></li>
-                  <li class="blockByTag"><a href="#">By Tag&hellip;</a></li>
-                  <li class="blockByType"><a href="#">By Type&hellip;</a></li>
+                  <li class="new-block"><a href="#">New Block&hellip;</a></li>
+                  <li class="existing-block"><a href="#">Existing Block&hellip;</a></li>
+                  <li class="block-by-tag"><a href="#">By Tag&hellip;</a></li>
+                  <li class="block-by-type"><a href="#">By Type&hellip;</a></li>
                 </ul>
               </li>
               <li class="divider-vertical"></li>
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sort Blocks<b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                  <li class="sortTitleUp"><a href="#">By Title <i class="icon-angle-up"></i></a></li>
-                  <li class="sortTItleDown"><a href="#">By Title <i class="icon-angle-down"></i></a></li>
-                  <li class="sortDateUp"><a href="#">By Date Created <i class="icon-angle-up"></i></a></li>
-                  <li class="sortDateDown"><a href="#">By Date Created <i class="icon-angle-down"></i></a></li>
+                  <li class="sort-title-up"><a href="#">By Title <i class="icon-angle-up"></i></a></li>
+                  <li class="sort-title-down"><a href="#">By Title <i class="icon-angle-down"></i></a></li>
+                  <li class="sort-date-up"><a href="#">By Date Created <i class="icon-angle-up"></i></a></li>
+                  <li class="sort-date-down"><a href="#">By Date Created <i class="icon-angle-down"></i></a></li>
                 </ul>
               </li>
             </ul>
@@ -35,8 +35,8 @@
             {{#if id}}
               <li data-type="id" data-id="{{id}}" class="well edit-block idBlock">
                 <p>
-                  <span class="blockLabel">{{label}}</span>
-                  <span class="dateTime">{{added}}</span>
+                  <span class="block-label">{{label}}</span>
+                  <span class="date-time">{{added}}</span>
                 </p>
                 <div class="ops">
                   <a href="#" class="edit-block-button"><i class="icon-edit"></i></a>
@@ -45,10 +45,10 @@
               </li>
             {{/if}}
             {{#if type}}
-              <li class="inline edit-block typeBlock">By Type</li>
+              <li class="inline edit-block type-block">By Type</li>
             {{/if}}
             {{#if tag}}
-              <li class="inline edit-block tagBlock">By tag</li>
+              <li class="inline edit-block tag-block">By tag</li>
             {{/if}}
           {{else}}
             <p class="no-blocks">This block zone currently contains no blocks.  Add one from the menu above!</p>
