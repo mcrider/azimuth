@@ -35,8 +35,8 @@
       },
       "roles": {
         "git": "https://github.com/alanning/meteor-roles.git",
-        "tag": "v1.0.4",
-        "commit": "22deeecc57d68fc8c0a3342a6dfebc93d1548f39"
+        "tag": "v1.0.5",
+        "commit": "a6e0ce33f8dc69a816165c458b138c2acb30ad0e"
       }
     }
   }
