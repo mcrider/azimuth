@@ -1,7 +1,7 @@
 <template name="header">
   <div class="navbar">
     <div class="navbar-inner">
-      <a class="brand" href="/">Logo</a>
+      <a class="brand" href="/">{{getSetting 'siteName'}}</a>
       <ul class="nav">
         {{#each pages}}
           <li>{{> nav_item}}</li>
@@ -32,7 +32,7 @@
 
 
       </ul>
-      {{ loginButtons }}
+      {{#ifSetting 'showLoginInHeader'}}{{ loginButtons }}{{/ifSetting}}
     </div>
   </div>
 

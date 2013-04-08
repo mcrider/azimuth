@@ -9,8 +9,13 @@ utils = {
   },
   getFormValues: function(selector) {
     var values = {};
+    
     $.each($(selector).serializeArray(), function(i, field) {
+    	if (field.value == "on") field.value = true;
         values[field.name] = field.value;
+    });
+    $.each($(selector).find(':checkbox:not(:checked)'), function(i, field) {
+    	values[field.name] = false;
     });
     return values;
   },

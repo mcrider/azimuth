@@ -1,3 +1,43 @@
 <template name="site_settings">
-  <h3>Site settings</h3>
+  <div class="container user-list">
+    <div class="row">
+      <div class="span10">
+        <h2>Site Settings</h2>
+        {{#with settings}}
+        <form class="form-horizontal" id="siteSettingsForm">
+          <div class="control-group">
+            <label class="control-label" for="title">Site Name</label>
+            <div class="controls">
+              <input type="text" id="siteName" name="siteName"  value="{{siteName}}" placeholder="Site Name">
+            </div>
+          </div>
+
+          <div class="control-group">
+            <label class="control-label" for="title">Site Logo URL</label>
+            <div class="controls">
+              <input type="text" id="logoUrl" name="logoUrl"  value="{{logoUrl}}" placeholder="Logo URL">
+            </div>
+          </div>
+
+          <div class="control-group">
+            <label class="control-label" for="contents">Header Settings</label>
+            <div class="controls">
+              <label class="checkbox">
+                <input id="showLoginInHeader" name="showLoginInHeader" {{#if showLoginInHeader}}checked="checked"{{/if}} type="checkbox" /> Show login menu in header
+              </label>
+              <label class="checkbox">
+                <input id="addNewPagesToHeader" name="addNewPagesToHeader" {{#if addNewPagesToHeader}}checked="checked"{{/if}} type="checkbox" /> Add new pages to header by default
+              </label>
+            </div>
+          </div>
+
+          <div class="control-group">
+            <div class="controls">
+              <input id="savePage" type="submit" class="btn" value="Save" />
+            </div>
+          </div>
+        </form>
+        {{/with}}
+    </div>
+  </div>
 </template>

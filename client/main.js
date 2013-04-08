@@ -7,6 +7,7 @@
 Pages = new Meteor.Collection("pages");
 Blocks = new Meteor.Collection("blocks");
 User_list = new Meteor.Collection("user_list");
+Settings = new Meteor.Collection("settings");
 
 
 // ID of currently selected page
@@ -23,3 +24,4 @@ Meteor.subscribe('pages', function () {
 Meteor.subscribe('blocks');
 Meteor.subscribe('user_list');
 Meteor.subscribe('roles');
+Meteor.subscribe('settings');
