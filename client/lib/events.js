@@ -48,7 +48,6 @@ events = {
 
     var label = Template[blockData.template].label || 'Single Block';
     // Attach the block to the page
-    // FIXME: Deny if user isn't  > author
     var page = utils.getCurrentPage();
     if (!page.notFound) {
       Pages.update({_id: page._id}, {$addToSet: {blocks: {id: block_id, label: label, added: Date.now()}}});

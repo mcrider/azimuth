@@ -2,9 +2,21 @@
 
 Meteor.startup(function () {
 
-
-  // TODO: If user count is 0, create admin user
-
+  // Helper functions for authorization
+  authorize = {
+    authorsAndAdmins: function() {
+      if (Meteor.user() && Roles.userIsInRole(Meteor.user(), ['author','admin'])) {
+        return true;
+      }
+      return false;
+    },
+    admins: function() {
+      if (Meteor.user() && Roles.userIsInRole(Meteor.user(), ['admin'])) {
+        return true;
+      }
+      return false;
+    }
+  }
 
   // Pages
   Pages = new Meteor.Collection("pages");
@@ -12,22 +24,9 @@ Meteor.startup(function () {
     return Pages.find();
   });
   Pages.allow({
-    insert: function (userId, doc) {
-      return true;
-      // the user must be logged in, and the document must be owned by the user
-
-      // FIXME: For this and all other methods, return true only if admin role
-      // return (userId && doc.owner === userId);
-      return userId;
-    },
-    update: function (userId, doc, fields, modifier) {
-      return true;
-      return userId;
-    },
-    remove: function (userId, doc) {
-      return true;
-      return userId;
-    }
+    insert: authorize.authorsAndAdmins,
+    update: authorize.authorsAndAdmins,
+    remove: authorize.authorsAndAdmins
   });
   if (Pages.find().count() === 0) {
     // Insert default data
@@ -51,71 +50,36 @@ Meteor.startup(function () {
   });
   Blocks = new Meteor.Collection("blocks");
   Blocks.allow({
-    insert: function (userId, doc) {
-      return true;
-      // the user must be logged in, and the document must be owned by the user
-
-      // FIXME: For this and all other methods, return true only if admin role
-      // return (userId && doc.owner === userId);
-      return userId;
-    },
-    update: function (userId, doc, fields, modifier) {
-      return true;
-      return userId;
-    },
-    remove: function (userId, doc) {
-      return true;
-      return userId;
-    }
+    insert: authorize.authorsAndAdmins,
+    update: authorize.authorsAndAdmins,
+    remove: authorize.authorsAndAdmins
   });
 
   // Users
   Meteor.publish('user_list', function () {
-    // FIXME: publish only if admin
-    return Meteor.users.find();
+    if (Roles.userIsInRole(Meteor.user(), ['admin'])) {
+      return Meteor.users.find();
+    } else {
+      // Not authorized
+      this.stop();
+      return;
+    }
   });
 
   Meteor.users.allow({
-     insert: function (userId, doc) {
-      return true;
-      // the user must be logged in, and the document must be owned by the user
-
-      // FIXME: For this and all other methods, return true only if admin role
-      // return (userId && doc.owner === userId);
-      return userId;
-    },
-    update: function (userId, doc, fields, modifier) {
-      return true;
-      return userId;
-    },
-    remove: function (userId, doc) {
-      return true;
-      return userId;
-    }
+    insert: authorize.admins,
+    update: authorize.admins,
+    remove: authorize.admins
   });
 
   // Roles
   Meteor.publish('roles', function () {
-    // FIXME: publish only if admin
     return Meteor.roles.find();
   });
   Meteor.roles.allow({
-     insert: function (userId, doc) {
-      return true;
-      // the user must be logged in, and the document must be owned by the user
-
-      // FIXME: For this and all other methods, return true only if admin role
-      // return (userId && doc.owner === userId);
-      return userId;
-    },
-    update: function (userId, doc, fields, modifier) {
-      return true;
-      return userId;
-    },
-    remove: function (userId, doc) {
-      return true;
-      return userId;
-    }
+    insert: authorize.admins,
+    update: authorize.admins,
+    remove: authorize.admins
   });
 
   // Site settings
@@ -124,22 +88,9 @@ Meteor.startup(function () {
     return Settings.find();
   });
   Settings.allow({
-    insert: function (userId, doc) {
-      return true;
-      // the user must be logged in, and the document must be owned by the user
-
-      // FIXME: For this and all other methods, return true only if admin role
-      // return (userId && doc.owner === userId);
-      return userId;
-    },
-    update: function (userId, doc, fields, modifier) {
-      return true;
-      return userId;
-    },
-    remove: function (userId, doc) {
-      return true;
-      return userId;
-    }
+    insert: authorize.admins,
+    update: authorize.admins,
+    remove: authorize.admins
   });
   if (Settings.find().count() === 0) {
     Settings.insert({

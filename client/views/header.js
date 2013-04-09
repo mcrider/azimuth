@@ -27,8 +27,11 @@ Template.header.events = {
 
     // Validate input
     if (raw_title == '' || raw_slug == '') {
-      // TODO display this purty-like
-      alert('Please enter values for all fields');
+      $.pnotify({
+        text: 'Please enter values for all fields.',
+        type: 'error',
+        icon: false
+      });
       return false;
     }
 

@@ -6,10 +6,18 @@
 
 Meteor.Router.add({
   "/settings": function() {
+    if (!Roles.userIsInRole(Meteor.user(), ['admin'])) {
+      throw new Meteor.Error(403, "Not authorized");
+      return false;
+    }
     $("#page").html( utils.loadTemplate('site_settings') );
     return page;
   },
   "/users": function() {
+    if (!Roles.userIsInRole(Meteor.user(), ['admin'])) {
+      throw new Meteor.Error(403, "Not authorized");
+      return false;
+    }
 		$("#page").html( utils.loadTemplate('admin_users') );
 		return page;
 	},
@@ -28,9 +36,14 @@ Meteor.Router.add({
     return page;
   },
   "*/edit": function (page_slug) {
+    if (!Roles.userIsInRole(Meteor.user(), ['author','admin'])) {
+      throw new Meteor.Error(403, "Not authorized");
+      return false;
+    }
+
     if (page_slug.charAt(0) == '/') page_slug = page_slug.substr(1);
     Session.set("page_slug", page_slug);
-    // TODO: Deny if user isn't  > author
+
     var page = Pages.findOne({slug: page_slug});
     if (!page) return {title: 'Sorry, we couldn\'t find the requested page'};
 
