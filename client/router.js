@@ -1,44 +1,37 @@
 /* router.js
  *
- * Uses Backbone's router functionality to route URLs to the correct page.
+ * Uses Meteor-router to route URLs to the correct page.
  *
  */
 
-var PageRouter = Backbone.Router.extend({
-
-  routes: {
-    ":page_slug": "showPage",
-    ":page_slug/edit": "editPage",
-    "/settings": "settingsPage",
-    "/users": "adminUsers"
+Meteor.Router.add({
+  "/settings": function() {
+    $("#page").html( utils.loadTemplate('site_settings') );
+    return page;
   },
+  "/users": function() {
+		$("#page").html( utils.loadTemplate('admin_users') );
+		return page;
+	},
+  "/": function() {
+    debugger;
+    var page = Pages.findOne();
+    if (!page) return {title: 'Sorry, this site has no pages!'};
+    Session.set("page_slug", page.slug);
 
-  showPage: function (page_slug) {
-    // FIXME: Backbone router won't let me go to 'special' pages; Fix or better yet use a simpler router (so we don't need all of backbone)
-    switch(page_slug) {
-      case 'users':
-        this.adminUsers();
-        break;
-      case 'settings':
-        this.settingsPage();
-        break;
-      default:
-        Session.set("page_slug", page_slug);
-        var page = Pages.find({slug: page_slug});
-        if (!page) return {title: 'Sorry, we couldn\'t find the requested page'};
+    var fragment = Meteor.render(function () {
+      template = page.template ? page.template : 'page_default';
+      return Template[ template ](); // this calls the template and returns the HTML.
+    });
 
-        var fragment = Meteor.render(function () {
-          return Template[ 'page_default' ](); // this calls the template and returns the HTML.
-        });
-        $("#page").html( fragment );
-        return page;
-    }
+    $("#page").html(fragment);
+    return page;
   },
-
-  editPage: function (page_slug) {
+  "*/edit": function (page_slug) {
+    if (page_slug.charAt(0) == '/') page_slug = page_slug.substr(1);
     Session.set("page_slug", page_slug);
     // TODO: Deny if user isn't  > author
-    var page = Pages.find({slug: page_slug});
+    var page = Pages.findOne({slug: page_slug});
     if (!page) return {title: 'Sorry, we couldn\'t find the requested page'};
 
     var fragment = Meteor.render(function () {
@@ -49,24 +42,21 @@ var PageRouter = Backbone.Router.extend({
     $("#page").html(fragment);
     return page;
   },
+  "*": function (page_slug) {
+    if (page_slug.charAt(0) == '/') page_slug = page_slug.substr(1);
+    Session.set("page_slug", page_slug);
+    var page = Pages.findOne({slug: page_slug});
+    if (!page) return {title: 'Sorry, we couldn\'t find the requested page'};
 
-  setPage: function (page_slug) {
-    this.navigate(page_slug, true);
-  },
-
-  settingsPage: function() {
-    $("#page").html( utils.loadTemplate('site_settings') );
-    return page;
-  },
-
-  adminUsers: function() {
-    $("#page").html( utils.loadTemplate('admin_users') );
+    var fragment = Meteor.render(function () {
+      template = page.template ? page.template : 'page_default';
+      return Template[ template ](); // this calls the template and returns the HTML.
+    });
+    $("#page").html( fragment );
     return page;
   }
 });
 
-Router = new PageRouter();
-
-Meteor.startup(function () {
-  Backbone.history.start({pushState: true});
-});
+/*  setPage: function (page_slug) {
+    this.navigate(page_slug, true);
+  }*/

@@ -19,11 +19,6 @@ Template.header.events = {
   'click #newPage': function () {
     $('#addNewPageModal').modal('show');
   },
-  'click .logout' : function() {
-    Meteor.logout();
-    Router.navigate('');
-    return false;
-  },
   'click .submit-new-page': function () {
     var raw_title = $('.page-title-textfield').val();
     var raw_slug = $('.page-slug-textfield').val();
@@ -44,7 +39,7 @@ Template.header.events = {
       template: "page_default"
     });
 
-    Router.navigate(raw_slug + '/edit', {trigger: true});
+    Meteor.Router.to('/' + raw_slug + '/edit', {trigger: true});
   },
   'keyup .page-title-textfield': function () {
     var raw_title = $('.page-title-textfield').val();

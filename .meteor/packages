@@ -10,9 +10,9 @@ backbone
 underscore
 jquery
 underscore-string
-bootstrap
 font-awesome
 pnotify
 less
 accounts-ui-bootstrap-dropdown
 roles
+router

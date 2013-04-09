@@ -8,6 +8,7 @@
     "font-awesome": {},
     "pnotify": {},
     "accounts-ui-bootstrap-dropdown": {},
-    "roles": {}
+    "roles": {},
+    "router": {}
   }
 }

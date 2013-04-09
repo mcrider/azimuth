@@ -20,7 +20,7 @@ events = {
     var title = page.title;
     $('#deletePageModal').modal('hide');
 
-    Router.setPage(Pages.findOne().slug);
+	Meteor.Router.to('/');
 
     Pages.remove(page._id);
 
