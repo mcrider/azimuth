@@ -1,0 +1,26 @@
+<template name="sidebar_right">
+  <div class="container">
+    <div class="row">
+      <div class="span10">
+      <h3>Add a rightsidebar</h3>
+        {{#with page}}
+          <h1>{{title}}</h1>
+          <p>{{{contents}}}</p>
+          <div id="blocks">
+          {{#each blocks.body}}
+            <hr />
+            {{#if id}}
+              {{{renderBlockForDisplay id}}}
+            {{/if}}
+          {{/each}}
+          {{#each blocks.sidebar}}
+            <hr />
+            {{#if id}}
+              {{{renderBlockForDisplay id}}}
+            {{/if}}
+          {{/each}}
+        {{/with}}
+      </div>
+    </div>
+  </div>
+</template>

@@ -33,6 +33,7 @@ events = {
   showNewBlockModal: function () {
     var fragment = Meteor.render(function () {
       // template = page.template ? page.template : 'page_default';
+      // FIXME: Get first registered block template
       return Template[ "blog_post_edit" ](); // this calls the template and returns the HTML.
     });
     $('#blockModal .modal-body').html(fragment);

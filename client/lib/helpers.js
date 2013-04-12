@@ -4,6 +4,7 @@ Handlebars.registerHelper('renderBlockForDisplay', function (id) {
   block = Blocks.findOne({ _id: id });
   if (!block) return 'Sorry, we couldn\'t find the requested block';
 
+  // Fixme: Use first block template as default (return error if none exist)
   template = block.template ? block.template : 'blog_post';
   Template[template].block = block;
   var fragment = Template[template](); // this calls the template and returns the HTML.
@@ -35,3 +36,7 @@ Handlebars.registerHelper("ifSetting", function (settingName, block) {
 	if (Settings.findOne()[settingName] == true) return block(this);
 });
 
+Handlebars.registerHelper("ifCurrentPage", function (slug, block) {
+  if (utils.getCurrentPage().template == slug) return block(this);
+  else return false;
+});

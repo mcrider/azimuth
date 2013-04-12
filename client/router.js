@@ -7,7 +7,6 @@
 Meteor.Router.add({
   "/settings": function() {
     if (!Roles.userIsInRole(Meteor.user(), ['admin'])) {
-      throw new Meteor.Error(403, "Not authorized");
       return false;
     }
     $("#page").html( utils.loadTemplate('site_settings') );
@@ -37,7 +36,6 @@ Meteor.Router.add({
   },
   "*/edit": function (page_slug) {
     if (!Roles.userIsInRole(Meteor.user(), ['author','admin'])) {
-      throw new Meteor.Error(403, "Not authorized");
       return false;
     }
 

@@ -1,17 +1,19 @@
-<template name="page_default_edit">
+<template name="sidebar_right_edit">
   {{#with page}}<div class="container page-edit">
     <div class="row">
       <div class="span10">
             <h2>Editing "{{title}}"</h2>
             <form class="form-horizontal" id="pageEditForm">
-            {{> page_template_selector }}
+                {{> page_template_selector }}
     {{! FIXME: Above should be in a template (but meteor auto-closes opened tags in a template)}}
     {{! Caution: Don't modify above this line unless you know what you're doing}}
 
     {{! Page specific fields: Feel free to customize these and add/remove}}
     {{formHelper value=title type="text" label="Title" fieldName="title" }}
+    {{formHelper value=subTitle type="text" label="Subtitle" fieldName="subTitle" }}
     {{formHelper value=contents type="textarea" label="Contents" fieldName="contents" }}
-    {{blockZoneEditor blocks=blocks label="Body Blocks"}} {{! Fixme: Should be blocks.body }}
+    {{blockZoneEditor blocks=blocks.body label="Body Blocks"}}
+    {{blockZoneEditor blocks=blocks.sidebar label="Sidebar Blocks"}}
     {{! End page-specific fields }}
 
     {{! Caution: Don't modify below this line unless you know what you're doing}}
