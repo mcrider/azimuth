@@ -9,10 +9,24 @@
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">Add Block<b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                  <li class="new-block"><a href="#">New Block&hellip;</a></li>
+                  <li class="dropdown-submenu">
+                    <a tabindex="-1" href="#">New Block</a>
+                    <ul class="dropdown-menu">
+                      {{#each templates}}
+                        <li><a class="new-block" href="#" data-name={{name}}>{{label}}&hellip;</a></li>
+                      {{/each}}
+                    </ul>
+                  </li>
                   <li class="existing-block"><a href="#">Existing Block&hellip;</a></li>
                   <li class="block-by-tag"><a href="#">By Tag&hellip;</a></li>
-                  <li class="block-by-type"><a href="#">By Type&hellip;</a></li>
+                  <li class="dropdown-submenu">
+                    <a tabindex="-1" href="#">By Type</a>
+                    <ul class="dropdown-menu">
+                      {{#each templates}}
+                        <li><a class="block-by-type" href="#" data-name={{name}}>{{label}}&hellip;</a></li>
+                      {{/each}}
+                    </ul>
+                  </li>
                 </ul>
               </li>
               <li class="divider-vertical"></li>

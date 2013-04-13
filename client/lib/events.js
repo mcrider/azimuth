@@ -21,7 +21,6 @@ events = {
     $('#deletePageModal').modal('hide');
 
 	Meteor.Router.to('/');
-
     Pages.remove(page._id);
 
     $.pnotify({
@@ -31,19 +30,22 @@ events = {
     });
   },
   showNewBlockModal: function () {
+    var template = this.name;
     var fragment = Meteor.render(function () {
-      // template = page.template ? page.template : 'page_default';
-      // FIXME: Get first registered block template
-      return Template[ "blog_post_edit" ](); // this calls the template and returns the HTML.
+      Template[ template + "_edit" ].block = {}; // Add some blank data so the edit fields display
+      return Template[ template + "_edit" ](); // this calls the template and returns the HTML.
     });
+    Session.set('block_template', template);
     $('#blockModal .modal-body').html(fragment);
     $('#blockModal').modal('show');
     return false;
   },
   saveNewBlock: function () {
+    debugger;
     // Create the block
     var blockData = utils.getFormValues("#blockEditForm");
     blockData.created = Date.now();
+    blockData.template = Session.get('block_template');
 
     var block_id = Blocks.insert(blockData);
 

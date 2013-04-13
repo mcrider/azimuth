@@ -42,3 +42,8 @@ Template.block_zone_editor.events = {
     return false;
   }
 };
+
+
+Template.block_zone_editor.templates = function() {
+  return registry.blockTemplates;
+}

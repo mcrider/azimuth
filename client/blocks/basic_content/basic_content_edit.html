@@ -5,14 +5,6 @@
         {{#with block}}
           <form class="form-horizontal" id="blockEditForm">
             <div class="control-group">
-              <label class="control-label" for="template">Block Type</label>
-              <div class="controls">
-                <select name="template" id="template" value="{{template}}">
-                  <option value="basic_content">Basic Content</option>
-                </select>
-              </div>
-            </div>
-            <div class="control-group">
               <label class="control-label" for="contents">Contents</label>
               <div class="controls">
                 <textarea id="contents" name="contents" rows="5" placeholder="Contents">{{{contents}}}</textarea>
