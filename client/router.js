@@ -21,7 +21,6 @@ Meteor.Router.add({
 		return page;
 	},
   "/": function() {
-    debugger;
     var page = Pages.findOne();
     if (!page) return {title: 'Sorry, this site has no pages!'};
     Session.set("page_slug", page.slug);

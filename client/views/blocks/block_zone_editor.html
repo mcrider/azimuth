@@ -7,23 +7,23 @@
           <div class="navbar-inner">
             <ul class="nav">
               <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Add Block<b class="caret"></b></a>
+                <a class="dropdown-toggle" data-toggle="dropdown">Add Block<b class="caret"></b></a>
                 <ul class="dropdown-menu">
                   <li class="dropdown-submenu">
-                    <a tabindex="-1" href="#">New Block</a>
+                    <a tabindex="-1">New Block</a>
                     <ul class="dropdown-menu">
                       {{#each templates}}
-                        <li><a class="new-block" href="#" data-name={{name}}>{{label}}&hellip;</a></li>
+                        <li><a class="new-block" data-name={{name}}>{{label}}&hellip;</a></li>
                       {{/each}}
                     </ul>
                   </li>
-                  <li class="existing-block"><a href="#">Existing Block&hellip;</a></li>
-                  <li class="block-by-tag"><a href="#">By Tag&hellip;</a></li>
+                  <li class="existing-block"><a>Existing Block&hellip;</a></li>
+                  <li class="block-by-tag"><a>By Tag&hellip;</a></li>
                   <li class="dropdown-submenu">
-                    <a tabindex="-1" href="#">By Type</a>
+                    <a tabindex="-1">By Type</a>
                     <ul class="dropdown-menu">
                       {{#each templates}}
-                        <li><a class="block-by-type" href="#" data-name={{name}}>{{label}}&hellip;</a></li>
+                        <li><a class="block-by-type" data-name={{name}}>{{label}}&hellip;</a></li>
                       {{/each}}
                     </ul>
                   </li>
@@ -31,12 +31,12 @@
               </li>
               <li class="divider-vertical"></li>
               <li class="dropdown">
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Sort Blocks<b class="caret"></b></a>
+                <a class="dropdown-toggle" data-toggle="dropdown">Sort Blocks<b class="caret"></b></a>
                 <ul class="dropdown-menu">
-                  <li class="sort-title-up"><a href="#">By Title <i class="icon-angle-up"></i></a></li>
-                  <li class="sort-title-down"><a href="#">By Title <i class="icon-angle-down"></i></a></li>
-                  <li class="sort-date-up"><a href="#">By Date Created <i class="icon-angle-up"></i></a></li>
-                  <li class="sort-date-down"><a href="#">By Date Created <i class="icon-angle-down"></i></a></li>
+                  <li class="sort-title-up"><a>By Title <i class="icon-angle-up"></i></a></li>
+                  <li class="sort-title-down"><a>By Title <i class="icon-angle-down"></i></a></li>
+                  <li class="sort-date-up"><a>By Date Created <i class="icon-angle-up"></i></a></li>
+                  <li class="sort-date-down"><a>By Date Created <i class="icon-angle-down"></i></a></li>
                 </ul>
               </li>
             </ul>
@@ -53,8 +53,8 @@
                   <span class="date-time">{{added}}</span>
                 </p>
                 <div class="ops">
-                  <a href="#" class="edit-block-button"><i class="icon-edit"></i></a>
-                  <a href="#" class="delete-block-button"><i class="icon-trash"></i></a>
+                  <a class="edit-block-button"><i class="icon-edit"></i></a>
+                  <a class="delete-block-button"><i class="icon-trash"></i></a>
                 </div>
               </li>
             {{/if}}
@@ -80,8 +80,8 @@
       <p>Are you sure you want to delete this block?  This action cannot be undone.</p>
     </div>
     <div class="modal-footer">
-      <a href="#" class="btn" data-dismiss="modal">Cancel</a>
-      <a href="#" class="btn btn-danger delete-block-confirm">Confirm Delete</a>
+      <a class="btn" data-dismiss="modal">Cancel</a>
+      <a class="btn btn-danger delete-block-confirm">Confirm Delete</a>
     </div>
   </div>
   <div class="modal hide" id="editBlockModal">
@@ -93,8 +93,8 @@
       <!-- Block edit form goes here -->
     </div>
     <div class="modal-footer">
-      <a href="#" class="btn" data-dismiss="modal">Cancel</a>
-      <a href="#" class="btn btn-danger edit-block-confirm">Save Block</a>
+      <a class="btn" data-dismiss="modal">Cancel</a>
+      <a class="btn btn-danger edit-block-confirm">Save Block</a>
     </div>
   </div>
 </template>
