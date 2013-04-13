@@ -57,7 +57,7 @@ Meteor.startup(function () {
 
   // Users
   Meteor.publish('user_list', function () {
-    if (Roles.userIsInRole(Meteor.user(), ['admin'])) {
+    if (Roles.userIsInRole(this.userId, ['admin'])) {
       return Meteor.users.find();
     } else {
       // Not authorized
@@ -74,6 +74,10 @@ Meteor.startup(function () {
 
   // Roles
   Meteor.publish('roles', function () {
+    if(Meteor.users.find().count() == 1 && !Roles.userIsInRole(this.userId, ['admin'])) {
+      // Add first user to admin role
+      Roles.addUsersToRoles(Meteor.user()._id, ['admin']);
+    }
     return Meteor.roles.find();
   });
   Meteor.roles.allow({
