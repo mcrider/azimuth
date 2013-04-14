@@ -1,20 +1,22 @@
 <template name="sidebar_left">
-  <div class="container">
+{{#with page}}
+  <div class="container sidebar-left">
     <div class="row">
-      <div class="span10">
-      <h3>make left sidebar</h3>
-        {{#with page}}
-          <h1>{{title}}</h1>
-          <p>{{{contents}}}</p>
-          <div id="blocks">
-          {{#each blocks}}
-            <hr />
-            {{#if id}}
-              {{{renderBlockForDisplay id}}}
-            {{/if}}
-          {{/each}}
-        {{/with}}
+      <div class="span3">
+        <div class="blocks blocks-sidebar">
+          {{{renderBlocks zone="sidebar"}}}
+        </div>
       </div>
+      
+      <div class="span9">
+        <h1>{{title}}</h1>
+        <p>{{{contents}}}</p>
+        <div class="blocks blocks-body">
+          {{{renderBlocks zone="body"}}}
+        </div>
+      </div>
+
     </div>
   </div>
+{{/with}}
 </template>

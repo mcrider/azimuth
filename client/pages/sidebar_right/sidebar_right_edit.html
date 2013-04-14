@@ -12,8 +12,8 @@
     {{formHelper value=title type="text" label="Title" fieldName="title" }}
     {{formHelper value=subTitle type="text" label="Subtitle" fieldName="subTitle" }}
     {{formHelper value=contents type="textarea" label="Contents" fieldName="contents" }}
-    {{blockZoneEditor blocks=blocks.body label="Body Blocks"}}
-    {{blockZoneEditor blocks=blocks.sidebar label="Sidebar Blocks"}}
+    {{blockZoneEditor zone="body" label="Body Blocks"}}
+    {{blockZoneEditor zone="sidebar" label="Sidebar Blocks"}}
     {{! End page-specific fields }}
 
     {{! Caution: Don't modify below this line unless you know what you're doing}}

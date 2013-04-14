@@ -43,6 +43,15 @@ Template.block_zone_editor.events = {
   }
 };
 
+Template.block_zone_editor.blocks = function() {
+  var blocks = utils.getCurrentPage().blocks;
+  // Get blocks with the correct zone (specified by this.zone)
+  if(!this.zone) {
+    console.log("You must specify a block zone for this helper");
+    return false;
+  }
+  return _.where(blocks, {zone: this.zone});
+}
 
 Template.block_zone_editor.templates = function() {
   return registry.blockTemplates;

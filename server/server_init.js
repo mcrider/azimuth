@@ -74,7 +74,7 @@ Meteor.startup(function () {
 
   // Roles
   Meteor.publish('roles', function () {
-    if(Meteor.users.find().count() == 1 && !Roles.userIsInRole(this.userId, ['admin'])) {
+    if(Meteor.users.find().count() == 1 && this.userId && !Roles.userIsInRole(this.userId, ['admin'])) {
       // Add first user to admin role
       Roles.addUsersToRoles(Meteor.user()._id, ['admin']);
     }

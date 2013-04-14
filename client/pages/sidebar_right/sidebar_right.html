@@ -1,26 +1,23 @@
 <template name="sidebar_right">
-  <div class="container">
+{{#with page}}
+  <div class="container sidebar-right">
     <div class="row">
-      <div class="span10">
-      <h3>Add a rightsidebar</h3>
-        {{#with page}}
-          <h1>{{title}}</h1>
-          <p>{{{contents}}}</p>
-          <div id="blocks">
-          {{#each blocks.body}}
-            <hr />
-            {{#if id}}
-              {{{renderBlockForDisplay id}}}
-            {{/if}}
-          {{/each}}
-          {{#each blocks.sidebar}}
-            <hr />
-            {{#if id}}
-              {{{renderBlockForDisplay id}}}
-            {{/if}}
-          {{/each}}
-        {{/with}}
+
+      <div class="span9">
+        <h1>{{title}}</h1>
+        <p>{{{contents}}}</p>
+        <div class="blocks blocks-body">
+          {{{renderBlocks zone="body"}}}
+        </div>
       </div>
+
+      <div class="span3">
+        <div class="blocks blocks-sidebar">
+          {{{renderBlocks zone="sidebar"}}}
+        </div>
+      </div>
+
     </div>
   </div>
+{{/with}}
 </template>

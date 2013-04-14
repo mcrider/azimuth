@@ -1,6 +1,6 @@
 <template name="block_zone_editor">
   <div class="control-group">
-    <label class="control-label" for="blockZoneOne">Body Blocks</label>
+    <label class="control-label" for="blockZoneOne">{{label}}</label>
     <div class="controls">
       <div class="block-zone-container well">
         <div class="navbar">
@@ -11,7 +11,7 @@
                 <ul class="dropdown-menu">
                   <li class="dropdown-submenu">
                     <a tabindex="-1">New Block</a>
-                    <ul class="dropdown-menu">
+                    <ul class="dropdown-menu" data-zone={{zone}}>
                       {{#each templates}}
                         <li><a class="new-block" data-name={{name}}>{{label}}&hellip;</a></li>
                       {{/each}}

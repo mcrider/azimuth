@@ -1,19 +1,15 @@
 <template name="page_default">
+{{#with page}}
   <div class="container">
     <div class="row">
       <div class="span10">
-        {{#with page}}
-          <h1>{{title}}</h1>
-          <p>{{{contents}}}</p>
-          <div id="blocks">
-          {{#each blocks}}
-            <hr />
-            {{#if id}}
-              {{{renderBlockForDisplay id}}}
-            {{/if}}
-          {{/each}}
-        {{/with}}
+        <h1>{{title}}</h1>
+        <p>{{{contents}}}</p>
+        <div class="blocks blocks-body">
+          {{{renderBlocks zone="body"}}}
+        </div>
       </div>
     </div>
   </div>
+{{/with}}
 </template>
