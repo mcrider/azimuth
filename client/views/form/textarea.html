@@ -3,8 +3,6 @@
     <label class="control-label" for="contents">{{label}}</label>
     <div class="controls">
       <textarea id="{{fieldName}}" name="{{fieldName}}" rows="5" placeholder="Contents">{{{value}}}</textarea>
-      {{#ifSetting 'filepickerKey'}}<input type="button" value="Insert image" class='btn filepicker-image' /><br />{{/ifSetting}}
-      {{#ifSetting 'filepickerKey'}}<input type="button" value="Insert link to file" class='btn filepicker-file' />{{/ifSetting}}
     </div>
   </div>
 </template>

@@ -1,7 +1,7 @@
 <template name="sidebar_right_edit">
   {{#with page}}<div class="container page-edit">
     <div class="row">
-      <div class="span10">
+      <div class="span12">
             <h2>Editing "{{title}}"</h2>
             <form class="form-horizontal" id="pageEditForm">
                 {{> page_template_selector }}
@@ -11,7 +11,7 @@
     {{! Page specific fields: Feel free to customize these and add/remove}}
     {{formHelper value=title type="text" label="Title" fieldName="title" }}
     {{formHelper value=subTitle type="text" label="Subtitle" fieldName="subTitle" }}
-    {{formHelper value=contents type="textarea" label="Contents" fieldName="contents" }}
+    {{formHelper value=contents type="wysiwyg" label="Contents" fieldName="contents" }}
     {{blockZoneEditor zone="body" label="Body Blocks"}}
     {{blockZoneEditor zone="sidebar" label="Sidebar Blocks"}}
     {{! End page-specific fields }}

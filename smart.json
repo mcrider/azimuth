@@ -10,6 +10,9 @@
     "accounts-ui-bootstrap-dropdown": {},
     "roles": {},
     "router": {},
-    "filepicker": {}
+    "filepicker": {},
+    "bootstrap-wysiwyg" : {
+      "path": "/Users/mcrider/Sites/meteor-bootstrap-wysiwyg"
+    }
   }
 }
