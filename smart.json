@@ -11,8 +11,6 @@
     "roles": {},
     "router": {},
     "filepicker": {},
-    "bootstrap-wysiwyg" : {
-      "path": "/Users/mcrider/Sites/meteor-bootstrap-wysiwyg"
-    }
+    "bootstrap-wysiwyg": {}
   }
 }

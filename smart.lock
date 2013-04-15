@@ -13,9 +13,7 @@
       "roles": {},
       "router": {},
       "filepicker": {},
-      "bootstrap-wysiwyg": {
-        "path": "../meteor-bootstrap-wysiwyg"
-      }
+      "bootstrap-wysiwyg": {}
     },
     "packages": {
       "underscore-string": {
@@ -54,7 +52,9 @@
         "commit": "dcb6f3779e5fc105520ba06b0392e3a79c73a7e6"
       },
       "bootstrap-wysiwyg": {
-        "path": "../meteor-bootstrap-wysiwyg"
+        "git": "https://github.com/mcrider/meteor-bootstrap-wysiwyg.git",
+        "tag": "v0.1.0",
+        "commit": "b9b1ffadb42b8bbfade08aaea10e4fbe890d21dd"
       },
       "page-js-ie-support": {
         "git": "https://github.com/tmeasday/meteor-page-js-ie-support.git",
