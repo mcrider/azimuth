@@ -9,6 +9,7 @@
     "pnotify": {},
     "accounts-ui-bootstrap-dropdown": {},
     "roles": {},
-    "router": {}
+    "router": {},
+    "filepicker": {}
   }
 }

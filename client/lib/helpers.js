@@ -49,7 +49,7 @@ Handlebars.registerHelper("getSetting", function (settingName) {
 Handlebars.registerHelper("ifSetting", function (settingName, block) {
 	var settings = Settings.findOne();
 	if (!settings || !settingName) return false;
-	if (Settings.findOne()[settingName] == true) return block(this);
+	if (settings[settingName] != false) return block(this);
 });
 
 // Return true if a page slug is the current page's page slug
