@@ -2,12 +2,14 @@
   <div class="navbar">
     <div class="navbar-inner">
       <a class="brand" href="/">{{getSetting 'siteName'}}</a>
-      <ul class="nav">
-        {{#each pages}}
-          <li>{{> nav_item}}</li>
-          <li class="divider-vertical"></li>
-        {{/each}}
-      </ul>
+      <div class="nav-collapse collapse">
+        <ul class="nav">
+          {{#each pages}}
+            <li>{{> nav_item}}</li>
+            <li class="divider-vertical"></li>
+          {{/each}}
+        </ul>
+      </div>
 
       {{#if isInRole 'admin'}}<ul class="nav pull-right">
         <li class="dropdown">
