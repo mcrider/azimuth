@@ -3,6 +3,7 @@
 
 Template.header.rendered = function() {
   // Hack to make login menu an icon rather than username
+  $('#login-buttons .nav-collapse').removeClass('nav-collapse');
   var username = $('#login-dropdown-list .dropdown-toggle').text();
   $('#login-dropdown-list .dropdown-menu').prepend('<div class="nav-header">'+username+'</div>');
   $('#login-dropdown-list .dropdown-toggle').html('<i class="icon-user'+ (Meteor.user() ? ' logged-in':'')+'"></i> <b class="caret"></b>');
