@@ -21,7 +21,12 @@ events = {
     var title = page.title;
     $('#deletePageModal').modal('hide');
 
-	Meteor.Router.to('/');
+    // Delete from navs
+    Navigation.find().forEach(function(nav) {
+      if(nav._id) Navigation.update({ _id: nav._id }, {$pull : {  "pages" : { slug: page.slug }}});
+    });
+
+    Meteor.Router.to('/');
     Pages.remove(page._id);
 
     $.pnotify({
