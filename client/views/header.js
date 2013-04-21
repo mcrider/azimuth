@@ -1,11 +1,12 @@
 // Accompanying JS file for the header template.
 // Describes the page's metadata and actions.
 
-Template.header.headerNav = function () {
-  var nav = Navigation.findOne({location: "header_active"});
-  if (nav) return nav.pages;
-  return false;
-};
+Template.header.rendered = function() {
+  // Hack to make login menu an icon rather than username
+  var username = $('#login-dropdown-list .dropdown-toggle').text();
+  $('#login-dropdown-list .dropdown-menu').prepend('<div class="nav-header">'+username+'</div>');
+  $('#login-dropdown-list .dropdown-toggle').html('<i class="icon-user"></i> <b class="caret"></b>');
+}
 
 Template.header.helpers({
   displayName: function(){
@@ -69,4 +70,10 @@ Template.header.events = {
     raw_title = _.slugify(raw_title);
     $('.page-slug-textfield').val(raw_title);
   }
+};
+
+Template.header.headerNav = function () {
+  var nav = Navigation.findOne({location: "header_active"});
+  if (nav) return nav.pages;
+  return false;
 };
