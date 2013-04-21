@@ -78,3 +78,7 @@ Template.header.headerNav = function () {
   if (nav) return nav.pages;
   return false;
 };
+
+Template.header.pages = function () {
+  return Pages.find();
+};
