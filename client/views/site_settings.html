@@ -1,7 +1,7 @@
 <template name="site_settings">
   <div class="container site-settings">
     <div class="row">
-      <div class="span10">
+      <div class="span12">
         <h2>Site Settings</h2>
         {{#with settings}}
         <form class="form-horizontal" id="siteSettingsForm">
@@ -27,6 +27,18 @@
               </label>
               <label class="checkbox">
                 <input id="addNewPagesToHeader" name="addNewPagesToHeader" {{#if addNewPagesToHeader}}checked="checked"{{/if}} type="checkbox" /> Add new pages to header by default
+              </label>
+            </div>
+          </div>
+
+          <div class="control-group">
+            <label class="control-label" for="contents">Footer Settings</label>
+            <div class="controls">
+              <input type="text" id="footerMessage" name="footerMessage"  value="{{footerMessage}}" placeholder="Footer Message (e.g. copyright)">
+            </div>
+            <div class="controls">
+              <label class="checkbox">
+                <input id="addNewPagesToFooter" name="addNewPagesToFooter" {{#if addNewPagesToFooter}}checked="checked"{{/if}} type="checkbox" /> Add new pages to footer by default
               </label>
             </div>
           </div>

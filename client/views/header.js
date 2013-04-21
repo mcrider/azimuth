@@ -44,6 +44,24 @@ Template.header.events = {
       template: "page_default"
     });
 
+    // Add to navigation
+    var updatePageNav = function(location) {
+      var currentPages = Navigation.findOne({location: location}).pages;
+      currentPages.push({title: raw_title, slug: raw_slug});
+      Navigation.update(Navigation.findOne({location: location})._id, {$set: {pages: currentPages}});
+    };
+
+    if (utils.getSetting('addNewPagesToHeader')) {
+      updatePageNav('header_active');
+    } else {
+      updatePageNav('header_disabled');
+    }
+    if (utils.getSetting('addNewPagesToFooter')) {
+      updatePageNav('footer_active');
+    } else {
+      updatePageNav('footer_disabled');
+    }
+
     Meteor.Router.to('/' + raw_slug + '/edit', {trigger: true});
   },
   'keyup .page-title-textfield': function () {

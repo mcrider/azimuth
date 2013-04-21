@@ -40,9 +40,7 @@ Handlebars.registerHelper("blockZoneEditor", function (options) {
 
 // Get a setting value
 Handlebars.registerHelper("getSetting", function (settingName) {
-	var settings = Settings.findOne();
-	if (!settings || !settingName) return false;
-	return Settings.findOne()[settingName];
+	return utils.getSetting(settingName);
 });
 
 // Get a boolean setting value (i.e. check a setting's truth value to determine to display block)

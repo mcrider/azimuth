@@ -35,5 +35,10 @@ utils = {
     return Meteor.render(function () {
       return Template[ template ](); // this calls the template and returns the HTML.
     });
+  },
+  getSetting: function(settingName) {
+    var settings = Settings.findOne();
+    if (!settings || !settingName) return false;
+    return Settings.findOne()[settingName];
   }
 };
