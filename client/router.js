@@ -12,6 +12,13 @@ Meteor.Router.add({
     $("#page").html( utils.loadTemplate('site_settings') );
     return page;
   },
+  "/navigation": function() {
+    if (!Roles.userIsInRole(Meteor.user(), ['admin'])) {
+      return false;
+    }
+    $("#page").html( utils.loadTemplate('navigation') );
+    return page;
+  },
   "/users": function() {
     if (!Roles.userIsInRole(Meteor.user(), ['admin'])) {
       throw new Meteor.Error(403, "Not authorized");

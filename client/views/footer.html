@@ -1,13 +1,13 @@
 <template name="footer">
   <footer class="footer" id="copyright">
     <div class="container">
-      <p class="pull-right">Site content © Matthew Crider.</p>
-      <div class="links">
-        <a href="http://foundation.zurb.com">Home</a>
-        <a href="http://foundation.zurb.com/download.php">Download</a>
-        <a href="http://foundation.zurb.com/docs">Docs</a>
-        <a href="http://foundation.zurb.com/docs/changelog.html">Changelog</a>
-        <a href="http://foundation.zurb.com/about.php">About</a>
+      <div class="span12 links">
+        {{#each footerNav}}
+          <a href="{{slug}}">{{title}}</a>
+        {{/each}}
+      </div>
+      <div class="span12">
+      <p>Site content © Matthew Crider.</p>
       </div>
     </div>
   </footer>

@@ -8,12 +8,9 @@
     <div class="navbar-inner">
       <a class="brand" href="/">{{getSetting 'siteName'}}</a>
       <div class="nav-collapse collapse">
-        <ul class="nav">
-          {{#each pages}}
-            <li>{{> nav_item}}</li>
-            <li class="divider-vertical"></li>
-          {{/each}}
-        </ul>
+        {{#with headerNav}}
+          {{>header_nav_root}}
+        {{/with}}
       </div>
 
       {{#if isInRole 'admin'}}<ul class="nav pull-right">
@@ -22,6 +19,7 @@
           <ul class="dropdown-menu">
             <li class="nav-header">Admin</li>
             <li><a href="/settings">Site Settings</a></li>
+            <li><a href="/navigation">Site Navigation</a></li>
             <li><a href="/users">Users</a></li>
             <li><a id="newPage">New Page</a></li>
             <li class="dropdown-submenu">
@@ -64,6 +62,38 @@
   </div>
 </template>
 
-<template name="nav_item">
-  <a href="/{{slug}}">{{title}}</a>
+<template name="header_nav_root">
+  <ul class="nav">
+    {{#each this}}
+      {{#if children}}
+        <li class="dropdown">
+          <a class="dropdown-toggle disabled" href="{{slug}}" data-toggle="dropdown">{{title}}<b class="caret"></b></a>
+          {{>header_nav_child}}
+        </li>
+      {{else}}
+        <li>
+          <a href="/{{slug}}">{{title}}</a>
+        </li>
+      {{/if}}
+    {{/each}}
+  </ul>
+</template>
+
+<template name="header_nav_child">
+  <ul class="dropdown-menu">
+    {{#each children}}
+      {{#if children}}
+        <li class="dropdown">
+          <a class="dropdown-toggle disabled" href="{{slug}}">{{title}}<b class="caret"></b></a>
+          <ul class="dropdown-menu">
+            {{>header_nav_child}}
+          </ul>
+        </li>
+      {{else}}
+        <li>
+          <a href="/{{slug}}">{{title}}</a>
+        </li>
+      {{/if}}
+    {{/each}}
+  </ul>
 </template>

@@ -1,8 +1,10 @@
 // Accompanying JS file for the header template.
 // Describes the page's metadata and actions.
 
-Template.header.pages = function () {
-  return Pages.find({});
+Template.header.headerNav = function () {
+  var nav = Navigation.findOne({location: "header_active"});
+  if (nav) return nav.pages;
+  return false;
 };
 
 Template.header.helpers({
