@@ -28,9 +28,14 @@ Meteor.Router.add({
 		return page;
 	},
   "/": function() {
-    var page = Pages.findOne();
-    if (!page) return {title: 'Sorry, this site has no pages!'};
-    Session.set("page_slug", page.slug);
+    var slug = utils.getSetting('indexPage');
+    var page = Pages.findOne({slug: slug});
+    if(!page) {
+      page = Pages.findOne();
+      if (!page) return {title: 'Sorry, this site has no pages!'};
+      else slug = page.slug;
+    }
+    Session.set("page_slug", slug);
 
     var fragment = Meteor.render(function () {
       template = page.template ? page.template : 'page_default';

@@ -20,6 +20,17 @@
           </div>
 
           <div class="control-group">
+            <label class="control-label" for="title">Site Index Page</label>
+            <div class="controls">
+              <select name="indexPage" id="indexPage">
+                {{#each pages}}
+                <option value="{{slug}}" {{#if indexPageEquals slug}}selected="selected"{{/if}}>{{title}}</option>
+                {{/each}}
+              </select>
+            </div>
+          </div>
+
+          <div class="control-group">
             <label class="control-label" for="contents">Header Settings</label>
             <div class="controls">
               <label class="checkbox">

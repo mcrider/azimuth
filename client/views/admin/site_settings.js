@@ -2,6 +2,10 @@ Template.site_settings.settings = function() {
   return Settings.findOne();
 }
 
+Template.site_settings.pages = function () {
+  return Pages.find();
+};
+
 Template.site_settings.events = {
   'submit #siteSettingsForm': function() {
   	var settings = utils.getFormValues("#siteSettingsForm");
@@ -14,4 +18,8 @@ Template.site_settings.events = {
 
     return false;
   }
+};
+
+Template.site_settings.indexPageEquals = function (slug) {
+  return utils.getSetting('indexPage') === slug;
 };

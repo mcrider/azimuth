@@ -100,6 +100,7 @@ Meteor.startup(function () {
     Settings.insert({
         siteName: "Azimuth CMS",
         logoUrl: "/azimuth.gif",
+        indexPage: "home",
         showLoginInHeader: true,
         addNewPagesToHeader: true
       });
