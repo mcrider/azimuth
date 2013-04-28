@@ -4,9 +4,7 @@
 Template.page_default_edit.events = {
   'submit #pageEditForm': events.savePage,
   'click #deletePage': events.showDeletePageModal,
-  'click .delete-page': events.deletePage,
-  'click .new-block': events.showNewBlockModal,
-  'click .save-block': events.saveNewBlock
+  'click .delete-page': events.deletePage
 };
 
 

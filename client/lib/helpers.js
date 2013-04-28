@@ -6,24 +6,45 @@ Handlebars.registerHelper('renderBlocks', function (options) {
 
   var fragments = '';
   _.each(pageBlocks, function(pageBlock) {
-    block = Blocks.findOne({ _id: pageBlock.id });
-    if (block && block.template) {
-      // FIXME: Check if we are trying to display blocks by id, type, or tag
-
-      if(!block.template) {
-        console.log("No template specified for block " + id);
-        return false;
-      }
-
-      Template[block.template].block = block;
-      var fragment = Template[block.template](); // this calls the template and returns the HTML.
-      fragments = fragments.concat(fragment);
+    if (pageBlock.tag) {
+      debugger;
+      // Fetch blocks with a given tag and add to fragments
+      // FIXME: Meteor.renderList is probably better to use here
+      Blocks.find({tags: pageBlock.tags}).forEach(function(block) {
+        fragments = fragments.concat(utils.getBlockFragment(block));
+      });
+    } else if (pageBlock.type) {
+      // Fetch each block with the given template (== type) and add to fragments
+      Blocks.find({template: pageBlock.type}).forEach(function(block) {
+        fragments = fragments.concat(utils.getBlockFragment(block));
+      });
     } else {
-      console.log('Block ' + pageBlock.id + ' not found (or has no template specified)' );
+      block = Blocks.findOne({ _id: pageBlock.id });
+      fragments = fragments.concat(utils.getBlockFragment(block));
     }
+    
+    
   });
  
   return fragments;
+});
+
+Handlebars.registerHelper('renderBlock', function (block) {
+  if (block && block.template) {
+    // FIXME: Check if we are trying to display blocks by id, type, or tag
+
+    if(!block.template) {
+      console.log("No template specified for block " + id);
+      return false;
+    }
+
+    Template[block.template].block = block;
+    var fragment = Template[block.template](); // this calls the template and returns the HTML.
+  } else {
+    console.log('Block not found (or has no template specified)' );
+  }
+
+  return fragment;
 });
 
 // Renders a form element using a template in views/form/

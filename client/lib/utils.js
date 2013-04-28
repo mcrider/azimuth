@@ -10,9 +10,11 @@ utils = {
   getFormValues: function(selector) {
     var values = {};
     
+    // Turn form into array and handle special cases
     $.each($(selector).serializeArray(), function(i, field) {
-    	if (field.value == "on") field.value = true;
-        values[field.name] = field.value;
+      // if (field.name == 'tags') field.value = field.value.split(',');
+    	if (field.value == 'on') field.value = true;
+      values[field.name] = field.value;
     });
     $.each($(selector).find(':checkbox:not(:checked)'), function(i, field) {
     	values[field.name] = false;
@@ -40,5 +42,16 @@ utils = {
     var settings = Settings.findOne();
     if (!settings || !settingName) return false;
     return Settings.findOne()[settingName];
+  },
+  getBlockFragment: function(block) {
+    if (block && block.template) {
+      Template[block.template].block = block;
+      var fragment = Template[block.template](); // this calls the template and returns the HTML.
+    } else {
+      console.log('Block not found (or has no template specified)' );
+      return false;
+    }
+
+    return fragment;
   }
 };

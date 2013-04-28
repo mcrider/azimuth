@@ -2,7 +2,7 @@
   <div class="control-group">
     <label class="control-label" for="blockZoneOne">{{label}}</label>
     <div class="controls">
-      <div class="block-zone-container well">
+      <div class="block-zone-container well" data-zone={{zone}}>
         <div class="navbar">
           <div class="navbar-inner">
             <ul class="nav">
@@ -11,14 +11,14 @@
                 <ul class="dropdown-menu">
                   <li class="dropdown-submenu">
                     <a tabindex="-1">New Block</a>
-                    <ul class="dropdown-menu" data-zone={{zone}}>
+                    <ul class="dropdown-menu">
                       {{#each templates}}
                         <li><a class="new-block" data-name={{name}}>{{label}}&hellip;</a></li>
                       {{/each}}
                     </ul>
                   </li>
-                  <li class="existing-block"><a>Existing Block&hellip;</a></li>
-                  <li class="block-by-tag"><a>By Tag&hellip;</a></li>
+                  <li class="existing-block"><a class="existing-block">Existing Block&hellip;</a></li>
+                  <li class="block-by-tag"><a class="block-by-tag">By Tag&hellip;</a></li>
                   <li class="dropdown-submenu">
                     <a tabindex="-1">By Type</a>
                     <ul class="dropdown-menu">
@@ -42,35 +42,55 @@
             </ul>
           </div>
         </div>
-        <ul class="block-zone clearfix">
-          {{! iterate over page block elements; display different things depending on what type we have }}
-          {{#each blocks}}
-            {{! This logic should be better; Why are there no elseifs in handlebars?!\ }}
-            {{#if id}}
-              <li data-type="id" data-id="{{id}}" class="well edit-block idBlock">
-                <p>
-                  <span class="block-label">{{label}}</span>
-                  <span class="date-time">{{added}}</span>
-                </p>
-                <div class="ops">
-                  <a class="edit-block-button"><i class="icon-edit"></i></a>
-                  <a class="delete-block-button"><i class="icon-trash"></i></a>
-                </div>
-              </li>
-            {{/if}}
-            {{#if type}}
-              <li class="inline edit-block type-block">By Type</li>
-            {{/if}}
-            {{#if tag}}
-              <li class="inline edit-block tag-block">By tag</li>
-            {{/if}}
-          {{else}}
-            <p class="no-blocks">This block zone currently contains no blocks.  Add one from the menu above!</p>
-          {{/each}}
-        </ul>
+        <div class="blocks-container">
+          <ul class="block-zone clearfix">
+            {{! iterate over page block elements; display different things depending on what type we have }}
+            {{#each blocks}}
+              {{#if id}}
+                <li data-type="id" data-id="{{id}}" class="well edit-block id-block">
+                  <p>
+                    <span class="block-label">{{label}}</span>
+                    <span class="date-time">{{added}}</span>
+                  </p>
+                  <div class="ops">
+                    <a class="edit-block-button"><i class="icon-edit"></i></a>
+                    <a class="delete-block-button"><i class="icon-trash"></i></a>
+                  </div>
+                </li>
+              {{/if}}
+              {{#if type}}
+                <li data-type="type" data-id="{{type}}" class="well edit-block type-block">
+                  <p>
+                    <span class="block-label">Type: {{label}}</span>
+                    <span class="date-time">{{added}}</span>
+                  </p>
+                  <div class="ops">
+                    <a class="edit-block-button"><i class="icon-edit"></i></a>
+                    <a class="delete-block-button"><i class="icon-trash"></i></a>
+                  </div>
+                </li>
+              {{/if}}
+              {{#if tag}}
+                <li data-type="type" data-id="{{type}}" class="well edit-block tag-block">
+                  <p>
+                    <span class="block-label">Tag: {{label}}</span>
+                    <span class="date-time">{{added}}</span>
+                  </p>
+                  <div class="ops">
+                    <a class="edit-block-button"><i class="icon-edit"></i></a>
+                    <a class="delete-block-button"><i class="icon-trash"></i></a>
+                  </div>
+                </li>
+              {{/if}}
+            {{else}}
+              <p class="no-blocks">This block zone currently contains no blocks.  Add one from the menu above!</p>
+            {{/each}}
+          </ul>
+        </div>
       </div>
     </div>
   </div>
+
   <div class="modal hide" id="deleteBlockModal">
     <div class="modal-header">
       <button type="button" class="close" data-dismiss="modal">×</button>
@@ -84,10 +104,11 @@
       <a class="btn btn-danger delete-block-confirm">Confirm Delete</a>
     </div>
   </div>
+
   <div class="modal hide" id="editBlockModal">
     <div class="modal-header">
       <button type="button" class="close" data-dismiss="modal">×</button>
-      <h3>Add Block</h3>
+      <h3>Edit Block</h3>
     </div>
     <div class="modal-body">
       <!-- Block edit form goes here -->
@@ -97,4 +118,67 @@
       <a class="btn btn-danger edit-block-confirm">Save Block</a>
     </div>
   </div>
+
+  <div class="modal hide" id="blockModal">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal">×</button>
+      <h3>Add Block</h3>
+    </div>
+    <div class="modal-body">
+      <!-- Block edit form goes here -->
+    </div>
+    <div class="modal-footer">
+      <a class="btn" data-dismiss="modal">Cancel</a>
+      <a class="btn btn-danger save-new-block">Save Block</a>
+    </div>
+  </div>
+
+  <div class="modal hide" id="existingBlockModal">
+    <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal">×</button>
+      <h3>Add Existing Block</h3>
+    </div>
+    <div class="modal-body">
+      <!-- [Add Block] | Block template | Date created | [Preview] (shows below) -->
+      <table class="table">
+          <thead>
+            <tr>
+              <th>&nbsp;</th>
+              <th>Template</th>
+              <th>Created</th>
+              <th style="width: 36px;"></th>
+            </tr>
+          </thead>
+          <tbody>
+            {{#each allBlocks}}
+              <tr>
+                <td><a class="btn add-existing-block">Insert</a></td>
+                <td>{{template}}</td>
+                <td>{{created}}</td>
+                <td><a class="preview-block"><div class="block-preview" style="display: none;">{{{renderBlock this}}}</div><i class="icon-search"></i></a></td>
+              </tr>
+            {{/each}}
+          </tbody>
+        </table>
+    </div>
+    <div class="modal-footer">
+      <a class="btn" data-dismiss="modal">Cancel</a>
+    </div>
+  </div>
+
+  <div class="modal hide" id="blockTagModal" data-zone={{zone}}>
+    <div class="modal-header">
+      <h3>Add Blocks by Tag</h3>
+    </div>
+    <div class="modal-body">
+      <form>
+        <input name="tags" id="tags" />
+      </form>
+    </div>
+    <div class="modal-footer">
+      <a class="btn" data-dismiss="modal">Cancel</a>
+      <a class="btn btn-danger add-block-by-tag">Add Blocks</a>
+    </div>
+  </div> 
+
 </template>
