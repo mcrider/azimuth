@@ -2,7 +2,6 @@
 
 events = {
   savePage: function (e) {
-    debugger;
     var pageData = utils.getFormValues("#pageEditForm");
     e.preventDefault();
     Pages.update({_id: this._id}, {$set: pageData});

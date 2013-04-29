@@ -95,21 +95,10 @@ Template.block_zone_editor.events = {
   },
   'click .block-by-tag': function(e) {
     $('#blockTagModal').modal('show');
-    $('.tag').remove();
-    $('#tags').val('');
-    $("#tags_tag").focus()
-    $('#tags').tagsInput({
-      height: '43px',
-      defaultText: '',
-      onAddTag: function() {
-        var tag = _.last($('#tags').val().split(','))
-        $('#tags').importTags(tag);
-      }
-    });
     return false;
   },
   'click .add-block-by-tag': function(e) {
-    var tag = $('#tags').val()
+    var tag = $('#tag').val()
     $('#blockTagModal').modal('hide');
 
     if (tag) {
@@ -122,7 +111,7 @@ Template.block_zone_editor.events = {
       }
 
       $.pnotify({
-        text: label + ' blocks added to page.',
+        text: 'Blocks with tag' + tag + ' added to page.',
         type: 'success',
         icon: false
       });
@@ -149,19 +138,45 @@ Template.block_zone_editor.events = {
 
     return false;
   },
-  'click .delete-block-button': function() {
+  'click .delete-block-button': function(e) {
+    Session.set('block-edit-id', $(e.currentTarget).closest('.edit-block').data('id'));
+    Session.set('block-edit-type', $(e.currentTarget).closest('.edit-block').data('type'));
     $('#deleteBlockModal').modal('show');
     return false;
   },
   'click .delete-block-confirm': function() {
+    debugger;
     $('#deleteBlockModal').modal('hide');
+
+    var type = Session.get('block-edit-type');
+    var id = Session.get('block-edit-id');
     page = utils.getCurrentPage();
-    Pages.update({ _id : page._id }, {$pull : {  "blocks" : { id: this.id }}});
-    $.pnotify({
-      text: 'Block removed from page.',
-      type: 'success',
-      icon: false
-    });
+
+    var showSuccess = function() {
+      $.pnotify({
+        text: 'Block removed from page.',
+        type: 'success',
+        icon: false
+      });  
+    }
+
+    if (type == 'id') {
+      Pages.update({ _id : page._id }, {$pull : {  "blocks" : { id: id }}});
+      showSuccess();
+    } else if (type == 'type') {
+      Pages.update({ _id : page._id }, {$pull : {  "blocks" : { type: id }}});
+      showSuccess();
+    } else if (type == 'tag') {
+      Pages.update({ _id : page._id }, {$pull : {  "blocks" : { tag: id }}});
+      showSuccess();
+    } else {
+      $.pnotify({
+        text: 'This block could not be removed from page.',
+        type: 'warning',
+        icon: false
+      });  
+    }
+    
     return false;
   },
   'click .edit-block-button': function() {
@@ -176,10 +191,9 @@ Template.block_zone_editor.events = {
     return false;
   },
   'click .edit-block-confirm': function() {
-    $('#editBlockModal').modal('hide');
-    
     var block = Blocks.findOne({_id: Session.get('block-edit-id')});
     if(block) {
+      debugger;
       var blockData = utils.getFormValues("#blockEditForm");
       Blocks.update({_id: block._id}, {$set: blockData});
       $.pnotify({
@@ -194,7 +208,7 @@ Template.block_zone_editor.events = {
         icon: false
       });
     }
-    
+    $('#editBlockModal').modal('hide');
     return false;
   }
 };

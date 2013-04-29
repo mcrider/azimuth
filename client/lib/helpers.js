@@ -7,10 +7,9 @@ Handlebars.registerHelper('renderBlocks', function (options) {
   var fragments = '';
   _.each(pageBlocks, function(pageBlock) {
     if (pageBlock.tag) {
-      debugger;
       // Fetch blocks with a given tag and add to fragments
       // FIXME: Meteor.renderList is probably better to use here
-      Blocks.find({tags: pageBlock.tags}).forEach(function(block) {
+      Blocks.find({tag: pageBlock.tag}).forEach(function(block) {
         fragments = fragments.concat(utils.getBlockFragment(block));
       });
     } else if (pageBlock.type) {

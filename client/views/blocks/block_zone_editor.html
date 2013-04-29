@@ -65,19 +65,17 @@
                     <span class="date-time">{{added}}</span>
                   </p>
                   <div class="ops">
-                    <a class="edit-block-button"><i class="icon-edit"></i></a>
                     <a class="delete-block-button"><i class="icon-trash"></i></a>
                   </div>
                 </li>
               {{/if}}
               {{#if tag}}
-                <li data-type="type" data-id="{{type}}" class="well edit-block tag-block">
+                <li data-type="tag" data-id="{{tag}}" class="well edit-block tag-block">
                   <p>
                     <span class="block-label">Tag: {{label}}</span>
                     <span class="date-time">{{added}}</span>
                   </p>
                   <div class="ops">
-                    <a class="edit-block-button"><i class="icon-edit"></i></a>
                     <a class="delete-block-button"><i class="icon-trash"></i></a>
                   </div>
                 </li>
@@ -168,12 +166,11 @@
 
   <div class="modal hide" id="blockTagModal" data-zone={{zone}}>
     <div class="modal-header">
+      <button type="button" class="close" data-dismiss="modal">×</button>
       <h3>Add Blocks by Tag</h3>
     </div>
     <div class="modal-body">
-      <form>
-        <input name="tags" id="tags" />
-      </form>
+      <input type="text" name="tag" id="tag" placeholder="Enter Tag" />
     </div>
     <div class="modal-footer">
       <a class="btn" data-dismiss="modal">Cancel</a>
