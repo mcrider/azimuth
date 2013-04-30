@@ -3,7 +3,7 @@
     <label class="control-label" for="contents">{{label}}</label>
     <div class="controls">
       
-      <div class="btn-toolbar editor-toolbar" data-role="editor-toolbar" data-target="#{{fieldName}}">
+      <div class="btn-toolbar editor-toolbar" id="{{uniqueId}}_toolbar" data-role="editor-toolbar" data-target="#{{fieldName}}">
 
         <div class="btn-group">
           <a class="btn html-editor-button" title="Toggle HTML Editor"><i class=" icon-wrench"></i></a>
@@ -51,7 +51,7 @@
        
       </div>
 
-      <div class="wysiwyg-editor" rows="5" placeholder="Contents">{{{value}}}</div>
+      <div id="{{uniqueId}}_wysiwyg" class="wysiwyg-editor" rows="5" placeholder="Contents">{{{value}}}</div>
 
       <textarea class="hide html-editor" id="{{fieldName}}" name="{{fieldName}}" rows="5" placeholder="Contents">{{{value}}}</textarea>
     </div>
