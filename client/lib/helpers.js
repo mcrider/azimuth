@@ -59,6 +59,11 @@ Handlebars.registerHelper("blockZoneEditor", function (options) {
 });
 
 // Get a setting value
+Handlebars.registerHelper("humanReadableTime", function (timestamp) {
+  return utils.displayHumanReadableTime(timestamp);
+});
+
+// Get a setting value
 Handlebars.registerHelper("getSetting", function (settingName) {
 	return utils.getSetting(settingName);
 });
