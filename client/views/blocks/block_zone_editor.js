@@ -141,11 +141,16 @@ Template.block_zone_editor.events = {
   'click .delete-block-button': function(e) {
     Session.set('block-edit-id', $(e.currentTarget).closest('.edit-block').data('id'));
     Session.set('block-edit-type', $(e.currentTarget).closest('.edit-block').data('type'));
+
+    if(Session.get('block-edit-type') == 'id') {
+      $("#deleteBlockModal .delete-all-blocks-confirm").show();
+    } else {
+      $("#deleteBlockModal .delete-all-blocks-confirm").hide();
+    }
     $('#deleteBlockModal').modal('show');
     return false;
   },
   'click .delete-block-confirm': function() {
-    debugger;
     $('#deleteBlockModal').modal('hide');
 
     var type = Session.get('block-edit-type');
@@ -171,7 +176,33 @@ Template.block_zone_editor.events = {
       showSuccess();
     } else {
       $.pnotify({
-        text: 'This block could not be removed from page.',
+        text: 'This block could not be removed from the page.',
+        type: 'warning',
+        icon: false
+      });  
+    }
+    
+    return false;
+  },
+  'click .delete-all-blocks-confirm': function() {
+    $('#deleteBlockModal').modal('hide');
+
+    var type = Session.get('block-edit-type');
+    var id = Session.get('block-edit-id');
+
+    if (type == 'id') {
+      Pages.find().forEach(function(page) {
+        Pages.update({ _id : page._id }, {$pull : {  "blocks" : { id: id }}});
+      });
+      Blocks.remove(id);
+      $.pnotify({
+        text: 'Block deleted.',
+        type: 'success',
+        icon: false
+      });
+    } else {
+      $.pnotify({
+        text: 'There was an error trying to delete this block.',
         type: 'warning',
         icon: false
       });  
