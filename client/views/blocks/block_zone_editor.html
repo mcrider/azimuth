@@ -89,94 +89,9 @@
     </div>
   </div>
 
-  <div class="modal hide" id="deleteBlockModal">
-    <div class="modal-header">
-      <button type="button" class="close" data-dismiss="modal">×</button>
-      <h3>Delete Block</h3>
-    </div>
-    <div class="modal-body">
-      <p>Are you sure you want to delete this block?  This action cannot be undone.</p>
-    </div>
-    <div class="modal-footer">
-      <a class="btn" data-dismiss="modal">Cancel</a>
-      <a class="btn btn-warning delete-block-confirm">Remove From Page</a>
-      <a class="btn btn-danger delete-all-blocks-confirm">Delete Everywhere</a>
-    </div>
-  </div>
-
-  <div class="modal hide" id="editBlockModal">
-    <div class="modal-header">
-      <button type="button" class="close" data-dismiss="modal">×</button>
-      <h3>Edit Block</h3>
-    </div>
-    <div class="modal-body">
-      <!-- Block edit form goes here -->
-    </div>
-    <div class="modal-footer">
-      <a class="btn" data-dismiss="modal">Cancel</a>
-      <a class="btn btn-danger edit-block-confirm">Save Block</a>
-    </div>
-  </div>
-
-  <div class="modal hide" id="blockModal">
-    <div class="modal-header">
-      <button type="button" class="close" data-dismiss="modal">×</button>
-      <h3>Add Block</h3>
-    </div>
-    <div class="modal-body">
-      <!-- Block edit form goes here -->
-    </div>
-    <div class="modal-footer">
-      <a class="btn" data-dismiss="modal">Cancel</a>
-      <a class="btn btn-danger save-new-block">Save Block</a>
-    </div>
-  </div>
-
-  <div class="modal hide" id="existingBlockModal">
-    <div class="modal-header">
-      <button type="button" class="close" data-dismiss="modal">×</button>
-      <h3>Add Existing Block</h3>
-    </div>
-    <div class="modal-body">
-      <!-- [Add Block] | Block template | Date created | [Preview] (shows below) -->
-      <table class="table">
-          <thead>
-            <tr>
-              <th>&nbsp;</th>
-              <th>Template</th>
-              <th>Created</th>
-              <th style="width: 36px;"></th>
-            </tr>
-          </thead>
-          <tbody>
-            {{#each allBlocks}}
-              <tr>
-                <td><a class="btn add-existing-block">Insert</a></td>
-                <td>{{template}}</td>
-                <td>{{humanReadableTime created}}</td>
-                <td><a class="preview-block"><div class="block-preview" style="display: none;">{{{renderBlock this}}}</div><i class="icon-search"></i></a></td>
-              </tr>
-            {{/each}}
-          </tbody>
-        </table>
-    </div>
-    <div class="modal-footer">
-      <a class="btn" data-dismiss="modal">Cancel</a>
-    </div>
-  </div>
-
-  <div class="modal hide" id="blockTagModal" data-zone={{zone}}>
-    <div class="modal-header">
-      <button type="button" class="close" data-dismiss="modal">×</button>
-      <h3>Add Blocks by Tag</h3>
-    </div>
-    <div class="modal-body">
-      <input type="text" name="tag" id="tag" placeholder="Enter Tag" />
-    </div>
-    <div class="modal-footer">
-      <a class="btn" data-dismiss="modal">Cancel</a>
-      <a class="btn btn-danger add-block-by-tag">Add Blocks</a>
-    </div>
-  </div> 
-
+  {{>delete_block}}
+  {{>edit_block}}
+  {{>existing_block}}
+  {{>new_block}}
+  {{>tag_block}}
 </template>
