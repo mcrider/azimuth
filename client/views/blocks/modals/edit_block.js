@@ -2,8 +2,7 @@ Template.edit_block.events = {
   'click .edit-block-confirm': function() {
     var block = Blocks.findOne({_id: Session.get('block-edit-id')});
     if(block) {
-      debugger;
-      var blockData = utils.getFormValues("#blockEditForm");
+      var blockData = utils.getFormValues("#editBlockForm");
       Blocks.update({_id: block._id}, {$set: blockData});
       $.pnotify({
         text: 'Block Saved.',

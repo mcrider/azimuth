@@ -3,20 +3,18 @@
     <div class="row">
       <div class="span12">
         {{#with block}}
-          <form class="form-horizontal" id="blockEditForm">
-            <div class="control-group">
-              <label class="control-label" for="title">Title</label>
-              <div class="controls">
-                <input type="text" name="title" id="title" value="{{title}}" placeholder="Title">
-              </div>
+          <div class="control-group">
+            <label class="control-label" for="title">Title</label>
+            <div class="controls">
+              <input type="text" name="title" id="title" value="{{title}}" placeholder="Title">
             </div>
-            <div class="control-group">
-              <label class="control-label" for="contents">Contents</label>
-              <div class="controls">
-                <textarea id="contents" name="contents" rows="5" placeholder="Contents">{{{contents}}}</textarea>
-              </div>
+          </div>
+          <div class="control-group">
+            <label class="control-label" for="contents">Contents</label>
+            <div class="controls">
+              <textarea id="contents" name="contents" rows="5" placeholder="Contents">{{{contents}}}</textarea>
             </div>
-          </form>
+          </div>
         {{/with}}
         &nbsp;
       </div>

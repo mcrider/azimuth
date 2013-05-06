@@ -38,6 +38,8 @@ Template.block_zone_editor.events = {
     return false;
   },
   'click .block-by-tag': function(e) {
+    var zone = $(e.currentTarget).closest('.block-zone-container').data('zone');
+    Session.set('block_zone', zone);
     $('#blockTagModal').modal('show');
     return false;
   },

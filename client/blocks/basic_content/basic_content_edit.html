@@ -3,10 +3,8 @@
     <div class="row">
       <div class="span12">
         {{#with block}}
-          <form class="form-horizontal" id="blockEditForm">
-            {{formHelper value=tag type="tag" label="Tag" fieldName="tag"}}
-            {{formHelper value=contents uniqueId=_id type="wysiwyg" label="Contents" fieldName="contents" }}
-          </form>
+          {{formHelper value=tag type="tag" label="Tag" fieldName="tag"}}
+          {{formHelper value=contents uniqueId=_id type="wysiwyg" label="Contents" fieldName="contents" }}
         {{/with}}
         &nbsp;
       </div>

@@ -1,7 +1,8 @@
-Template.block_zone_editor.events = {
+Template.new_block.events = {
   'click .save-new-block': function (e) {
     // Create the block
-    var blockData = utils.getFormValues("#blockEditForm");
+    debugger;
+    var blockData = utils.getFormValues("#newBlockForm");
     blockData.created = Date.now();
     blockData.template = Session.get('block_template');
 
