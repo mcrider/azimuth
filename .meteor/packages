@@ -10,7 +10,6 @@ backbone
 underscore
 jquery
 underscore-string
-font-awesome
 pnotify
 less
 accounts-ui-bootstrap-dropdown
@@ -18,3 +17,4 @@ roles
 router
 filepicker
 bootstrap-wysiwyg
+font-awesome

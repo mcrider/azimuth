@@ -7,7 +7,8 @@ Template.site_settings.pages = function () {
 };
 
 Template.site_settings.events = {
-  'submit #siteSettingsForm': function() {
+  'submit #siteSettingsForm': function(e) {
+    e.preventDefault();
   	var settings = utils.getFormValues("#siteSettingsForm");
     Settings.update({_id: this._id}, {$set: settings});
     $.pnotify({
@@ -15,8 +16,6 @@ Template.site_settings.events = {
       type: 'success',
       icon: false
     });
-
-    return false;
   }
 };
 

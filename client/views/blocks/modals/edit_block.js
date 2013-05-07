@@ -1,5 +1,6 @@
 Template.edit_block.events = {
-  'click .edit-block-confirm': function() {
+  'click .edit-block-confirm': function(e) {
+    e.preventDefault();
     var block = Blocks.findOne({_id: Session.get('block-edit-id')});
     if(block) {
       var blockData = utils.getFormValues("#editBlockForm");
@@ -16,7 +17,7 @@ Template.edit_block.events = {
         icon: false
       });
     }
+
     $('#editBlockModal').modal('hide');
-    return false;
   }
 };

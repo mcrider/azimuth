@@ -1,7 +1,7 @@
 <template name="basic_content_edit">
   <div class="container block-edit">
     <div class="row">
-      <div class="span12">
+      <div class="span10">
         {{#with block}}
           {{formHelper value=tag type="tag" label="Tag" fieldName="tag"}}
           {{formHelper value=contents uniqueId=_id type="wysiwyg" label="Contents" fieldName="contents" }}

@@ -11,6 +11,7 @@ Template.existing_block.rendered = function() {
 
 Template.existing_block.events = {
   'click .add-existing-block': function(e) {
+  	e.preventDefault();
     var page = utils.getCurrentPage();
 
     var label = Template[this.template].label || 'Single Block';
@@ -25,7 +26,5 @@ Template.existing_block.events = {
       type: 'success',
       icon: false
     });
-
-    return false;
   }
 };

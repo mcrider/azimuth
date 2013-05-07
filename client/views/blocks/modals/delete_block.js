@@ -1,5 +1,6 @@
 Template.delete_block.events = {
-  'click .delete-block-confirm': function() {
+  'click .delete-block-confirm': function(e) {
+  	e.preventDefault();
     $('#deleteBlockModal').modal('hide');
 
     var type = Session.get('block-edit-type');
@@ -30,10 +31,9 @@ Template.delete_block.events = {
         icon: false
       });  
     }
-    
-    return false;
   },
-  'click .delete-all-blocks-confirm': function() {
+  'click .delete-all-blocks-confirm': function(e) {
+  	e.preventDefault();
     $('#deleteBlockModal').modal('hide');
 
     var type = Session.get('block-edit-type');
@@ -56,7 +56,5 @@ Template.delete_block.events = {
         icon: false
       });  
     }
-    
-    return false;
   }
 };

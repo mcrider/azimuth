@@ -1,5 +1,6 @@
 Template.tag_block.events = {
   'click .add-block-by-tag': function(e) {
+  	e.preventDefault();
     var tag = $('#tag').val()
     $('#blockTagModal').modal('hide');
 
@@ -18,7 +19,5 @@ Template.tag_block.events = {
         icon: false
       });
     }
-
-    return false;
   }
 };
