@@ -35,7 +35,7 @@ Meteor.Router.add({
       if (!page) return {title: 'Sorry, this site has no pages!'};
       else slug = page.slug;
     }
-    Session.set("page_slug", slug);
+    Session.set("page-slug", slug);
 
     var fragment = Meteor.render(function () {
       template = page.template ? page.template : 'page_default';
@@ -51,7 +51,7 @@ Meteor.Router.add({
     }
 
     if (page_slug.charAt(0) == '/') page_slug = page_slug.substr(1);
-    Session.set("page_slug", page_slug);
+    Session.set("page-slug", page_slug);
 
     var page = Pages.findOne({slug: page_slug});
     if (!page) return {title: 'Sorry, we couldn\'t find the requested page'};
@@ -66,7 +66,7 @@ Meteor.Router.add({
   },
   "*": function (page_slug) {
     if (page_slug.charAt(0) == '/') page_slug = page_slug.substr(1);
-    Session.set("page_slug", page_slug);
+    Session.set("page-slug", page_slug);
     var page = Pages.findOne({slug: page_slug});
     if (!page) return {title: 'Sorry, we couldn\'t find the requested page'};
 

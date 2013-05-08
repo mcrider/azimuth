@@ -12,7 +12,7 @@ Navigation = new Meteor.Collection("navigation");
 
 
 // ID of currently selected page
-Session.set('page_slug', null);
+Session.set('page-slug', null);
 
 Meteor.subscribe('pages');
 Meteor.subscribe('blocks');

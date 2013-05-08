@@ -2,7 +2,7 @@
 
 utils = {
   getCurrentPage: function() {
-    var page_slug = Session.get('page_slug');
+    var page_slug = Session.get('page-slug');
     if (!page_slug)
       return {notFound: true, title: 'Sorry, we couldn\'t find the requested page'};
     return Pages.findOne({slug: page_slug});

@@ -6,7 +6,7 @@ Template.tag_block.events = {
 
     if (tag) {
       var page = utils.getCurrentPage();
-      var zone = Session.get('block_zone');
+      var zone = Session.get('block-zone');
 
       // Attach the block to the page
       if (!page.notFound) {
