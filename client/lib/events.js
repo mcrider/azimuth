@@ -11,9 +11,9 @@ events = {
       icon: false
     });
   },
-  showDeletePageModal: function () {
+  showDeletePageModal: function (e) {
+  	e.preventDefault();
     $('#deletePageModal').modal('show');
-    return false;
   },
   deletePage: function () {
     var page = utils.getCurrentPage();

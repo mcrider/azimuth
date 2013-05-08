@@ -19,31 +19,42 @@ Template.block_zone_editor.added = function() {
 
 Template.block_zone_editor.events = {
   'click .new-block': function (e) {
+    e.preventDefault();
     var zone = $(e.currentTarget).closest('.block-zone-container').data('zone')
     var template = this.name;
+    Session.set('block-template', template);
+    Session.set('block-zone', zone);
+
+    var blockData = {};
+    blockData.created = Date.now();
+    blockData.template = template;
+
+    var block_id = Blocks.insert(blockData);
+    var block = Blocks.findOne({_id: block_id});
+    Session.set('new-block-id', block_id);
+
     var fragment = Meteor.render(function () {
-      Template[ template + "_edit" ].block = {}; // Add some blank data so the edit fields display
-      return Template[ template + "_edit" ](); // this calls the template and returns the HTML.
+      Template[ block.template + "_edit" ].block = block;
+      return Template[ block.template + "_edit" ](block); // this calls the template and returns the HTML.
     });
-    Session.set('block_template', template);
-    Session.set('block_zone', zone);
-    $('#blockModal .modal-body').html(fragment);
-    $('#blockModal').modal('show');
-    return false;
+    $('#editBlockModal .modal-body').html(fragment);
+    Session.set('block-edit-id', block_id);
+    $('#editBlockModal').modal('show');
   },
   'click .existing-block': function(e) {
+  	e.preventDefault();
     var zone = $(e.currentTarget).closest('.block-zone-container').data('zone');
-    Session.set('block_zone', zone);
+    Session.set('block-zone', zone);
     $('#existingBlockModal').modal('show');
-    return false;
   },
   'click .block-by-tag': function(e) {
+  	e.preventDefault();
     var zone = $(e.currentTarget).closest('.block-zone-container').data('zone');
-    Session.set('block_zone', zone);
+    Session.set('block-zone', zone);
     $('#blockTagModal').modal('show');
-    return false;
   },
   'click .block-by-type': function(e) {
+  	e.preventDefault();
     var template = this.name;
     var page = utils.getCurrentPage();
     var zone = $(e.currentTarget).closest('.block-zone-container').data('zone');
@@ -59,10 +70,9 @@ Template.block_zone_editor.events = {
       type: 'success',
       icon: false
     });
-
-    return false;
   },
   'click .delete-block-button': function(e) {
+  	e.preventDefault();
     Session.set('block-edit-id', $(e.currentTarget).closest('.edit-block').data('id'));
     Session.set('block-edit-type', $(e.currentTarget).closest('.edit-block').data('type'));
 
@@ -72,9 +82,9 @@ Template.block_zone_editor.events = {
       $("#deleteBlockModal .delete-all-blocks-confirm").hide();
     }
     $('#deleteBlockModal').modal('show');
-    return false;
   },
-  'click .edit-block-button': function() {
+  'click .edit-block-button': function(e) {
+  	e.preventDefault();
     var block = Blocks.findOne({_id: this.id});
     var fragment = Meteor.render(function () {
       Template[ block.template + "_edit" ].block = block;
@@ -83,7 +93,6 @@ Template.block_zone_editor.events = {
     $('#editBlockModal .modal-body').html(fragment);
     Session.set('block-edit-id', block._id);
     $('#editBlockModal').modal('show');
-    return false;
   }
 };
 
