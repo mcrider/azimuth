@@ -79,7 +79,6 @@ footer {
       padding-top: 4px;
       height: 24px;
       text-align: center;
-      background: #E7E7E7;
     }
   }
 }
@@ -130,8 +129,12 @@ footer {
 /*************************************************
               Bootstrap Overrides
 ************************************************/
-.dropdown-toggle i {
-  font-size: 1.3em;
+.dropdown-toggle {
+  border-top-right-radius: 0 !important;
+  border-bottom-right-radius: 0 !important;
+  i {
+    font-size: 1.3em;
+  }
 }
 
 .page-menu ul.nav li.dropdown:hover > ul.dropdown-menu{
