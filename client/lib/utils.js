@@ -40,7 +40,7 @@ utils = {
   },
   getSetting: function(settingName) {
     var settings = Settings.findOne();
-    if (!settings || !settingName) return false;
+    if (!settings || !settingName) return '';
     return Settings.findOne()[settingName];
   },
   getBlockFragment: function(block) {
