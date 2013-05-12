@@ -1,0 +1,27 @@
+.hero-unit {
+  text-align: center;
+  color: #fff;
+  background: url("/img/stars.jpg") no-repeat center center fixed;
+  background-size: cover;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+}
+
+.hero-unit a {
+  color: #93cbe8;
+}
+
+.hero-unit .btn {
+  margin: 9px;
+  color: #fff;
+}
+
+.hero-unit .btn:hover {
+  color: #666;
+}
+
+.hero-unit .btn i {
+  line-height: 24px;
+  margin-right: 7px;
+}
