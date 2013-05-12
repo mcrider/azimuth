@@ -1,5 +1,6 @@
 Template.footer.rendered = function() {
-  $(".navbar, #page").show();
+  $(".navbar, .footer").removeClass('hidden');
+  $("#page").show();
   $(".loading-overlay").fadeOut('slow');
 }
 

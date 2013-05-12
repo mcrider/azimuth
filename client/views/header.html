@@ -6,7 +6,7 @@
 
   <div class="loading-overlay"><span>Loading...</span><br><img src="/img/loading.gif"></div>
 
-  <div class="navbar">
+  <div class="navbar hidden">
     <div class="navbar-inner">
       <div class="container-fluid">
 
@@ -22,9 +22,7 @@
           {{#with headerNav}}
             {{>header_nav_root}}
           {{/with}}
-        </div>
-
-        
+        </div>        
 
         {{#if isInRole 'admin'}}
         <ul class="nav pull-right">
