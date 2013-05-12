@@ -10954,6 +10954,9 @@ a:hover {
 .dropdown-menu {
   border: 2px solid #D8EAED;
 }
+.dropdown-menu li a:hover {
+  background: #F5FAF9;
+}
 .dropdown-toggle {
   border-radius-topright: 0;
   border-radius-topleft: 0;
