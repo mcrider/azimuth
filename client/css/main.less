@@ -1,7 +1,25 @@
 /*************************************************
             Main CSS for Azimuth
 ************************************************/
+
+.loading-overlay {
+  z-index: 2;
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  padding-top: 20%;
+  text-align: center;
+  font-size: 22px;
+  color: rgb(203, 223, 233);
+  background-color: white;
+
+  img {
+    margin-top: 14px;
+  }
+}
+
 .navbar {
+  display: none;
   margin-bottom: 0;
   #login-dropdown-list {
     i.icon-user.logged-in {
@@ -10,7 +28,12 @@
   }
 }
 
+#page {
+  display: none;
+}
+
 footer {
+  display: none;
   border-top: 1px solid #666;
   margin-top: 30px;
   padding-top: 12px;
