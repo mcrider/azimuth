@@ -1,5 +1,11 @@
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
 <body>
-  {{> header}}
-  <div id="page"></div>
-  {{> footer}}
+  <div class="loading-overlay"><span>Loading...</span><br><img src="/img/loading.gif"></div>
+  <div id="contents" class="hidden">
+    {{> header}}
+    <div id="page"></div>
+    {{> footer}}
+  </div>
 </body>

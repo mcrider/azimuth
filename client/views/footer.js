@@ -1,7 +1,9 @@
 Template.footer.rendered = function() {
-  $(".navbar, .footer").removeClass('hidden');
-  $("#page").show();
-  $(".loading-overlay").fadeOut('slow');
+  Meteor.defer(function() {
+    $(".loading-overlay").fadeOut('slow', function() {
+     $("#contents").removeClass('hidden'); 
+    });   
+  });
 }
 
 Template.footer.footerNav = function () {

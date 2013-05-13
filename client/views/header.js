@@ -2,6 +2,9 @@
 // Describes the page's metadata and actions.
 
 Template.header.rendered = function() {
+  // Set page title
+  document.title = utils.getSetting('siteName');
+
   // Hack to make login menu an icon rather than username
   $('#login-buttons .nav-collapse').removeClass('nav-collapse');
   var username = $('#login-dropdown-list .dropdown-toggle').text();
