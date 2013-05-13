@@ -30,19 +30,23 @@ Template.edit_block.events = {
         icon: false
       });
     }
-
-    $('#editBlockModal').modal('hide');
-
+    
     // Add block to page
     if(Session.get('new-block-id')) {
+      Session.set('new-block-id', false);
       var page = utils.getCurrentPage();
-      var label = Template[template].label || 'Single Block';
-      if (!page.notFound) {
+      
+      if (block && !page.notFound) {
+        var template = block.template;
+        var label = Template[template].label || 'Single Block';
         Pages.update({_id: page._id}, {$addToSet: {blocks: {id: block._id, label: label, zone: Session.get('block-zone'), added: Date.now()}}});
       }  
     }
-    
-    // Set this so we don't have to run the 'hidden' event handler
+
+    // Set this so we don't have to run the 'hidden' event handler when we close the modal
     Session.set('block-saved', true);
+
+    $('#editBlockModal').modal('hide');
+
   }
 };
