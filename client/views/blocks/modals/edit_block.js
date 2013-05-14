@@ -1,14 +1,5 @@
 Template.edit_block.rendered = function() {
-  // Handle deletion of a newly created block: To avoid issues with meteor not 
-  //  displaying the modal after a new block is created (due to re-rendering issues), 
-  //  the block must be created first then added after the modal is closed
   Session.set('block-saved', false);
-  $(this.firstNode).on('hidden', function() {
-    var newBlockId = Session.get('new-block-id');
-    if(!Session.get('block-saved') && newBlockId) {
-      Blocks.remove(newBlockId);
-    }
-  });
 }
 
 Template.edit_block.events = {
@@ -48,5 +39,14 @@ Template.edit_block.events = {
 
     $('#editBlockModal').modal('hide');
 
+  },
+  'click .close-modal': function(e) {
+    // Handle deletion of a newly created block: To avoid issues with meteor not 
+    //  displaying the modal after a new block is created (due to re-rendering issues), 
+    //  the block must be created first then added after the modal is closed
+    var newBlockId = Session.get('new-block-id');
+    if(!Session.get('block-saved') && newBlockId) {
+      Blocks.remove(newBlockId);
+    }
   }
 };
