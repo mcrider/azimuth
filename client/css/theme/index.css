@@ -10971,3 +10971,7 @@ a:hover {
 .block-zone-container .block-zone {
   font-size: .8em;
 }
+.home-blocks h3 i {
+  margin-right: 26px;
+  line-height: 36px;
+}
