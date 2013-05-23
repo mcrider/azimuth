@@ -10972,6 +10972,15 @@ a:hover {
   font-size: .8em;
 }
 .home-blocks h3 i {
-  margin-right: 26px;
+  margin-right: 34px;
   line-height: 36px;
+}
+.nav-list {
+  color: #596974;
+}
+.nav-list .active a,
+.nav-list .active a:hover {
+  text-shadow: none;
+  color: #596974;
+  background-color: #E9F3F5;
 }
