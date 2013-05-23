@@ -4,7 +4,7 @@ Template.block_zone_editor.rendered = function() {
     // $("input[name=list1SortOrder]").val(data.join("|"));
   };
 
-  $("ul.block-zone").dragsort({ 
+  $(this.firstNode).find("ul.block-zone").dragsort({ 
     dragSelector: "li", 
     dragEnd: saveOrder, 
     dragSelectorExclude: ".ops", 
@@ -37,9 +37,9 @@ Template.block_zone_editor.events = {
       Template[ block.template + "_edit" ].block = block;
       return Template[ block.template + "_edit" ](block); // this calls the template and returns the HTML.
     });
-    $('#editBlockModal .modal-body').html(fragment);
+    $('#editBlockModal').first().find('.modal-body').html(fragment);
     Session.set('block-edit-id', block_id);
-    $('#editBlockModal').modal('show');
+    $('#editBlockModal').first().modal('show');
   },
   'click .existing-block': function(e) {
   	e.preventDefault();
@@ -90,9 +90,9 @@ Template.block_zone_editor.events = {
       Template[ block.template + "_edit" ].block = block;
       return Template[ block.template + "_edit" ](block); // this calls the template and returns the HTML.
     });
-    $('#editBlockModal .modal-body').html(fragment);
+    $('#editBlockModal').first().find('.modal-body').html(fragment);
     Session.set('block-edit-id', block._id);
-    $('#editBlockModal').modal('show');
+    $('#editBlockModal').first().modal('show');
   }
 };
 

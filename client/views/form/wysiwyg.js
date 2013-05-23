@@ -44,7 +44,6 @@ Template.wysiwyg.rendered = function() {
     );
   }
   
-  // Hack to get multiple instances of editor to work
   if (this.data.uniqueId) {
     $('#' + this.data.uniqueId + '_wysiwyg').wysiwyg({toolbarSelector: '#' + this.data.uniqueId + '_toolbar'});
     $('#' + this.data.uniqueId + '_wysiwyg').on('keyup', onWysiwygKeyup);
