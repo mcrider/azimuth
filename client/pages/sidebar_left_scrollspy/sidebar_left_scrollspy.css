@@ -1,0 +1,13 @@
+section {
+  padding-top: 40px;
+  margin-top: -40px;
+}
+
+ul {
+  list-style-type: none;
+  margin-left: 10px;
+}
+
+pre {
+  font-size: .9em;
+}
