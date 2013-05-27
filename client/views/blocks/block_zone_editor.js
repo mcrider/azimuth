@@ -1,7 +1,21 @@
 Template.block_zone_editor.rendered = function() {
-  var saveOrder = function() {
-    // var data = $(".block-zone li").map(function() { return $(this).children().html(); }).get();
-    // $("input[name=list1SortOrder]").val(data.join("|"));
+  var saveOrder = function(e) {
+    var pageId = utils.getCurrentPage()._id;
+    // Collect all blocks into an array of objects
+    var blocks = $(this).parent().find('li').map(function() { 
+      return {id: $(this).data('id'), 
+              added: $(this).data('added'), 
+              label: $(this).find('.block-label').text(), 
+              zone: $(this).closest('.block-zone-container').data('zone') }  
+    }).get();
+
+    // Delete current blocks for this blockzone
+    Pages.update({ _id: pageId }, {$pull : {  "blocks" : { zone: "body" }}});
+
+    // Reset page blocks with updated array
+    _.each(blocks, function(block) {
+      Pages.update({ _id: pageId }, { $addToSet: { blocks: block }});
+    });
   };
 
   $(this.firstNode).find("ul.block-zone").dragsort({ 
@@ -14,6 +28,11 @@ Template.block_zone_editor.rendered = function() {
 
 Template.block_zone_editor.added = function() {
   if(this.added) return utils.displayHumanReadableTime(this.added);
+  else return '';
+};
+
+Template.block_zone_editor.timestamp = function() {
+  if(this.added) return this.added;
   else return '';
 };
 

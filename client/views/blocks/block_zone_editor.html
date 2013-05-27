@@ -29,7 +29,7 @@
                   </li>
                 </ul>
               </li>
-              <li class="divider-vertical"></li>
+              <!--<li class="divider-vertical"></li>
               <li class="dropdown">
                 <a class="dropdown-toggle" data-toggle="dropdown">Sort Blocks<b class="caret"></b></a>
                 <ul class="dropdown-menu">
@@ -38,7 +38,7 @@
                   <li class="sort-date-up"><a>By Date Created <i class="icon-angle-up"></i></a></li>
                   <li class="sort-date-down"><a>By Date Created <i class="icon-angle-down"></i></a></li>
                 </ul>
-              </li>
+              </li>-->
             </ul>
           </div>
         </div>
@@ -47,7 +47,7 @@
             {{! iterate over page block elements; display different things depending on what type we have }}
             {{#each blocks}}
               {{#if id}}
-                <li data-type="id" data-id="{{id}}" class="well edit-block id-block">
+                <li data-type="id" data-id="{{id}}" data-added="{{timestamp}}" class="well edit-block id-block">
                   <p>
                     <span class="block-label">{{label}}</span>
                     <span class="date-time">{{added}}</span>
@@ -59,7 +59,7 @@
                 </li>
               {{/if}}
               {{#if type}}
-                <li data-type="type" data-id="{{type}}" class="well edit-block type-block">
+                <li data-type="type" data-id="{{type}}" data-added="{{timestamp}}" class="well edit-block type-block">
                   <p>
                     <span class="block-label">Type: {{label}}</span>
                     <span class="date-time">{{added}}</span>
@@ -70,7 +70,7 @@
                 </li>
               {{/if}}
               {{#if tag}}
-                <li data-type="tag" data-id="{{tag}}" class="well edit-block tag-block">
+                <li data-type="tag" data-id="{{tag}}" data-added="{{timestamp}}" class="well edit-block tag-block">
                   <p>
                     <span class="block-label">Tag: {{label}}</span>
                     <span class="date-time">{{added}}</span>
