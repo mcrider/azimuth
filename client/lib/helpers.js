@@ -48,6 +48,7 @@ Handlebars.registerHelper('renderBlock', function (block) {
 
 // Renders a form element using a template in views/form/
 Handlebars.registerHelper("formHelper", function (options) {
+  if(options.hash.type == 'wysiwyg') options.hash.uniqueId = options.hash.fieldName + '_' + Math.random().toString(36).substring(7);
   // FIXME: Return error if type not valid template
   return new Handlebars.SafeString(Template[options.hash.type](options.hash));
 });
