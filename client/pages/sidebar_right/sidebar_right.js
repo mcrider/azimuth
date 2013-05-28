@@ -6,7 +6,3 @@ Template.sidebar_right.description = 'Basic two column layout with right-hand si
 
 // This important method hooks the template into the CMS
 registry.pageTemplate({name: 'sidebar_right', label: 'Sidebar on Right'})
-
-Template.sidebar_right.page = function() {
-  return utils.getCurrentPage();
-};

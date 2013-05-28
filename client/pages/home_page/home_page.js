@@ -6,7 +6,3 @@ Template.home_page.description = 'Basic one column layout';
 
 // This important method hooks the template into the CMS
 registry.pageTemplate({name: 'home_page', label: 'Home Page'})
-
-Template.home_page.page = function() {
-  return utils.getCurrentPage();
-};

@@ -6,9 +6,3 @@ Template.page_default_edit.events = {
   'click #deletePage': events.showDeletePageModal,
   'click .delete-page': events.deletePage
 };
-
-
-/// FIXME:  MAKE THIS A HANDLEBARS HELPER (register helper for 'currentPage' and use in all templates)
-Template.page_default_edit.page = function () {
-  return utils.getCurrentPage();
-};
