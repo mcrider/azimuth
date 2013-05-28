@@ -43,6 +43,10 @@ Template.wysiwyg.rendered = function() {
       }
     );
   }
+
+  onButtonClick = function(e) {
+    $(e.currentTarget).closest('.btn-toolbar').next().next('.html-editor').val($(e.currentTarget).closest('.btn-toolbar').next('.wysiwyg-editor').cleanHtml());
+  }
   
   if (this.data.uniqueId) {
     $('#' + this.data.uniqueId + '_wysiwyg').wysiwyg({toolbarSelector: '#' + this.data.uniqueId + '_toolbar'});
@@ -54,6 +58,8 @@ Template.wysiwyg.rendered = function() {
     $('#' + this.data.uniqueId + '_toolbar .filepicker-image').on('click', onImageClick);
     $('#' + this.data.uniqueId + '_toolbar .filepicker-file').on('click', onFileClick);
 
+    // Trigger change event when buttons are pressed so HTML is updated
+    $('#' + this.data.uniqueId + '_toolbar .btn').on('click', onButtonClick);
   } else {
     $('.wysiwyg-editor').wysiwyg();
   }
