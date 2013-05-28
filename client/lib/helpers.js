@@ -66,7 +66,9 @@ Handlebars.registerHelper("humanReadableTime", function (timestamp) {
 
 // Get a setting value
 Handlebars.registerHelper("getSetting", function (settingName) {
-	return utils.getSetting(settingName);
+  var settingValue = utils.getSetting(settingName);
+  if (settingValue) return utils.getSetting(settingName);
+	else return '';
 });
 
 // Get a boolean setting value (i.e. check a setting's truth value to determine to display block)
