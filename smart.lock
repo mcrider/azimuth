@@ -2,7 +2,7 @@
   "meteor": {
     "git": "https://github.com/meteor/meteor.git",
     "branch": "master",
-    "commit": "1dfc7171f237a029cca74cbf25024acbf6ed5b75"
+    "commit": "5d736d4bf0448c7db1f9b47124dfafc34a9631bb"
   },
   "dependencies": {
     "basePackages": {
@@ -23,8 +23,8 @@
       },
       "font-awesome": {
         "git": "https://github.com/nate-strauser/meteor-font-awesome.git",
-        "tag": "v0.1.3",
-        "commit": "e507577b97827de662866304f8b9d3d553e3912f"
+        "tag": "v0.1.6",
+        "commit": "f0f7bde5b60f3ceae69e11fa545bdbf8a8cf2d03"
       },
       "pnotify": {
         "git": "https://github.com/kidovate/meteor-pnotify.git",
