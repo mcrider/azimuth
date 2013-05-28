@@ -14,9 +14,9 @@ Navigation = new Meteor.Collection("navigation");
 // ID of currently selected page
 Session.set('page-slug', null);
 
-Meteor.subscribe('pages');
-Meteor.subscribe('blocks');
-Meteor.subscribe('user_list');
-Meteor.subscribe('roles');
-Meteor.subscribe('settings');
-Meteor.subscribe('navigation');
+pagesSubscription = Meteor.subscribe('pages');
+blocksSubscription = Meteor.subscribe('blocks');
+user_listSubscription = Meteor.subscribe('user_list');
+rolesSubscription = Meteor.subscribe('roles');
+settingsSubscription = Meteor.subscribe('settings');
+navigationSubscription = Meteor.subscribe('navigation');

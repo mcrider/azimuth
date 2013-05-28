@@ -28,6 +28,9 @@ Meteor.Router.add({
 		return page;
 	},
   "/": function() {
+    if (! pagesSubscription.ready()) {
+      return 'loading';
+    }
     var slug = utils.getSetting('indexPage');
     var page = Pages.findOne({slug: slug});
     if(!page) {
