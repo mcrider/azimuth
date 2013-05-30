@@ -11,6 +11,7 @@
     "roles": {},
     "router": {},
     "filepicker": {},
-    "bootstrap-wysiwyg": {}
+    "bootstrap-wysiwyg": {},
+    "analyticsjs": {}
   }
 }
