@@ -1,36 +1,39 @@
 <template name="admin_users">
   <div class="container user-list">
     <div class="row">
-      <div class="btn-toolbar">
+      <!--<div class="btn-toolbar">
         <button class="btn btn-primary">New User</button>
-      </div>
-      <div class="well">
-        <table class="table">
-          <thead>
-            <tr>
-              <th>Roles</th>
-              <th>Name</th>
-              <th>Email</th>
-              <th style="width: 36px;"></th>
-            </tr>
-          </thead>
-          <tbody>
-            {{#each users}}
+      </div>-->
+      <h2>Users</h2>
+      <div class="span8 user-container">
+        <div class="well">
+          <table class="table">
+            <thead>
               <tr>
-                <td class="roles">
-                  <a class="admin" title="Admin"><i class="icon-key{{#if isInRole 'admin'}} enabled{{/if}}"></i></a>
-                  <a class="author" title="Author"><i class="icon-book{{#if isInRole 'author'}} enabled{{/if}}"></i></a>
-                </td>
-                <td>{{profile.name}}</td>
-                <td>{{emails.0.address}}</td>
-                <td>
-                    <a href="user.html"><i class="icon-pencil"></i></a>
-                    <a href="#myModal" role="button" data-toggle="modal"><i class="icon-remove"></i></a>
-                </td>
+                <th>Roles</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th style="width: 36px;"></th>
               </tr>
-            {{/each}}
-          </tbody>
-        </table>
+            </thead>
+            <tbody>
+              {{#each users}}
+                <tr>
+                  <td class="roles">
+                    <a class="admin" title="Admin"><i class="icon-key{{#if isInRole 'admin'}} enabled{{/if}}"></i></a>
+                    <a class="author" title="Author"><i class="icon-book{{#if isInRole 'author'}} enabled{{/if}}"></i></a>
+                  </td>
+                  <!--<td>{{profile.name}}</td>-->
+                  <td>{{emails.0.address}}</td>
+                  <td>
+                      <!--<a href="#"><i class="icon-pencil"></i></a>-->
+                      <a href="#myModal" role="button" data-toggle="modal"><i class="icon-remove"></i></a>
+                  </td>
+                </tr>
+              {{/each}}
+            </tbody>
+          </table>
+        </div>
       </div>
     </div>
   </div>
