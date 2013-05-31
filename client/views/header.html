@@ -9,7 +9,7 @@
           <span class="icon-bar"></span>
         </button>
 
-        <a class="brand" href="/">{{getSetting 'siteName'}}</a>
+        <a class="brand" href="/">{{#ifSetting "logoUrl"}}<img class="logo" src="{{getSetting 'logoUrl'}}">{{/ifSetting}}{{getSetting 'siteName'}}</a>
        
         <div class="page-menu nav-collapse collapse">
           {{#with headerNav}}
