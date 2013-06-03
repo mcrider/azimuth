@@ -14,4 +14,4 @@ You can then run Azimuth by cloning this repository and running `mrt` from the r
 
 To administer Azimuth, create a user account -- the first user account will be the admin user.  From there you can edit your site from the admin menu in the top right corner of the page.
 
-For further documentation and a demo if Azimuth in action, visit [http://azimuthc.ms](http://azimuthc.ms).
+For further documentation and a demo of Azimuth in action, visit [http://azimuthc.ms](http://azimuthc.ms).
