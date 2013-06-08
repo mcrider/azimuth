@@ -11,3 +11,14 @@ ul {
 pre {
   font-size: .9em;
 }
+
+.screenshot-container {
+  text-align: center;
+}
+
+.screenshot-container img {
+  -webkit-box-shadow: 2px 2px 7px rgba(50, 50, 50, 0.25);
+  -moz-box-shadow:    2px 2px 7px rgba(50, 50, 50, 0.25);
+  box-shadow:         2px 2px 7px rgba(50, 50, 50, 0.25);
+  width: 80%;
+}
