@@ -83,3 +83,15 @@ Handlebars.registerHelper("ifCurrentPage", function (slug, block) {
   if (utils.getCurrentPage().template == slug) return block(this);
   else return false;
 });
+
+// Custom helper to meteor-roles package to test if user is an admin
+Handlebars.registerHelper("ifAdmin", function (userId, block) {
+  if (Roles.userIsInRole({_id: userId}, ['admin'])) return block(this);
+  else return '';
+});
+
+// Custom helper to meteor-roles package to test if user is an admin
+Handlebars.registerHelper("ifAuthor", function (userId, block) {
+  if (Roles.userIsInRole({_id: userId}, ['author'])) return block(this);
+  else return '';
+});

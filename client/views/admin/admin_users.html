@@ -11,8 +11,9 @@
             <thead>
               <tr>
                 <th>Roles</th>
-                <th>Name</th>
                 <th>Email</th>
+                <th>Joined</th>
+                {{#if isInRole 'admin'}}<th>Remove</th>{{/if}}
                 <th style="width: 36px;"></th>
               </tr>
             </thead>
@@ -20,15 +21,16 @@
               {{#each users}}
                 <tr>
                   <td class="roles">
-                    <a class="admin" title="Admin"><i class="icon-key{{#if isInRole 'admin'}} enabled{{/if}}"></i></a>
-                    <a class="author" title="Author"><i class="icon-book{{#if isInRole 'author'}} enabled{{/if}}"></i></a>
+                    <a class="admin" title="Admin"><i class="icon-key{{#ifAdmin this._id}} enabled{{/ifAdmin}}"></i></a>
+                    <a class="author" title="Author"><i class="icon-book{{#ifAuthor this._id}} enabled{{/ifAuthor}}"></i></a>
                   </td>
                   <!--<td>{{profile.name}}</td>-->
                   <td>{{emails.0.address}}</td>
-                  <td>
+                  <td>{{humanReadableTime createdAt}}</td>
+                  {{#if isInRole 'admin'}}<td>
                       <!--<a href="#"><i class="icon-pencil"></i></a>-->
-                      <a href="#myModal" role="button" data-toggle="modal"><i class="icon-remove"></i></a>
-                  </td>
+                      <a class="delete-user remove" href="#"><i class="icon-remove"></i></a>
+                  </td>{{/if}}
                 </tr>
               {{/each}}
             </tbody>
@@ -38,17 +40,17 @@
     </div>
   </div>
 
-  <div class="modal small hide fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal hide" id="deleteUserModal">
       <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
           <h3 id="myModalLabel">Delete Confirmation</h3>
       </div>
       <div class="modal-body">
-          <p class="error-text">Are you sure you want to delete the user?</p>
+          <p class="error-text">Are you sure you want to delete this user?</p>
       </div>
       <div class="modal-footer">
           <button class="btn" data-dismiss="modal" aria-hidden="true">Cancel</button>
-          <button class="btn btn-danger" data-dismiss="modal">Delete</button>
+          <button class="delete-user-confirm btn btn-danger" data-dismiss="modal">Delete</button>
       </div>
   </div>
 </template>

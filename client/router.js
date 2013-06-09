@@ -21,7 +21,6 @@ Meteor.Router.add({
   },
   "/users": function() {
     if (!Roles.userIsInRole(Meteor.user(), ['admin'])) {
-      throw new Meteor.Error(403, "Not authorized");
       return false;
     }
 		$("#page").html( utils.loadTemplate('admin_users') );
