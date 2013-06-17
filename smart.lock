@@ -2,7 +2,7 @@
   "meteor": {
     "git": "https://github.com/meteor/meteor.git",
     "branch": "master",
-    "commit": "5d736d4bf0448c7db1f9b47124dfafc34a9631bb"
+    "commit": "9bb2b5447e845c4f483df5e9b42a2c1de5ab909b"
   },
   "dependencies": {
     "basePackages": {
@@ -24,8 +24,8 @@
       },
       "font-awesome": {
         "git": "https://github.com/nate-strauser/meteor-font-awesome.git",
-        "tag": "v0.1.6",
-        "commit": "f0f7bde5b60f3ceae69e11fa545bdbf8a8cf2d03"
+        "tag": "v3.2.0",
+        "commit": "2cba6f907a2579cae2d399b522f9544c13d5e091"
       },
       "pnotify": {
         "git": "https://github.com/kidovate/meteor-pnotify.git",
@@ -34,8 +34,8 @@
       },
       "accounts-ui-bootstrap-dropdown": {
         "git": "https://github.com/erobit/meteor-accounts-ui-bootstrap-dropdown.git",
-        "tag": "v0.1.0",
-        "commit": "e66558aaa4dc0d85c6ddb63bd2289b38c2b793f6"
+        "tag": "v0.1.3",
+        "commit": "42aa4d95070a2bd2aa200dcfd6c0edc69e3815c3"
       },
       "roles": {
         "git": "https://github.com/alanning/meteor-roles.git",
