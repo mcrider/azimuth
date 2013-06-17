@@ -55,6 +55,17 @@ Meteor.startup(function () {
     remove: authorize.authorsAndAdmins
   });
 
+  // PageBlocks -- Links block instances and the pages that contain them
+  Meteor.publish('pageBlocks', function () {
+    return PageBlocks.find();
+  });
+  PageBlocks = new Meteor.Collection("pageBlocks");
+  PageBlocks.allow({
+    insert: authorize.authorsAndAdmins,
+    update: authorize.authorsAndAdmins,
+    remove: authorize.authorsAndAdmins
+  });
+
   // Users
   Meteor.publish('user_list', function () {
     if (Roles.userIsInRole(this.userId, ['admin'])) {

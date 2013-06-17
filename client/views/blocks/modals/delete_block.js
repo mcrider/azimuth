@@ -1,4 +1,5 @@
 Template.delete_block.events = {
+  // Delete only a pageBlock (the actual blocks are kept)
   'click .delete-block-confirm': function(e) {
   	e.preventDefault();
     $('#deleteBlockModal').modal('hide');
@@ -7,31 +8,22 @@ Template.delete_block.events = {
     var id = Session.get('block-edit-id');
     page = utils.getCurrentPage();
 
-    var showSuccess = function() {
-      $.pnotify({
-        text: 'Block removed from page.',
-        type: 'success',
-        icon: false
-      });  
-    }
+    var pageBlocks = null;
+    if (type == 'block_type') pageBlocks = PageBlocks.find({ page_id : page._id, block_type: id });
+    else if (type == 'block_tag') pageBlocks = PageBlocks.find({ page_id : page._id, block_tag: id });
+    else pageBlocks = PageBlocks.find({ page_id : page._id, block_id: id });
 
-    if (type == 'id') {
-      Pages.update({ _id : page._id }, {$pull : {  "blocks" : { id: id }}});
-      showSuccess();
-    } else if (type == 'type') {
-      Pages.update({ _id : page._id }, {$pull : {  "blocks" : { type: id }}});
-      showSuccess();
-    } else if (type == 'tag') {
-      Pages.update({ _id : page._id }, {$pull : {  "blocks" : { tag: id }}});
-      showSuccess();
-    } else {
-      $.pnotify({
-        text: 'This block could not be removed from the page.',
-        type: 'warning',
-        icon: false
-      });  
-    }
+    pageBlocks.forEach(function(pageBlock) {
+      PageBlocks.remove(pageBlock._id);
+    });
+
+	  $.pnotify({
+  	  text: 'Block removed from page.',
+	    type: 'success',
+	    icon: false
+    });
   },
+  // Delete a pageBlock and the corresponding block
   'click .delete-all-blocks-confirm': function(e) {
   	e.preventDefault();
     $('#deleteBlockModal').modal('hide');
@@ -40,8 +32,8 @@ Template.delete_block.events = {
     var id = Session.get('block-edit-id');
 
     if (type == 'id') {
-      Pages.find().forEach(function(page) {
-        Pages.update({ _id : page._id }, {$pull : {  "blocks" : { id: id }}});
+      PageBlocks.find({block_id: id}).forEach(function(pageBlock) {
+			  PageBlocks.remove(pageBlock._id);
       });
       Blocks.remove(id);
       $.pnotify({
@@ -54,7 +46,7 @@ Template.delete_block.events = {
         text: 'There was an error trying to delete this block.',
         type: 'warning',
         icon: false
-      });  
+      });
     }
   }
 };

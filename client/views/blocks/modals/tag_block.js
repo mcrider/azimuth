@@ -10,7 +10,7 @@ Template.tag_block.events = {
 
       // Attach the block to the page
       if (!page.notFound) {
-        Pages.update({_id: page._id}, {$addToSet: {blocks: {tag: tag, label: tag, zone: zone, added: Date.now()}}});
+        PageBlocks.insert({page_id: page._id, block_tag: tag, label: tag, zone: zone, added: Date.now()});
       }
 
       $.pnotify({

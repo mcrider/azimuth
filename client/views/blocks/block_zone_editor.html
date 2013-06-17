@@ -44,10 +44,9 @@
         </div>
         <div class="blocks-container">
           <ul class="block-zone clearfix">
-            {{! iterate over page block elements; display different things depending on what type we have }}
-            {{#each blocks}}
-              {{#if id}}
-                <li data-type="id" data-id="{{id}}" data-added="{{timestamp}}" class="well edit-block id-block">
+            {{#each pageBlocks}}
+              {{#if block_id}}
+                <li data-block_id="{{block_id}}" data-added="{{timestamp}}" class="well edit-block id-block">
                   <p>
                     <span class="block-label">{{label}}</span>
                     <span class="date-time">{{added}}</span>
@@ -58,8 +57,8 @@
                   </div>
                 </li>
               {{/if}}
-              {{#if type}}
-                <li data-type="type" data-id="{{type}}" data-added="{{timestamp}}" class="well edit-block type-block">
+              {{#if block_type}}
+                <li data-block_type="{{block_type}}" data-added="{{timestamp}}" class="well edit-block type-block">
                   <p>
                     <span class="block-label">Type: {{label}}</span>
                     <span class="date-time">{{added}}</span>
@@ -69,8 +68,8 @@
                   </div>
                 </li>
               {{/if}}
-              {{#if tag}}
-                <li data-type="tag" data-id="{{tag}}" data-added="{{timestamp}}" class="well edit-block tag-block">
+              {{#if block_tag}}
+                <li data-block_tag="{{block_tag}}" data-added="{{timestamp}}" class="well edit-block tag-block">
                   <p>
                     <span class="block-label">Tag: {{label}}</span>
                     <span class="date-time">{{added}}</span>
@@ -94,3 +93,5 @@
   {{>existing_block}}
   {{>tag_block}}
 </template>
+
+

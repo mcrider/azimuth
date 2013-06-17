@@ -1,28 +1,48 @@
 Template.block_zone_editor.rendered = function() {
+  // Set up our drag-and-drop handler
   var saveOrder = function(e) {
     var pageId = utils.getCurrentPage()._id;
+    var zone = $(this).closest('.block-zone-container').data('zone');
     // Collect all blocks into an array of objects
-    var blocks = $(this).parent().find('li').map(function() { 
-      return {id: $(this).data('id'), 
-              added: $(this).data('added'), 
-              label: $(this).find('.block-label').text(), 
-              zone: $(this).closest('.block-zone-container').data('zone') }  
+
+    var currentPageBlocks = $(this).parent().find('li').map(function() {
+      var pageBlock = {
+        page_id: pageId,
+        added: $(this).data('added'),
+        label: $(this).find('.block-label').text(),
+        zone: zone
+      }
+
+      if ($(this).data('block_type')) {
+        pageBlock.block_type = $(this).data('block_type');
+      } else if ($(this).data('block_tag')) {
+        pageBlock.block_tag = $(this).data('block_tag');
+      }  else if ($(this).data('block_id')) {
+        pageBlock.block_id = $(this).data('block_id');
+      } else {
+        console.log("Page block type not specified")
+        return false;
+      }
+
+      return pageBlock;
     }).get();
 
     // Delete current blocks for this blockzone
-    Pages.update({ _id: pageId }, {$pull : {  "blocks" : { zone: "body" }}});
+    PageBlocks.find({ page_id : pageId, zone: zone }).forEach(function(pageBlock) {
+      PageBlocks.remove(pageBlock._id);
+    });
 
     // Reset page blocks with updated array
-    _.each(blocks, function(block) {
-      Pages.update({ _id: pageId }, { $addToSet: { blocks: block }});
+    _.each(currentPageBlocks, function(pageBlock) {
+      PageBlocks.insert(pageBlock);
     });
   };
 
-  $(this.firstNode).find("ul.block-zone").dragsort({ 
-    dragSelector: "li", 
-    dragEnd: saveOrder, 
-    dragSelectorExclude: ".ops", 
-    placeHolderTemplate: "<li class='placeHolder'><div></div></li>" 
+  $(this.firstNode).find("ul.block-zone").dragsort({
+    dragSelector: "li",
+    dragEnd: saveOrder,
+    dragSelectorExclude: ".ops",
+    placeHolderTemplate: "<li class='placeHolder'><div></div></li>"
   });
 }
 
@@ -81,7 +101,7 @@ Template.block_zone_editor.events = {
 
     // Attach the block to the page
     if (!page.notFound) {
-      Pages.update({_id: page._id}, {$addToSet: {blocks: {type: this.name, label: label, zone: zone, added: Date.now()}}});
+      PageBlocks.insert({page_id: page._id, block_type: this.name, label: label, zone: zone, added: Date.now()});
     }
 
     $.pnotify({
@@ -92,8 +112,22 @@ Template.block_zone_editor.events = {
   },
   'click .delete-block-button': function(e) {
   	e.preventDefault();
-    Session.set('block-edit-id', $(e.currentTarget).closest('.edit-block').data('id'));
-    Session.set('block-edit-type', $(e.currentTarget).closest('.edit-block').data('type'));
+
+    var data = $(e.currentTarget).closest('.edit-block').data();
+    var id, type;
+
+    if (data.block_type) {
+      id = data.block_type;
+      type = 'block_type';
+    } else if (data.block_tag) {
+      id = data.block_tag;
+      type = 'block_tag';
+    } else if (data.block_id) {
+      id = data.block_id;
+      type = 'block_id';
+    }
+    Session.set('block-edit-id', id);
+    Session.set('block-edit-type', type);
 
     if(Session.get('block-edit-type') == 'id') {
       $("#deleteBlockModal .delete-all-blocks-confirm").show();
@@ -104,7 +138,7 @@ Template.block_zone_editor.events = {
   },
   'click .edit-block-button': function(e) {
   	e.preventDefault();
-    var block = Blocks.findOne({_id: this.id});
+    var block = Blocks.findOne({_id: this.block_id});
     var fragment = Meteor.render(function () {
       Template[ block.template + "_edit" ].block = block;
       return Template[ block.template + "_edit" ](block); // this calls the template and returns the HTML.
@@ -115,18 +149,15 @@ Template.block_zone_editor.events = {
   }
 };
 
-Template.block_zone_editor.blocks = function() {
-  var blocks = utils.getCurrentPage().blocks;
+Template.block_zone_editor.pageBlocks = function() {
   // Get blocks with the correct zone (specified by this.zone)
   if(!this.zone) {
     console.log("You must specify a block zone for this helper");
     return false;
   }
-  return _.where(blocks, {zone: this.zone});
-}
 
-Template.block_zone_editor.allBlocks = function() {
-  return Blocks.find();
+  var page = utils.getCurrentPage();
+  return PageBlocks.find({page_id: page._id, zone: this.zone});
 }
 
 Template.block_zone_editor.templates = function() {

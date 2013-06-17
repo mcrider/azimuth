@@ -17,7 +17,7 @@ Template.existing_block.events = {
     var label = Template[this.template].label || 'Single Block';
     // Attach the block to the page
     if (!page.notFound) {
-      Pages.update({_id: page._id}, {$addToSet: {blocks: {id: this._id, label: label, zone: Session.get('block-zone'), added: Date.now()}}});
+      PageBlocks.insert({page_id: page._id, block_id: block._id, label: label, zone: Session.get('block-zone'), added: Date.now()});
     }
 
     $('#existingBlockModal').modal('hide');
@@ -28,3 +28,7 @@ Template.existing_block.events = {
     });
   }
 };
+
+Template.existing_block.allBlocks = function() {
+  return Blocks.find();
+}

@@ -2,41 +2,43 @@
 
 // Display all blocks for a page in a given block zone
 Handlebars.registerHelper('renderBlocks', function (options) {
-  var pageBlocks =  _.where(this.blocks, {zone: options.hash.zone});
-
-  var fragments = '';
-  _.each(pageBlocks, function(pageBlock) {
-    if (pageBlock.tag) {
-      // Fetch blocks with a given tag and add to fragments
-      // FIXME: Meteor.renderList is probably better to use here
-      Blocks.find({tag: pageBlock.tag}).forEach(function(block) {
-        fragments = fragments.concat(utils.getBlockFragment(block));
-      });
-    } else if (pageBlock.type) {
-      // Fetch each block with the given template (== type) and add to fragments
-      Blocks.find({template: pageBlock.type}).forEach(function(block) {
-        fragments = fragments.concat(utils.getBlockFragment(block));
-      });
-    } else {
-      block = Blocks.findOne({ _id: pageBlock.id });
-      fragments = fragments.concat(utils.getBlockFragment(block));
-    }
-    
-    
-  });
- 
-  return fragments;
+  var zone = options.hash.zone;
+  if (!zone) {
+    console.log('Block zone not specified');
+    return false;
+  }
+  Template["block_display"].pageBlocks = PageBlocks.find({page_id: this._id, zone: zone});
+  return Template["block_display"]();
 });
 
+// Display a block/blocks from a pageBlock
+Handlebars.registerHelper('renderPageBlock', function (pageBlock) {
+  var fragment = '';
+  if (pageBlock.block_tag) {
+    // Fetch blocks with a given tag and add to fragments
+    Blocks.find({tag: pageBlock.block_tag}).forEach(function(block) {
+      fragment = fragment.concat(utils.getBlockFragment(block));
+    });
+  } else if (pageBlock.block_type) {
+    // Fetch each block with the given template (== type) and add to fragments
+    Blocks.find({template: pageBlock.block_type}).forEach(function(block) {
+      fragment = fragment.concat(utils.getBlockFragment(block));
+    });
+  } else {
+    var block = Blocks.findOne(pageBlock.block_id);
+    if (block && block.template) {
+      Template[block.template].block = block;
+      var fragment = Template[block.template](); // this calls the template and returns the HTML.
+    } else {
+      console.log('Block not found (or has no template specified)' );
+    }
+  }
+  return fragment;
+});
+
+// Renders a single instance of a block
 Handlebars.registerHelper('renderBlock', function (block) {
   if (block && block.template) {
-    // FIXME: Check if we are trying to display blocks by id, type, or tag
-
-    if(!block.template) {
-      console.log("No template specified for block " + id);
-      return false;
-    }
-
     Template[block.template].block = block;
     var fragment = Template[block.template](); // this calls the template and returns the HTML.
   } else {

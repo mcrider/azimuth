@@ -30,7 +30,7 @@ Template.edit_block.events = {
       if (block && !page.notFound) {
         var template = block.template;
         var label = Template[template].label || 'Single Block';
-        Pages.update({_id: page._id}, {$addToSet: {blocks: {id: block._id, label: label, zone: Session.get('block-zone'), added: Date.now()}}});
+        PageBlocks.insert({page_id: page._id, block_id: block._id, label: label, zone: Session.get('block-zone'), added: Date.now()});
       }  
     }
 
