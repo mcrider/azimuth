@@ -2,4 +2,13 @@
   {{#each pageBlocks}}
     {{{renderPageBlock this}}}
   {{/each}}
+  {{#if numSets}}
+    <div class="pagination" data-zone={{zone}}>
+      <ul>
+        {{#each numSets}}
+          <li class="{{currentPage zone}}"><a class="page" href="#">{{this}}</a></li>
+        {{/each}}
+      </ul>
+    </div>
+  {{/if}}
 </template>

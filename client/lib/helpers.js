@@ -7,7 +7,20 @@ Handlebars.registerHelper('renderBlocks', function (options) {
     console.log('Block zone not specified');
     return false;
   }
-  Template["block_display"].pageBlocks = PageBlocks.find({page_id: this._id, zone: zone});
+
+  // Get zone settings for paging and sorting
+  var page = utils.getCurrentPage();
+  var limit = page["zone_"+zone+"_limit"] ? page["zone_"+zone+"_limit"] : 0; // The number of blocks to show per 'page' of blocks
+  var skip = Session.get("zone_"+zone+"_skip") ? Session.get("zone_"+zone+"_skip") * limit : 0; // The current 'page' of blocks
+
+  if (limit > 0) {
+    Template["block_display"].pageBlocks = PageBlocks.find({page_id: this._id, zone: zone}, {skip: skip, limit: limit});
+  } else {
+    Template["block_display"].pageBlocks = PageBlocks.find({page_id: this._id, zone: zone});
+  }
+  var numSets = limit > 0 ? Math.ceil(PageBlocks.find({page_id: this._id, zone: zone}).count() / limit) : false;
+  Template["block_display"].numSets = numSets > 1 ? _.range(1, numSets + 1) : false;
+  Template["block_display"].zone = zone;
   return Template["block_display"]();
 });
 

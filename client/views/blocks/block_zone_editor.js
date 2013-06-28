@@ -56,6 +56,18 @@ Template.block_zone_editor.timestamp = function() {
   else return '';
 };
 
+Template.block_zone_editor.limit = function() {
+  var zone = this.zone;
+  var page = utils.getCurrentPage();
+  var limit = page["zone_"+zone+"_limit"];
+
+  return limit && limit > 0 ? page["zone_"+zone+"_limit"] : false;
+}
+
+Template.block_zone_editor.pageCount = function() {
+  return _.range(1, 51)
+};
+
 Template.block_zone_editor.events = {
   'click .new-block': function (e) {
     e.preventDefault();
@@ -109,6 +121,17 @@ Template.block_zone_editor.events = {
       type: 'success',
       icon: false
     });
+  },
+  'click .page-count': function(e) {
+    e.preventDefault();
+
+    var zone = $(e.currentTarget).closest('.block-zone-container').data('zone');
+    var page = utils.getCurrentPage();
+
+    var limit = {};
+    limit["zone_"+zone+"_limit"] = this.valueOf();
+
+    Pages.update(page._id, {$set: limit});
   },
   'click .delete-block-button': function(e) {
   	e.preventDefault();

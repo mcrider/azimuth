@@ -7,7 +7,7 @@
           <div class="navbar-inner">
             <ul class="nav">
               <li class="dropdown">
-                <a class="dropdown-toggle" data-toggle="dropdown">Add Block<b class="caret"></b></a>
+                <a class="dropdown-toggle" data-toggle="dropdown">Add Block&nbsp;<b class="caret"></b></a>
                 <ul class="dropdown-menu">
                   <li class="dropdown-submenu">
                     <a tabindex="-1">New Block</a>
@@ -27,6 +27,15 @@
                       {{/each}}
                     </ul>
                   </li>
+                </ul>
+              </li>
+              <li class="dropdown">
+                <a class="dropdown-toggle" data-toggle="dropdown">Limit: <span class="limit">{{#if limit}}{{limit}}{{else}}Off{{/if}}</span>&nbsp;<b class="caret"></b></a>
+                <ul class="dropdown-menu page-count-container">
+                  <li class="page-count" data-page-count="0"><a>Off</a></li>
+                  {{#each pageCount}}
+                    <li class="page-count"><a>{{this}}</a></li>
+                  {{/each}}
                 </ul>
               </li>
               <!--<li class="divider-vertical"></li>
