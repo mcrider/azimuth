@@ -1,5 +1,5 @@
 
-Template.block_display.currentPage = function(zone) {
+Template.block_display.currentBlockPage = function(zone) {
   return Session.equals("zone_"+zone+"_skip", this.valueOf() - 1) ? "active" : "";
 }
 

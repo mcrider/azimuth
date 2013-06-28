@@ -9,7 +9,7 @@ utils = {
   },
   getFormValues: function(selector) {
     var values = {};
-    
+
     // Turn form into array and handle special cases
     $.each($(selector).serializeArray(), function(i, field) {
       // if (field.name == 'tags') field.value = field.value.split(',');

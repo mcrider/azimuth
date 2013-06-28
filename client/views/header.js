@@ -4,12 +4,16 @@
 Template.header.rendered = function() {
   // Set page title
   document.title = utils.getSetting('siteName');
-
   // Hack to make login menu an icon rather than username
   $('#login-buttons .dropdown').removeClass('dropdown');
   var username = $('#login-dropdown-list .dropdown-toggle').text();
   $('#login-dropdown-list .dropdown-menu').prepend('<div class="nav-header">'+username+'</div>');
   $('#login-dropdown-list .dropdown-toggle').html('<i class="icon-user'+ (Meteor.user() ? ' logged-in':'')+'"></i> <b class="caret"></b>');
+
+  // Fade in the page
+  $(".loading-overlay").fadeOut('slow', function() {
+   $("#contents").hide().removeClass('hidden').fadeIn('slow');
+  });
 }
 
 Template.header.helpers({

@@ -4,8 +4,8 @@
 <body>
   <div class="loading-overlay"><img src="/img/loading.gif"></div>
   <div id="contents" class="hidden">
-    {{> header}}
-    <div id="page"></div>
-    {{> footer}}
+    {{{renderHeader}}}
+    <div id="page">{{#isolate}}{{renderPage}}{{/isolate}}</div>
+    {{{renderFooter}}}
   </div>
 </body>

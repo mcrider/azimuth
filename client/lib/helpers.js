@@ -61,6 +61,26 @@ Handlebars.registerHelper('renderBlock', function (block) {
   return fragment;
 });
 
+// Renders the header template (delaying load until site settings are available)
+Handlebars.registerHelper('renderHeader', function (block) {
+  if (settingsSubscription.ready()) {
+    var fragment = Template['header'](); // this calls the template and returns the HTML.
+    return fragment;
+  } else {
+    return '';
+  }
+});
+
+// Renders the footer template (delaying load until site settings are available)
+Handlebars.registerHelper('renderFooter', function (block) {
+  if (settingsSubscription.ready()) {
+    var fragment = Template['footer'](); // this calls the template and returns the HTML.
+    return fragment;
+  } else {
+    return '';
+  }
+});
+
 // Renders a form element using a template in views/form/
 Handlebars.registerHelper("formHelper", function (options) {
   if(options.hash.type == 'wysiwyg') options.hash.uniqueId = options.hash.fieldName + '_' + Math.random().toString(36).substring(7);
@@ -91,6 +111,12 @@ Handlebars.registerHelper("ifSetting", function (settingName, block) {
 	var settings = Settings.findOne();
 	if (!settings || !settingName) return false;
 	if (settings[settingName] != false) return block(this);
+});
+
+
+// Return the current page object
+Handlebars.registerHelper("page", function () {
+  return utils.getCurrentPage();
 });
 
 // Return true if a page slug is the current page's page slug

@@ -9,78 +9,67 @@ Meteor.Router.add({
     if (!Roles.userIsInRole(Meteor.user(), ['admin'])) {
       return false;
     }
-    $("#page").html( utils.loadTemplate('site_settings') );
-    return page;
+    return 'site_settings';
   },
   "/navigation": function() {
     if (!Roles.userIsInRole(Meteor.user(), ['admin'])) {
       return false;
     }
-    $("#page").html( utils.loadTemplate('navigation') );
-    return page;
+    return 'navigation';
   },
   "/users": function() {
     if (!Roles.userIsInRole(Meteor.user(), ['admin'])) {
       return false;
     }
-		$("#page").html( utils.loadTemplate('admin_users') );
-		return page;
+    return 'admin_users';
 	},
   "/": function() {
-    if (! pagesSubscription.ready()) {
-      return 'loading';
-    }
-    var slug = utils.getSetting('indexPage');
-    var page = Pages.findOne({slug: slug});
-    if(!page) {
-      page = Pages.findOne();
-      if (!page) return {title: 'Sorry, this site has no pages!'};
-      else slug = page.slug;
-    }
-    Session.set("page-slug", slug);
+    // Don't render until we have our data
+    if (!pagesSubscription.ready() || !settingsSubscription.ready()) {
+      return '';
+    } else {
+      var page_slug = utils.getSetting('indexPage');
+      var page = Pages.findOne({slug: page_slug});
+      if(!page) {
+        page = Pages.findOne();
+        if (!page) return '404';
+        else page_slug = page.slug;
+      }
 
-    var fragment = Meteor.render(function () {
-      template = page.template ? page.template : 'page_default';
-      return Template[ template ](); // this calls the template and returns the HTML.
-    });
-
-    $("#page").html(fragment);
-    return page;
+      Session.set("page-slug", page_slug);
+      return page.template;
+    }
   },
   "*/edit": function (page_slug) {
     if (!Roles.userIsInRole(Meteor.user(), ['author','admin'])) {
       return false;
     }
 
-    if (page_slug.charAt(0) == '/') page_slug = page_slug.substr(1);
-    Session.set("page-slug", page_slug);
+    // Don't render until we have our data
+    if (!pagesSubscription.ready() || !settingsSubscription.ready()) {
+      return '';
+    } else {
+      if (page_slug.charAt(0) == '/') page_slug = page_slug.substr(1);
 
-    var page = Pages.findOne({slug: page_slug});
-    if (!page) return {title: 'Sorry, we couldn\'t find the requested page'};
+      var page = Pages.findOne({slug: page_slug});
+      if(!page) return '404';
 
-    var fragment = Meteor.render(function () {
-      template = page.template ? page.template : 'page_default';
-      return Template[ template + "_edit" ](); // this calls the template and returns the HTML.
-    });
-
-    $("#page").html(fragment);
-    return page;
+      Session.set("page-slug", page_slug);
+      return page.template + '_edit';
+    }
   },
   "*": function (page_slug) {
-    if (page_slug.charAt(0) == '/') page_slug = page_slug.substr(1);
-    Session.set("page-slug", page_slug);
-    var page = Pages.findOne({slug: page_slug});
-    if (!page) return {title: 'Sorry, we couldn\'t find the requested page'};
+    // Don't render until we have our data
+    if (!pagesSubscription.ready() || !settingsSubscription.ready()) {
+      return '';
+    } else {
+      if (page_slug.charAt(0) == '/') page_slug = page_slug.substr(1);
 
-    var fragment = Meteor.render(function () {
-      template = page.template ? page.template : 'page_default';
-      return Template[ template ](); // this calls the template and returns the HTML.
-    });
-    $("#page").html( fragment );
-    return page;
+      var page = Pages.findOne({slug: page_slug});
+      if(!page) return '404';
+
+      Session.set("page-slug", page_slug);
+      return page.template;
+    }
   }
 });
-
-/*  setPage: function (page_slug) {
-    this.navigate(page_slug, true);
-  }*/
