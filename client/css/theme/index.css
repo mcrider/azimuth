@@ -3391,6 +3391,10 @@ button.close {
 .btn-large [class*=" icon-"] {
   margin-top: 4px;
 }
+.btn-large span {
+  line-height: 24px;
+  margin-right: 5px;
+}
 .btn-small {
   padding: 3px 12px;
   font-size: 15.299999999999999px;
@@ -10988,4 +10992,8 @@ a:hover {
   text-shadow: none;
   color: #596974;
   background-color: #E9F3F5;
+}
+@media only screen and (max-width: 400px) {
+  .hero-unit h1 { font-size:40px; }
+  .logo { margin-left: 0; }
 }
