@@ -4,9 +4,10 @@
 Template.header.rendered = function() {
   // Set page title
   document.title = utils.getSetting('siteName');
-  // Hack to make login menu an icon rather than username
+
+  // Hack to make login menu an icon rather than username and some other tweaks to accounts-ui-bootstrap-dropdown package
   $('#login-buttons .dropdown').removeClass('dropdown');
-  var username = $('#login-dropdown-list .dropdown-toggle').text();
+  var username = $('#login-dropdown-list .dropdown-toggle').first().text();
   $('#login-dropdown-list .dropdown-menu').prepend('<div class="nav-header">'+username+'</div>');
   $('#login-dropdown-list .dropdown-toggle').html('<i class="icon-user'+ (Meteor.user() ? ' logged-in':'')+'"></i> <b class="caret"></b>');
 
