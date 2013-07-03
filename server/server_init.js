@@ -112,7 +112,8 @@ Meteor.startup(function () {
         siteName: "Azimuth CMS",
         indexPage: "home",
         showLoginInHeader: true,
-        addNewPagesToHeader: true
+        addNewPagesToHeader: true,
+        theme: 'flatBlue'
       });
   }
 
@@ -128,12 +129,12 @@ Meteor.startup(function () {
   });
   if (!Navigation.findOne({location: "header_active"})) {
   	var nav = [];
-    Pages.find().forEach(function(page) { 
+    Pages.find().forEach(function(page) {
       nav.push({id: page._id, title: page.title, slug: page.slug});
     });
     Navigation.insert({location: "header_active", pages: nav});
     Navigation.insert({location: "header_disabled", pages: []});
-    Navigation.insert({location: "footer_active", pages: nav});    
+    Navigation.insert({location: "footer_active", pages: nav});
     Navigation.insert({location: "footer_disabled", pages: []});
   }
 });

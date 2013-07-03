@@ -31,6 +31,15 @@
           </div>
 
           <div class="control-group">
+            <label class="control-label" for="title">Site Theme</label>
+            <div class="controls">
+              {{#each themes}}
+                <div class="theme"><input type="radio" class="theme-option" name="theme-list" value="{{path}}" {{#if isCurrentTheme path}}checked="checked"{{/if}}><span class="theme-name">{{name}}: </span>{{description}}</option></div>
+              {{/each}}
+            </div>
+          </div>
+
+          <div class="control-group">
             <label class="control-label" for="contents">Header Settings</label>
             <div class="controls">
               <label class="checkbox">

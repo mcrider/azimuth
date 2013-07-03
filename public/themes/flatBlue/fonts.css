@@ -1,0 +1,42 @@
+@font-face {
+  font-family: 'Kreon';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Kreon Light'), local('Kreon-Light'), url(http://themes.googleusercontent.com/static/fonts/kreon/v6/foDwQzChAOJL0-zU6ynhJ3YhjbSpvc47ee6xR_80Hnw.woff) format('woff');
+}
+@font-face {
+  font-family: 'Kreon';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Kreon Regular'), local('Kreon-Regular'), url(http://themes.googleusercontent.com/static/fonts/kreon/v6/D9qk1GYStfykk6PrrE7M_aCWcynf_cDxXwCLxiixG1c.woff) format('woff');
+}
+@font-face {
+  font-family: 'Kreon';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Kreon Bold'), local('Kreon-Bold'), url(http://themes.googleusercontent.com/static/fonts/kreon/v6/lG8WSXDYq5VbwwKU5QHgb3YhjbSpvc47ee6xR_80Hnw.woff) format('woff');
+}
+@font-face {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Montserrat-Regular'), url(http://themes.googleusercontent.com/static/fonts/montserrat/v3/zhcz-_WihjSQC0oHJ9TCYL3hpw3pgy2gAi-Ip7WPMi0.woff) format('woff');
+}
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 300;
+  src: local('Open Sans Light'), local('OpenSans-Light'), url(http://themes.googleusercontent.com/static/fonts/opensans/v6/DXI1ORHCpsQm3Vp6mXoaTaRDOzjiPcYnFooOUGCOsRk.woff) format('woff');
+}
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Open Sans'), local('OpenSans'), url(http://themes.googleusercontent.com/static/fonts/opensans/v6/cJZKeOuBrn4kERxqtaUH3bO3LdcAZYWl9Si6vvxL-qU.woff) format('woff');
+}
+@font-face {
+  font-family: 'Open Sans';
+  font-style: normal;
+  font-weight: 600;
+  src: local('Open Sans Semibold'), local('OpenSans-Semibold'), url(http://themes.googleusercontent.com/static/fonts/opensans/v6/MTP_ySUJH_bn48VBG8sNSqRDOzjiPcYnFooOUGCOsRk.woff) format('woff');
+}

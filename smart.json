@@ -12,6 +12,7 @@
     "router": {},
     "filepicker": {},
     "bootstrap-wysiwyg": {},
-    "analyticsjs": {}
+    "analyticsjs": {},
+    "ncp": {}
   }
 }

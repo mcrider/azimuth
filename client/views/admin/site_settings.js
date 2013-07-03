@@ -1,3 +1,10 @@
+Template.site_settings.rendered = function() {
+  // Initialize the list of themes
+  return Meteor.call('listThemes', function(error, result) {
+    Session.set('themeList', result)
+  });
+}
+
 Template.site_settings.settings = function() {
   return Settings.findOne();
 }
@@ -5,6 +12,16 @@ Template.site_settings.settings = function() {
 Template.site_settings.pages = function () {
   return Pages.find();
 };
+
+Template.site_settings.themes = function () {
+  return Session.get('themeList')
+};
+
+Template.site_settings.isCurrentTheme = function(theme) {
+  if (theme == Settings.findOne().theme) return true;
+  return false;
+}
+
 
 Template.site_settings.events = {
   'submit #siteSettingsForm': function(e) {
@@ -16,6 +33,12 @@ Template.site_settings.events = {
       type: 'success',
       icon: false
     });
+  },
+  'click .theme-option': function(e) {
+    e.preventDefault();
+    Settings.update(Settings.findOne()._id, {$set: {theme: this.path}});
+
+    Meteor.call('selectTheme', this.path);
   }
 };
 

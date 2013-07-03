@@ -14,7 +14,8 @@
       "router": {},
       "filepicker": {},
       "bootstrap-wysiwyg": {},
-      "analyticsjs": {}
+      "analyticsjs": {},
+      "ncp": {}
     },
     "packages": {
       "underscore-string": {
@@ -61,6 +62,11 @@
         "git": "https://github.com/nate-strauser/meteor-analyticsjs.git",
         "tag": "v0.1.0",
         "commit": "71ac507179fa87f32f6a19937bec6e53eca1c401"
+      },
+      "ncp": {
+        "git": "https://github.com/kidovate/meteor-ncp.git",
+        "tag": "v0.2.1",
+        "commit": "18019d468893dc9a62ddedfdc616632daae17a7d"
       },
       "page-js-ie-support": {
         "git": "https://github.com/tmeasday/meteor-page-js-ie-support.git",
