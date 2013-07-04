@@ -39,7 +39,7 @@
             </li>
           </ul>
         {{/if}}
-        <div class="hidden-phone">{{#ifSetting 'showLoginInHeader'}}{{ loginButtons }}{{/ifSetting}}</div>
+        {{#ifSetting 'showLoginInHeader'}}<div class="desktop-login hidden-phone">{{ loginButtons }}</div>{{/ifSetting}}
       </div>
     </div>
   </div>
@@ -102,7 +102,7 @@
           </li>
         </ul>
       {{/if}}
-      {{#ifSetting 'showLoginInHeader'}}{{ loginButtons }}{{/ifSetting}}
+      {{#ifSetting 'showLoginInHeader'}}<div class="mobile-login">{{ loginButtons }}</div>{{/ifSetting}}
     </li>
   </ul>
 </template>
