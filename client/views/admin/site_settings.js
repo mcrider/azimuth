@@ -38,6 +38,7 @@ Template.site_settings.events = {
     e.preventDefault();
     Settings.update(Settings.findOne()._id, {$set: {theme: this.path}});
 
+    $(".loading-overlay").show();
     Meteor.call('selectTheme', this.path);
   }
 };
