@@ -10,6 +10,11 @@ Template.header.rendered = function() {
   $('#login-dropdown-list .dropdown-menu').prepend('<div class="nav-header">'+username+'</div>');
   $('#login-dropdown-list .dropdown-toggle').html('<i class="icon-user'+ (Meteor.user() ? ' logged-in':'')+'"></i> <b class="caret"></b>');
 
+  // FIXME: This should be in the event map but general strange behavior with the header template is preventing the event from firing
+  $('#adminMenu').delegate('a#newPage', 'click', function() {
+    $('#addNewPageModal').modal('show');
+  })
+
   // Remove mobile/desktop loginButtons (having two {loginButtons} loaded causes errors with accounts-ui-bootstrap-dropdown)
   if($('.mobile-login').is(":visible")) {
     $('.desktop-login').remove();
@@ -39,9 +44,6 @@ Template.header.helpers({
 });
 
 Template.header.events = {
-  'click #newPage': function () {
-    $('#addNewPageModal').modal('show');
-  },
   'click .submit-new-page': function () {
     var raw_title = $('.page-title-textfield').val();
     var raw_slug = $('.page-slug-textfield').val();
