@@ -1,19 +1,5 @@
 var fs = Npm.require('fs');
 
-var deleteFolderRecursive = function(path) {
-  if( fs.existsSync(path) ) {
-    fs.readdirSync(path).forEach(function(file,index){
-      var curPath = path + "/" + file;
-      if(fs.statSync(curPath).isDirectory()) { // recurse
-        deleteFolderRecursive(curPath);
-      } else { // delete file
-        fs.unlinkSync(curPath);
-      }
-    });
-    fs.rmdirSync(path);
-  }
-};
-
 Meteor.methods({
   listThemes: function() {
     // return 'foobaz';
@@ -51,18 +37,13 @@ Meteor.methods({
     // Fetch our theme and make sure its valid
     var fullPath = "public/themes/" + theme;
     if(fs.existsSync(fullPath + "/theme.json")) {
-      // Delete the current theme directory
-      console.log('Deleting current theme...');
-      deleteFolderRecursive('client/css/theme/');
+      console.log('Setting '+theme+' as current theme...');
 
-      // Copy selected theme into theme directory
-      console.log('Copying ' + theme + ' into theme directory...');
-      ncp(fullPath, 'client/css/theme', function (err) {
-        if (err) {
-          return console.error(err);
-        }
-        console.log('done!');
+      wrench.copyDirSyncRecursive(fullPath, 'client/css/theme', {
+        forceDelete: true, // Whether to overwrite existing directory or not
+        preserveFiles: false // If we're overwriting something and the file already exists, keep the existing
       });
+      console.log('Done!');
     } else {
       console.log("Could not find theme: " + theme);
     }
