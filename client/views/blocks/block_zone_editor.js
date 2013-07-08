@@ -119,7 +119,9 @@ Template.block_zone_editor.events = {
     $.pnotify({
       text: label + ' blocks added to page.',
       type: 'success',
-      icon: false
+      icon: false,
+      addclass: "stack-bottomright",
+      stack: utils.pnotify_stack_bottomright
     });
   },
   'click .page-count': function(e) {

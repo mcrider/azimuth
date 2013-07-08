@@ -28,10 +28,13 @@ Template.site_settings.events = {
     e.preventDefault();
   	var settings = utils.getFormValues("#siteSettingsForm");
     Settings.update({_id: this._id}, {$set: settings});
+
     $.pnotify({
       text: 'Site settings saved.',
       type: 'success',
-      icon: false
+      icon: false,
+      addclass: "stack-bottomright",
+      stack: utils.pnotify_stack_bottomright
     });
   },
   'click .theme-option': function(e) {

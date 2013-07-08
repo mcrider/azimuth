@@ -8,7 +8,9 @@ events = {
     $.pnotify({
       text: 'Your page changes were saved.',
       type: 'success',
-      icon: false
+      icon: false,
+      addclass: "stack-bottomright",
+			stack: utils.pnotify_stack_bottomright
     });
   },
   showDeletePageModal: function (e) {
@@ -31,7 +33,9 @@ events = {
     $.pnotify({
       text: '"' + title + '" was successfully deleted.',
       type: 'success',
-      icon: false
+      icon: false,
+      addclass: "stack-bottomright",
+      stack: utils.pnotify_stack_bottomright
     });
   }
 };

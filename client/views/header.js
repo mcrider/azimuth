@@ -55,7 +55,9 @@ Template.header.events = {
       $.pnotify({
         text: 'Please enter values for all fields.',
         type: 'error',
-        icon: false
+        icon: false,
+        addclass: "stack-bottomright",
+        stack: utils.pnotify_stack_bottomright
       });
       return false;
     }

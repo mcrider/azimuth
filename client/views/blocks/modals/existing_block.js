@@ -24,7 +24,9 @@ Template.existing_block.events = {
     $.pnotify({
       text: label + ' added to page.',
       type: 'success',
-      icon: false
+      icon: false,
+      addclass: "stack-bottomright",
+      stack: utils.pnotify_stack_bottomright
     });
   }
 };

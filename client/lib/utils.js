@@ -56,5 +56,15 @@ utils = {
     }
 
     return fragment;
+  },
+  pnotify_stack_bottomright: {
+    addpos2: 300,
+    animation: true,
+    dir1: "up",
+    dir2: "left",
+    firstpos1: 25,
+    firstpos2: 25,
+    nextpos1: 113,
+    nextpos2: 25
   }
 };

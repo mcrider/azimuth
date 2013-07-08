@@ -1,7 +1,7 @@
 Template.delete_block.events = {
   // Delete only a pageBlock (the actual blocks are kept)
   'click .delete-block-confirm': function(e) {
-  	e.preventDefault();
+    e.preventDefault();
     $('#deleteBlockModal').modal('hide');
 
     var type = Session.get('block-edit-type');
@@ -17,15 +17,17 @@ Template.delete_block.events = {
       PageBlocks.remove(pageBlock._id);
     });
 
-	  $.pnotify({
-  	  text: 'Block removed from page.',
-	    type: 'success',
-	    icon: false
+    $.pnotify({
+      text: 'Block removed from page.',
+      type: 'success',
+      icon: false,
+      addclass: "stack-bottomright",
+      stack: utils.pnotify_stack_bottomright
     });
   },
   // Delete a pageBlock and the corresponding block
   'click .delete-all-blocks-confirm': function(e) {
-  	e.preventDefault();
+    e.preventDefault();
     $('#deleteBlockModal').modal('hide');
 
     var type = Session.get('block-edit-type');
@@ -33,19 +35,23 @@ Template.delete_block.events = {
 
     if (type == 'id') {
       PageBlocks.find({block_id: id}).forEach(function(pageBlock) {
-			  PageBlocks.remove(pageBlock._id);
+        PageBlocks.remove(pageBlock._id);
       });
       Blocks.remove(id);
       $.pnotify({
         text: 'Block deleted.',
         type: 'success',
-        icon: false
+        icon: false,
+        addclass: "stack-bottomright",
+        stack: utils.pnotify_stack_bottomright
       });
     } else {
       $.pnotify({
         text: 'There was an error trying to delete this block.',
         type: 'warning',
-        icon: false
+        icon: false,
+        addclass: "stack-bottomright",
+        stack: utils.pnotify_stack_bottomright
       });
     }
   }

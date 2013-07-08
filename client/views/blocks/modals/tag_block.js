@@ -16,7 +16,9 @@ Template.tag_block.events = {
       $.pnotify({
         text: 'Blocks with tag "' + tag + '" added to page.',
         type: 'success',
-        icon: false
+        icon: false,
+        addclass: "stack-bottomright",
+        stack: utils.pnotify_stack_bottomright
       });
     }
   }
