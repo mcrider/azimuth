@@ -11,6 +11,12 @@ Meteor.Router.add({
     }
     return 'site_settings';
   },
+  "/new_page": function() {
+    if (!Roles.userIsInRole(Meteor.user(), ['admin'])) {
+      return false;
+    }
+    return 'new_page';
+  },
   "/navigation": function() {
     if (!Roles.userIsInRole(Meteor.user(), ['admin'])) {
       return false;
