@@ -10833,31 +10833,7 @@ table.color4.table-hover tbody tr:hover > td,
 table.color4.table-hover tbody tr:hover > th {
   background-color: #e9f1f6;
 }
-hr {
-  background: #ffffff;
-  color: #ffffff;
-  border-color: #ffffff;
-}
-hr.color1 {
-  background: #ffffff;
-  color: #ffffff;
-  border-color: #ffffff;
-}
-hr.color2 {
-  background: #ffffff;
-  color: #ffffff;
-  border-color: #ffffff;
-}
-hr.color3 {
-  background: #ffffff;
-  color: #ffffff;
-  border-color: #ffffff;
-}
-hr.color4 {
-  background: #ffffff;
-  color: #ffffff;
-  border-color: #ffffff;
-}
+
 .page-header {
   border-width: 2px;
   border-color: #ffffff;

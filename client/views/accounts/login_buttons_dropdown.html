@@ -1,0 +1,156 @@
+<!--           -->
+<!-- LOGGED IN -->
+<!--           -->
+<template name="_loginButtonsLoggedInDropdown">
+  <div class="dropdown">
+    <ul class="nav pull-right">
+      <li id="login-dropdown-list">
+        <a class="dropdown-toggle" href="#" data-toggle="dropdown"><i class="icon-user logged-in"></i> <b class="caret"></b></a>
+        <div class="dropdown-menu" style="padding: 20px; padding-bottom: 20px;">
+          <div class="nav-header">{{displayName}}</div>
+          {{#if inMessageOnlyFlow}}
+            {{> _loginButtonsMessages}}
+          {{else}}
+            {{#if inChangePasswordFlow}}
+              {{> _loginButtonsChangePassword}}
+            {{else}}
+              {{> _loginButtonsLoggedInDropdownActions}}
+            {{/if}}
+          {{/if}}
+        </div>
+      </li>
+    </ul>
+  </div>
+</template>
+
+<template name="_loginButtonsLoggedInDropdownActions">
+  <button class="btn btn-block btn-primary" id="login-buttons-logout">Sign out</button>
+  {{#if allowChangingPassword}}
+    <button class="btn btn-block" id="login-buttons-open-change-password">Change password</button>
+  {{/if}}
+</template>
+
+<!--            -->
+<!-- LOGGED OUT -->
+<!--            -->
+<template name="_loginButtonsLoggedOutDropdown">
+  <div class="nav-collapse collapse">
+    <ul class="nav pull-right">
+      <li id="login-dropdown-list" class="dropdown">
+        <a class="dropdown-toggle" href="#" data-toggle="dropdown"><i class="icon-user"></i> <b class="caret"></b></a>
+        <div class="dropdown-menu" style="padding: 20px; padding-bottom: 20px;">
+          {{> _loginButtonsLoggedOutAllServices}}
+        </div>
+      </li>
+    </ul>
+  </div>
+</template>
+
+<template name="_loginButtonsLoggedOutAllServices">
+  {{#each services}}
+    {{#if isPasswordService}}
+      {{#if hasOtherServices}} {{! the password service will always come last }}
+        {{> _loginButtonsLoggedOutPasswordServiceSeparator}}
+      {{/if}}
+      {{> _loginButtonsLoggedOutPasswordService}}
+    {{else}}
+      {{> _loginButtonsLoggedOutSingleLoginButton}}
+    {{/if}}
+  {{/each}}
+  {{#unless hasPasswordService}}
+    {{> _loginButtonsMessages}}
+  {{/unless}}
+</template>
+
+<template name="_loginButtonsLoggedOutPasswordServiceSeparator">
+  <div class="or">
+    <hr class="inline-hr" />
+    <span class="or-text">or</span>
+    <hr class="inline-hr" />
+    <div class="clearfix"></div>
+  </div>
+</template>
+
+<template name="_loginButtonsLoggedOutPasswordService">
+  {{#if inForgotPasswordFlow}}
+    {{> _forgotPasswordForm}}
+  {{else}}
+    {{#each fields}}
+      {{> _loginButtonsFormField}}
+    {{/each}}
+    {{> _loginButtonsMessages}}
+    <button class="btn btn-primary" id="login-buttons-password" type="button">
+      {{#if inSignupFlow}}
+        Create
+      {{else}}
+        Sign in
+      {{/if}}
+    </button>
+    {{#if inLoginFlow}}
+      {{#if showCreateAccountLink}}
+        <hr />
+        <a id="signup-link">Create account</a>
+      {{/if}}
+      {{#if showForgotPasswordLink}}
+        <span class="login-link-separator">•</span>
+        <a id="forgot-password-link">Retrieve password</a>
+      {{/if}}
+    {{/if}}
+    {{#if inSignupFlow}}
+      {{> _loginButtonsBackToLoginLink}}
+    {{/if}}
+  {{/if}}
+</template>
+
+<template name="_forgotPasswordForm">
+  <div class="login-form">
+    <div id="forgot-password-email-label-and-input"> {{! XXX we should probably use loginButtonsFormField }}
+      <label id="forgot-password-email-label" for="forgot-password-email">Email</label>
+      <input id="forgot-password-email" type="email"/>
+    </div>
+    {{> _loginButtonsMessages}}
+    <button class="btn btn-primary login-button-form-submit" id="login-buttons-forgot-password">Reset password</button>
+    {{> _loginButtonsBackToLoginLink}}
+  </div>
+</template>
+
+<template name="_loginButtonsBackToLoginLink">
+    <a id="back-to-login-link">Cancel</a>
+</template>
+
+<!--
+This strategy for login forms means that browsers' "Remember password"
+functionality does not work. Different browsers have different
+requirements for remembering passwords:
+
+- Firefox: Must be an actual form (with a submit button), but you can
+cancel the submit with onsubmit='return false'.
+
+- Safari: Must be an actual form, and the form must actually be
+submitted somewhere (though it can target a hidden iframe and go to a
+bogus URL)
+
+- Chrome: Must be an actual form, and the the form elements must be
+present in the initial HTML, not added to the page with javascript. This
+basically rules out using normal meteor templates.
+
+https://gist.github.com/968927
+-->
+
+<template name="_loginButtonsFormField">
+  {{#if visible}}
+    <label id="login-{{fieldName}}-label" for="login-{{fieldName}}">{{fieldLabel}}</label>
+    <input id="login-{{fieldName}}" type="{{inputType}}" />
+  {{/if}}
+</template>
+
+<template name="_loginButtonsChangePassword">
+  {{#each fields}}
+    {{> _loginButtonsFormField}}
+  {{/each}}
+  {{> _loginButtonsMessages}}
+  <div>
+    <button class="btn btn-primary" id="login-buttons-do-change-password">Change password</button>
+    <button class="btn login-close">Close</button>
+  </div>
+</template>

@@ -1,0 +1,27 @@
+<template name="loginButtonsFullPage">
+  <div class="fullpage-login-container">
+    <div class="fullpage-login">
+      {{#if currentUser}}
+        {{#if loggingIn}}
+          {{! We aren't actually logged in yet; we're just setting Meteor.userId
+              optimistically during an at-startup login-with-token. We expose this
+              state so other UIs can treat it specially, but we'll just treat it
+              as logged out. }}
+          {{#if dropdown}}
+            {{> _loginButtonsLoggingIn }}
+          {{else}}
+            <div class="login-buttons-with-only-one-button">
+              {{> _loginButtonsLoggingInSingleLoginButton }}
+            </div>
+          {{/if}}
+        {{else}}
+          <h4>You are currently logged in as</h4>
+          <h3>{{displayName}}</h3>
+          <div class="btn login-button single-login-button" id="login-buttons-logout">Sign Out</div>
+        {{/if}}
+      {{else}}
+        {{> _loginButtonsLoggedOutAllServices}}
+      {{/if}}
+    </div>
+  </div>
+</template>

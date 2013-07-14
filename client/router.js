@@ -23,6 +23,10 @@ Meteor.Router.add({
     }
     return 'navigation';
   },
+  "/login": function() {
+    return 'loginButtonsFullPage';
+  },
+
   "/users": function() {
     if (!Roles.userIsInRole(Meteor.user(), ['admin'])) {
       return false;

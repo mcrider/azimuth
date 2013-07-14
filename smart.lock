@@ -9,7 +9,6 @@
       "underscore-string": {},
       "font-awesome": {},
       "pnotify": {},
-      "accounts-ui-bootstrap-dropdown": {},
       "roles": {},
       "router": {},
       "filepicker": {},
@@ -33,11 +32,6 @@
         "tag": "v0.1.0",
         "commit": "1799e7a19759f8f5e8f2debd240024ee36f42fbc"
       },
-      "accounts-ui-bootstrap-dropdown": {
-        "git": "https://github.com/erobit/meteor-accounts-ui-bootstrap-dropdown.git",
-        "tag": "v0.1.5",
-        "commit": "e12b128f140caa2797720cbd5fae084de7810c6a"
-      },
       "roles": {
         "git": "https://github.com/alanning/meteor-roles.git",
         "tag": "v1.0.5",
@@ -45,8 +39,8 @@
       },
       "router": {
         "git": "https://github.com/tmeasday/meteor-router.git",
-        "tag": "v0.5.1",
-        "commit": "32e377c7703bb119acccc859fc7296882903cbe7"
+        "tag": "v0.5.3",
+        "commit": "7bd3a1bdd1099625bb8b49406d9b8f961d6f4a17"
       },
       "filepicker": {
         "git": "https://github.com/Filepicker/meteor.git",
