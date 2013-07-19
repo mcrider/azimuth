@@ -59,6 +59,9 @@ Template._loginButtonsLoggedInDropdownActions.allowChangingPassword = function (
 //
 
 Template._loginButtonsLoggedOutAllServices.events({
+	'click input, click label': function (event) {
+		event.stopPropagation();
+	},
   'click #login-buttons-password': function (event) {
     Accounts.ui.currentSelectorScope = $(event.currentTarget).parent();
     loginOrSignup();
