@@ -18,7 +18,7 @@
           <tbody>
             {{#each allBlocks}}
               <tr>
-                <td><a class="btn add-existing-block">Insert</a></td>
+                <td><a class="btn add-existing-block" id="{{_id}}">Insert</a></td>
                 <td>{{template}}</td>
                 <td>{{humanReadableTime created}}</td>
                 <td><a class="preview-block"><div class="block-preview" style="display: none;">{{{renderBlock this}}}</div><i class="icon-search"></i></a></td>
