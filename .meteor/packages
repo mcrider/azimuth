@@ -9,7 +9,6 @@ accounts-password
 backbone
 underscore
 jquery
-underscore-string
 pnotify
 less
 roles
@@ -20,3 +19,8 @@ font-awesome
 analyticsjs
 spiderable
 bootstrap
+standard-app-packages
+HTML5-History-API
+ncp
+page-js-ie-support
+wrench

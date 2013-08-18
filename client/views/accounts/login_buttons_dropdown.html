@@ -47,16 +47,9 @@
 </template>
 
 <template name="_loginButtonsLoggedOutAllServices">
-  {{#each services}}
-    {{#if isPasswordService}}
-      {{#if hasOtherServices}} {{! the password service will always come last }}
-        {{> _loginButtonsLoggedOutPasswordServiceSeparator}}
-      {{/if}}
-      {{> _loginButtonsLoggedOutPasswordService}}
-    {{else}}
-      {{> _loginButtonsLoggedOutSingleLoginButton}}
-    {{/if}}
-  {{/each}}
+  
+	{{> _loginButtonsLoggedOutPasswordService}}
+	
   {{#unless hasPasswordService}}
     {{> _loginButtonsMessages}}
   {{/unless}}

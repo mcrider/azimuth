@@ -45,7 +45,7 @@ Template.new_page.events = {
   },
   'keyup .title': function () {
     var raw_title = $('.title').val();
-    raw_title = _.slugify(raw_title);
+    raw_title = raw_title.toLowerCase().replace(/ /g,'-').replace(/[^\w-]+/g,'');
     $('.slug').val(raw_title);
   }
 };

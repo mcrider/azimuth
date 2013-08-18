@@ -1,4 +1,5 @@
 var fs = Npm.require('fs');
+var path = Npm.require('path');
 
 Meteor.methods({
   listThemes: function() {
@@ -10,16 +11,16 @@ Meteor.methods({
     }
 
     // Get array of files in themes directory
-    var files = fs.readdirSync("public/themes/");
+    var files = fs.readdirSync(path.resolve("../../../../../public/themes/"));
 
     // Iterate over files and select directories that have a theme.json file
     var themeList = [];
     //(We can use underscore here, but not jquery?)
-    _.each(files, function(path) {
-      var fullPath = "public/themes/" + path;
+    _.each(files, function(filePath) {
+      var fullPath = path.resolve("../../../../../public/themes") + '/' + filePath;
       if(fs.existsSync(fullPath + "/theme.json")) {
         var theme = JSON.parse(fs.readFileSync(fullPath + "/theme.json"));
-        theme.path = path;
+        theme.path = filePath;
         themeList.push(theme);
       }
     })

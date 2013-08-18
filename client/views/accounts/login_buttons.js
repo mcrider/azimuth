@@ -235,7 +235,7 @@ Accounts._loginButtons.getLoginServices = function () {
 
       // HACKETY HACK. needed to not match
       // Meteor.loginWithToken. See XXX above.
-      if (Accounts[serviceName])
+       // if (Accounts[serviceName])
         services.push(match[1].toLowerCase());
     }
   });
@@ -246,8 +246,8 @@ Accounts._loginButtons.getLoginServices = function () {
   services.sort();
 
   // ensure password is last
-  if (_.contains(services, 'password'))
-    services = _.without(services, 'password').concat(['password']);
+  // if (_.contains(services, 'password'))
+  services = _.without(services, 'password').concat(['password']);
 
   return _.map(services, function(name) {
     return {name: name};
