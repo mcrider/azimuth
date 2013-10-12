@@ -1,0 +1,15 @@
+[submodule "packages/azimuth-core"]
+	path = packages/azimuth-core
+	url = git@github.com:mcrider/azimuth-core.git
+[submodule "packages/azimuth-theme-bootstrap-flatBlue"]
+	path = packages/azimuth-theme-bootstrap-flatBlue
+	url = git@github.com:mcrider/azimuth-theme-bootstrap-flatBlue.git
+[submodule "packages/azimuth-views-bootstrap"]
+	path = packages/azimuth-views-bootstrap
+	url = git@github.com:mcrider/azimuth-views-bootstrap.git
+[submodule "packages/azimuth-views-foundation"]
+	path = packages/azimuth-views-foundation
+	url = git@github.com:mcrider/azimuth-views-foundation.git
+[submodule "packages/azimuth-theme-foundation-simpleWhite"]
+	path = packages/azimuth-theme-foundation-simpleWhite
+	url = git@github.com:mcrider/azimuth-theme-foundation-simpleWhite.git

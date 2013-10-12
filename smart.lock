@@ -2,21 +2,42 @@
   "meteor": {
     "git": "https://github.com/meteor/meteor.git",
     "branch": "master",
-    "commit": "d17795971cf2d55532bf7b9d00d0c925dec22014"
+    "commit": "e2fd3fcad31b3a9e2c9f80d16260f9cd606741bd"
   },
   "dependencies": {
     "basePackages": {
-      "underscore-string": {},
-      "font-awesome": {},
-      "pnotify": {},
-      "roles": {},
-      "router": {},
-      "filepicker": {},
-      "bootstrap-wysiwyg": {},
-      "analyticsjs": {},
-      "ncp": {}
+      "azimuth-core": {
+        "path": "../azimuth-packages-test/packages/azimuth-core"
+      },
+      "azimuth-views-bootstrap": {
+        "path": "../azimuth-packages-test/packages/azimuth-views-bootstrap"
+      },
+      "azimuth-views-foundation": {
+        "path": "../azimuth-packages-test/packages/azimuth-views-foundation"
+      },
+      "azimuth-theme-bootstrap-flatBlue": {
+        "path": "../azimuth-packages-test/packages/azimuth-theme-bootstrap-flatBlue"
+      },
+      "azimuth-theme-foundation-simpleWhite": {
+        "path": "../azimuth-packages-test/packages/azimuth-theme-foundation-simpleWhite"
+      }
     },
     "packages": {
+      "azimuth-core": {
+        "path": "../azimuth-packages-test/packages/azimuth-core"
+      },
+      "azimuth-views-bootstrap": {
+        "path": "../azimuth-packages-test/packages/azimuth-views-bootstrap"
+      },
+      "azimuth-views-foundation": {
+        "path": "../azimuth-packages-test/packages/azimuth-views-foundation"
+      },
+      "azimuth-theme-bootstrap-flatBlue": {
+        "path": "../azimuth-packages-test/packages/azimuth-theme-bootstrap-flatBlue"
+      },
+      "azimuth-theme-foundation-simpleWhite": {
+        "path": "../azimuth-packages-test/packages/azimuth-theme-foundation-simpleWhite"
+      },
       "underscore-string": {
         "git": "https://github.com/possibilities/meteor-underscore-string.git",
         "tag": "v2.2.0rc.1",
@@ -24,53 +45,33 @@
       },
       "font-awesome": {
         "git": "https://github.com/nate-strauser/meteor-font-awesome.git",
-        "tag": "v3.2.0",
-        "commit": "2cba6f907a2579cae2d399b522f9544c13d5e091"
-      },
-      "pnotify": {
-        "git": "https://github.com/kidovate/meteor-pnotify.git",
-        "tag": "v0.1.0",
-        "commit": "1799e7a19759f8f5e8f2debd240024ee36f42fbc"
+        "tag": "v3.2.1",
+        "commit": "38bdfff72dfb8857b272f9a9b056045d6a015489"
       },
       "roles": {
         "git": "https://github.com/alanning/meteor-roles.git",
         "tag": "v1.0.6",
         "commit": "f81cbf7c765a4ed7e16a580c288db6f10a90856b"
       },
-      "router": {
-        "git": "https://github.com/tmeasday/meteor-router.git",
+      "iron-router": {
+        "git": "https://github.com/EventedMind/iron-router.git",
         "tag": "v0.5.4",
-        "commit": "e40ee450a756b54a32ed67be4595772403256fb5"
+        "commit": "3e0e22ff85630b7503d0daa1538c6d90abb84020"
       },
       "filepicker": {
         "git": "https://github.com/Filepicker/meteor.git",
         "tag": "v0.3.0",
         "commit": "dcb6f3779e5fc105520ba06b0392e3a79c73a7e6"
       },
-      "bootstrap-wysiwyg": {
-        "git": "https://github.com/mcrider/meteor-bootstrap-wysiwyg.git",
-        "tag": "v0.1.0",
-        "commit": "b9b1ffadb42b8bbfade08aaea10e4fbe890d21dd"
-      },
       "analyticsjs": {
         "git": "https://github.com/nate-strauser/meteor-analyticsjs.git",
-        "tag": "v0.1.1",
-        "commit": "9016e87ebdb4c94ce7925eada3d74f84a0725a1d"
+        "tag": "v0.1.2",
+        "commit": "aded6d80df1f801d02076adbb3d64685ebb00f00"
       },
-      "ncp": {
-        "git": "https://github.com/kidovate/meteor-ncp.git",
-        "tag": "v0.2.1",
-        "commit": "18019d468893dc9a62ddedfdc616632daae17a7d"
-      },
-      "page-js-ie-support": {
-        "git": "https://github.com/tmeasday/meteor-page-js-ie-support.git",
-        "tag": "v1.3.5",
-        "commit": "b99ed8380aefd10b2afc8f18d9eed4dd0d8ea9cb"
-      },
-      "HTML5-History-API": {
-        "git": "https://github.com/tmeasday/meteor-HTML5-History-API.git",
-        "tag": "v4.0.0",
-        "commit": "dc4965f1424cfca625ec3fbea17eace03f8e32c5"
+      "zurb-foundation": {
+        "git": "https://github.com/MixinLabs/meteor-foundation.git",
+        "tag": "v0.1.8",
+        "commit": "1df073584c45582ce9d6fe6a42aa46e5de39eb9c"
       }
     }
   }

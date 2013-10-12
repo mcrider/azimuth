@@ -4,14 +4,20 @@
     "branch": "master"
   },
   "packages": {
-    "underscore-string": {},
-    "font-awesome": {},
-    "pnotify": {},
-    "roles": {},
-    "router": {},
-    "filepicker": {},
-    "bootstrap-wysiwyg": {},
-    "analyticsjs": {},
-    "ncp": {}
+    "azimuth-core": {
+      "path": "../azimuth-packages-test/packages/azimuth-core"
+    },
+    "azimuth-views-bootstrap": {
+      "path": "../azimuth-packages-test/packages/azimuth-views-bootstrap"
+    },
+    "azimuth-views-foundation": {
+      "path": "../azimuth-packages-test/packages/azimuth-views-foundation"
+    },
+    "azimuth-theme-bootstrap-flatBlue": {
+      "path": "../azimuth-packages-test/packages/azimuth-theme-bootstrap-flatBlue"
+    },
+    "azimuth-theme-foundation-simpleWhite": {
+      "path": "../azimuth-packages-test/packages/azimuth-theme-foundation-simpleWhite"
+    }
   }
 }
