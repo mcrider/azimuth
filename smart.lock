@@ -2,41 +2,41 @@
   "meteor": {
     "git": "https://github.com/meteor/meteor.git",
     "branch": "master",
-    "commit": "e2fd3fcad31b3a9e2c9f80d16260f9cd606741bd"
+    "commit": "7e91b37ccd65e46d4b26b8082fb5a619ae81a39b"
   },
   "dependencies": {
     "basePackages": {
       "azimuth-core": {
-        "path": "../azimuth-packages-test/packages/azimuth-core"
+        "path": "packages/azimuth-core"
       },
       "azimuth-views-bootstrap": {
-        "path": "../azimuth-packages-test/packages/azimuth-views-bootstrap"
+        "path": "packages/azimuth-views-bootstrap"
       },
       "azimuth-views-foundation": {
-        "path": "../azimuth-packages-test/packages/azimuth-views-foundation"
+        "path": "packages/azimuth-views-foundation"
       },
       "azimuth-theme-bootstrap-flatBlue": {
-        "path": "../azimuth-packages-test/packages/azimuth-theme-bootstrap-flatBlue"
+        "path": "packages/azimuth-theme-bootstrap-flatBlue"
       },
       "azimuth-theme-foundation-simpleWhite": {
-        "path": "../azimuth-packages-test/packages/azimuth-theme-foundation-simpleWhite"
+        "path": "packages/azimuth-theme-foundation-simpleWhite"
       }
     },
     "packages": {
       "azimuth-core": {
-        "path": "../azimuth-packages-test/packages/azimuth-core"
+        "path": "packages/azimuth-core"
       },
       "azimuth-views-bootstrap": {
-        "path": "../azimuth-packages-test/packages/azimuth-views-bootstrap"
+        "path": "packages/azimuth-views-bootstrap"
       },
       "azimuth-views-foundation": {
-        "path": "../azimuth-packages-test/packages/azimuth-views-foundation"
+        "path": "packages/azimuth-views-foundation"
       },
       "azimuth-theme-bootstrap-flatBlue": {
-        "path": "../azimuth-packages-test/packages/azimuth-theme-bootstrap-flatBlue"
+        "path": "packages/azimuth-theme-bootstrap-flatBlue"
       },
       "azimuth-theme-foundation-simpleWhite": {
-        "path": "../azimuth-packages-test/packages/azimuth-theme-foundation-simpleWhite"
+        "path": "packages/azimuth-theme-foundation-simpleWhite"
       },
       "underscore-string": {
         "git": "https://github.com/possibilities/meteor-underscore-string.git",
@@ -55,13 +55,13 @@
       },
       "iron-router": {
         "git": "https://github.com/EventedMind/iron-router.git",
-        "tag": "v0.5.4",
-        "commit": "3e0e22ff85630b7503d0daa1538c6d90abb84020"
+        "tag": "v0.6.0",
+        "commit": "c63e92d24c8210e2304ff5fed1b5c463394aeaf6"
       },
-      "filepicker": {
-        "git": "https://github.com/Filepicker/meteor.git",
-        "tag": "v0.3.0",
-        "commit": "dcb6f3779e5fc105520ba06b0392e3a79c73a7e6"
+      "collectionFS": {
+        "git": "https://github.com/raix/Meteor-CollectionFS.git",
+        "tag": "v0.3.6",
+        "commit": "e28922685d07fc2bd17e23571eeb050cd85176f7"
       },
       "analyticsjs": {
         "git": "https://github.com/nate-strauser/meteor-analyticsjs.git",
@@ -72,6 +72,11 @@
         "git": "https://github.com/MixinLabs/meteor-foundation.git",
         "tag": "v0.1.8",
         "commit": "1df073584c45582ce9d6fe6a42aa46e5de39eb9c"
+      },
+      "cfs-public-folder": {
+        "git": "https://github.com/nooitaf/meteor-cfs-public-folder.git",
+        "tag": "v0.0.3",
+        "commit": "f47a0f1963be82121c975f955196b1fbb0cdbca3"
       }
     }
   }

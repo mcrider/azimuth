@@ -4,7 +4,6 @@ pnotify
 accounts-ui-bootstrap-dropdown
 roles
 router
-filepicker
 bootstrap-wysiwyg
 analyticsjs
 page-js-ie-support
@@ -13,3 +12,7 @@ HTML5-History-API
 foundation
 iron-router
 zurb-foundation
+collectionFS
+cfs-public-folder
+imagemagick
+accounts-instagram
