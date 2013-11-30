@@ -1,15 +1,15 @@
 [submodule "packages/azimuth-core"]
 	path = packages/azimuth-core
-	url = https://github.com/azimuth-core.git
+	url = https://github.com/mcrider/azimuth-core.git
 [submodule "packages/azimuth-theme-bootstrap-flatBlue"]
 	path = packages/azimuth-theme-bootstrap-flatBlue
-	url = https://github.com/azimuth-theme-bootstrap-flatBlue.git
+	url = https://github.com/mcrider/azimuth-theme-bootstrap-flatBlue.git
 [submodule "packages/azimuth-views-bootstrap"]
 	path = packages/azimuth-views-bootstrap
-	url = https://github.com/azimuth-views-bootstrap.git
+	url = https://github.com/mcrider/azimuth-views-bootstrap.git
 [submodule "packages/azimuth-views-foundation"]
 	path = packages/azimuth-views-foundation
-	url = https://github.com/azimuth-views-foundation.git
+	url = https://github.com/mcrider/azimuth-views-foundation.git
 [submodule "packages/azimuth-theme-foundation-simpleWhite"]
 	path = packages/azimuth-theme-foundation-simpleWhite
-	url = https://github.com/azimuth-theme-foundation-simpleWhite.git
+	url = https://github.com/mcrider/azimuth-theme-foundation-simpleWhite.git
