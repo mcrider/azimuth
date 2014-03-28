@@ -1,8 +1,5 @@
 {
-  "meteor": {
-    "git": "https://github.com/meteor/meteor.git",
-    "branch": "master"
-  },
+  "meteor": {},
   "packages": {
     "azimuth-core": {
       "path": "../azimuth/packages/azimuth-core"
