@@ -9,12 +9,6 @@
     },
     "azimuth-views-foundation": {
       "path": "../azimuth/packages/azimuth-views-foundation"
-    },
-    "azimuth-theme-bootstrap-flatBlue": {
-      "path": "../azimuth/packages/azimuth-theme-bootstrap-flatBlue"
-    },
-    "azimuth-theme-foundation-simpleWhite": {
-      "path": "../azimuth/packages/azimuth-theme-foundation-simpleWhite"
     }
   }
 }
