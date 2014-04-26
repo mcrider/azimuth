@@ -2,13 +2,13 @@
   "meteor": {},
   "packages": {
     "azimuth-core": {
-      "path": "../azimuth/packages/azimuth-core"
+      "path": "packages/azimuth-core"
     },
     "azimuth-views-bootstrap": {
-      "path": "../azimuth/packages/azimuth-views-bootstrap"
+      "path": "packages/azimuth-views-bootstrap"
     },
     "azimuth-views-foundation": {
-      "path": "../azimuth/packages/azimuth-views-foundation"
+      "path": "packages/azimuth-views-foundation"
     }
   }
 }
