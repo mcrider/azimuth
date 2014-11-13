@@ -3,11 +3,9 @@
 # 'meteor add' and 'meteor remove' will edit this file for you,
 # but you can also edit it by hand.
 
-preserve-inputs
-accounts-base
-accounts-password
-underscore
+meteor-platform
+insecure
 jquery
-less
-spiderable
-standard-app-packages
+mcrider:azimuth-views-bootstrap
+mcrider:azimuth-core
+
